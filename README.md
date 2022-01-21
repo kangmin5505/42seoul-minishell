@@ -67,6 +67,10 @@ For every point, if you have any doubt take [bash](https://www.gnu.org/savannah-
 
 ## Functions
 ```c
+// The function readline() prints a prompt prompt and then reads and returns a single line of text from the user.
+// If prompt is NULL or the empty string, no prompt is displayed.
+// If readline encounters an EOF while reading the line, and the line is empty at that point, the (char *)NULL is returned.
+// Otherwise, the line is ended just as if a newline had been typed.
 char *readline(const char *prompt);
 
 // Tell the update functions that we have moved onto a new (empty) line, usually after outputting a newline.
