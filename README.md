@@ -179,3 +179,37 @@ char  *tgetstr(char *id, char **area);
 char  *tgoto(const char *cap, int col, int row);
 int   tputs(const char *str, int affcnt, int (*putc)(int));
 ```
+## Command
+- echo (with option -n)
+  - write arguments to the standard output
+  - Description
+    - The echo utility writes any specified operands, separated by single blank(' ') characters and followed by a newline ('\n') character, to the standard output.
+  - option
+    - -n : Do not print the trailing newline character
+
+- cd (with only a relative or absolute path)
+  - change the working directory
+  - The cd utility shall change the working directory of the current shell execution environment by executing the following steps in sequence
+
+- pwd (with no options)
+  - return working directory name
+  - Description
+    - The pwd utility writes the absolute pathname of the current working directory to the standard output.
+
+- export (with no options)
+  - set the export attribute for variables
+  - Description
+    - The shell shall give the export attribute to the variables corresponding to the specified names, which shall cause them to be in the environment of subsequently executed commands
+
+- unset (with no options)
+  - unset values and attributes of variables and functions
+  - Description
+    - Each variable or function specified by name shall be unset
+
+- env (with no options or arguments)
+  - set environment and execute command, or print environment
+
+- exit (with no options)
+  - cause normal process termination
+  - Description
+    - The exit() function causes normal process termination and the least significant byte of status is returned to the parent
