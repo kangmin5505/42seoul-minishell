@@ -8,31 +8,13 @@
 
 int	main(int argc, char *argv[], char *envp[])
 {
-	char	buf[1024];
-	char	*line;
-	pid_t	pid;
-	int		wstatus;
-
-	printf("%s\n", getcwd(buf, PATH_MAX));
-	while (1)
+	for (int i = 0; envp[i] != NULL; i++)
 	{
-		line = readline("minishell % ");
-		if (line && strcmp(line, "cd ..") == 0)
+		if (strncmp(envp[i], "LOGNAME", 7) == 0)
 		{
-			chdir("..");
-			printf("%s\n", getcwd(buf, PATH_MAX));
+			envp[i] = "";
 		}
-		else if (line && strcmp(line, "ls") == 0)
-		{
-			pid = fork();
-			if (pid == 0)
-			{
-				execve("/bin/ls", argv, envp);
-			}
-			else
-			{
-				waitpid(pid, &wstatus, WUNTRACED);
-			}
-		}
+		if (strlen(envp[i]) != 0)
+			printf("%s\n", envp[i]);
 	}
 }
