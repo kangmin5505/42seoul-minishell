@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 15:03:40 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/22 19:36:04 by kangkim          ###   ########.fr       */
+/*   Created: 2021/11/18 15:27:59 by kangkim           #+#    #+#             */
+/*   Updated: 2021/11/18 15:31:53 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
-# include <termios.h>
-# include <dirent.h>
-# include <limits.h>
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	unsigned int	len;
+	char			*str;
+	unsigned int	idx;
 
-# include "readline/readline.h"
-# include "readline/history.h"
-# include "libft.h"
-# include "shell.h"
-# include "executer.h"
-
-
-#endif
+	if (!s || !f)
+		return (NULL);
+	len = ft_strlen(s);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	idx = 0;
+	while (s[idx])
+	{
+		str[idx] = (*f)(idx, s[idx]);
+		idx++;
+	}
+	str[idx] = '\0';
+	return (str);
+}

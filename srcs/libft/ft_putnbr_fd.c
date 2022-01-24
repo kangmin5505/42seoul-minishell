@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 15:03:40 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/22 19:36:04 by kangkim          ###   ########.fr       */
+/*   Created: 2021/11/18 15:40:45 by kangkim           #+#    #+#             */
+/*   Updated: 2021/11/18 15:48:08 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
-# include <termios.h>
-# include <dirent.h>
-# include <limits.h>
+static void	ft_print_screen(long long nbr, int fd)
+{
+	char	c;
 
-# include "readline/readline.h"
-# include "readline/history.h"
-# include "libft.h"
-# include "shell.h"
-# include "executer.h"
+	if (nbr >= 10)
+		ft_print_screen(nbr / 10, fd);
+	c = nbr % 10 + '0';
+	write(fd, &c, 1);
+}
 
+void	ft_putnbr_fd(int n, int fd)
+{
+	long long	nbr;
 
-#endif
+	nbr = (long long)n;
+	if (fd >= 0)
+	{
+		if (nbr < 0)
+		{
+			nbr *= -1;
+			write(fd, "-", 1);
+		}
+		ft_print_screen(nbr, fd);
+	}
+}

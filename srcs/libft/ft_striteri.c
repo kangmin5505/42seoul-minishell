@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 15:03:40 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/22 19:36:04 by kangkim          ###   ########.fr       */
+/*   Created: 2021/11/18 15:32:07 by kangkim           #+#    #+#             */
+/*   Updated: 2021/11/18 15:36:21 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
-# include <termios.h>
-# include <dirent.h>
-# include <limits.h>
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+{
+	unsigned int	idx;
 
-# include "readline/readline.h"
-# include "readline/history.h"
-# include "libft.h"
-# include "shell.h"
-# include "executer.h"
-
-
-#endif
+	if (s && f)
+	{
+		idx = 0;
+		while (s[idx])
+		{
+			(*f)(idx, &s[idx]);
+			idx++;
+		}
+		s[idx] = '\0';
+	}
+}

@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_int.c                                           :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
+/*   By: kangkim <kangkim@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 14:21:49 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/20 14:29:13 by gimsang-w        ###   ########.fr       */
+/*   Created: 2021/11/16 15:24:59 by kangkim           #+#    #+#             */
+/*   Updated: 2021/11/16 15:28:33 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-
-int	main(void)
+static int	ft_islower(int c)
 {
-	char *m = "HELLOA\n";
-	int	i;
+	return ((unsigned)c - 'a' < 26);
+}
 
-	printf("%s\n", m);
-	return (0);
+int	ft_toupper(int c)
+{
+	if (ft_islower(c))
+		return (c & 0x5f);
+	return (c);
 }

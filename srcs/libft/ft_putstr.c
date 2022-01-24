@@ -1,13 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_inlist.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
+/*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 00:37:06 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/08 00:37:52 by gimsang-w        ###   ########.fr       */
+/*   Created: 2021/12/06 13:11:09 by kangkim           #+#    #+#             */
+/*   Updated: 2021/12/06 13:12:07 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_interpret.h"
+#include "libft.h"
+
+int	ft_putstr(const char *s)
+{
+	return (write(STDOUT_FILENO, s, ft_strlen(s)));
+}

@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 15:03:40 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/22 19:36:04 by kangkim          ###   ########.fr       */
+/*   Created: 2021/11/18 15:39:13 by kangkim           #+#    #+#             */
+/*   Updated: 2021/11/18 15:40:19 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
-# include <termios.h>
-# include <dirent.h>
-# include <limits.h>
-
-# include "readline/readline.h"
-# include "readline/history.h"
-# include "libft.h"
-# include "shell.h"
-# include "executer.h"
-
-
-#endif
+void	ft_putendl_fd(char *s, int fd)
+{
+	if (s && (fd >= 0))
+	{
+		write(fd, s, ft_strlen(s));
+		write(fd, "\n", 1);
+	}
+}
