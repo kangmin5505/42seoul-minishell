@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 23:01:07 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/24 21:15:54 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/24 21:35:54 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	main(void)
 {
-	char	*a = "daaafa\"fag\"'afgghello' ";
+	char	*a = "daa' 'afa\"fag\"'afgghello'   ";
 	char	*b;
 	t_interpret	*in;
 

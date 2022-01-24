@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:51:27 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/24 21:35:07 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/24 21:38:15 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_savestr(t_interpret *in, char **line, int i)
 	{
 		*line += 2;
 		if (*(*line - 1) != SPACE && *(*line - 1) != DQUOTE && *(*line - 1)!= QUOTE)
-			ft_savestr(in, line, 0);
+			ft_savestr(in, line, (--*line - *line));
 		else
 			ft_savestr(in, line, *(*line - 1));
 	}
