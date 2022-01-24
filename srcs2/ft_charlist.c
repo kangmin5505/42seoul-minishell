@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:14:12 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/24 21:31:28 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/25 03:42:16 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@ t_interpret	*ft_initinlist(void)
 	t_interpret	*rs;
 
 	rs = (t_interpret *)malloc(sizeof(t_interpret));
-	rs->data = ft_initclist(0, 0, 0, 0);
+	rs->list[DATA] = ft_initclist(0, 0, 0, 0);
+	rs->list[I] = ft_initclist(0, 0, 0, 0);
+	rs->list[DI] = ft_initclist(0, 0, 0, 0);
+	rs->list[O] = ft_initclist(0, 0, 0, 0);
+	rs->list[DO] = ft_initclist(0, 0, 0, 0);
 	rs->parent = 0;
 	rs->son = 0;
 	rs->next = 0;
@@ -53,11 +57,31 @@ void	ft_linklist(t_clist *root, char *str, int type, int on)
 	root->next = ft_initclist(str, 0, type, on);
 }
 
-void	ft_printdatas(t_clist *root)
+void	ft_printcmds(t_interpret *in)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (in)
+	{
+		printf("\n<--- %dth cmd start --->\n", i);
+		j = -1;
+		while (++j < 4)
+			ft_printdatas(in->list[j], i, j);
+		printf("\n<--- %dth cmd end --->\n", i);
+		j = -1;
+		in = in->next;
+		++i;
+	}
+}
+
+void	ft_printdatas(t_clist *root, int nthcmd, int type)
 {
 	int	i;
 
 	i = -1;
+	printf("\n<--- this is %dth cmd %s start ---> \n", nthcmd, (type == DATA) ? "DATA" : (type == I) ? "SINGLEIN" : (type == DI) ? "DOUBLEIN" : (type == O) ? "SINGLEOUT" : "DOUBLEOUT");
 	while (root)
 	{
 		printf("%dth data-> %s\n", ++i, root->data);
@@ -65,6 +89,7 @@ void	ft_printdatas(t_clist *root)
 		printf("%dth type-> %s\n", i, (root->type == SPACE) ? "SPACE" : (root->type == DQUOTE) ? "DQUOTE" : "QUOTE");
 		root = root->next;
 	}
+	printf("\n<--- this is %dth cmd %s end ---> \n", nthcmd, (type == DATA) ? "DATA" : (type == I) ? "SINGLEIN" : (type == DI) ? "DOUBLEIN" : (type == O) ? "SINGLEOUT" : "DOUBLEOUT");
 }
 
 /*int		clean_list(c_list *list)

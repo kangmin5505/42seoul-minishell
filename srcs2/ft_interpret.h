@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:14:23 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/24 21:31:15 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/25 03:32:43 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,21 @@
 # define AND 9
 # define DIN 10
 # define DOUT 11
+
 # define SPACE 32
 # define DQUOTE 34
 # define QUOTE 39
+
 # define ON 0
 # define OFF 1
 # define END 1
 # define NOTEND 0
+# define ATEXIT 1
+# define DATA 0
+# define I 1
+# define DI 2
+# define O 3
+# define DO 4
 
 typedef struct s_clist
 {
@@ -49,8 +57,7 @@ typedef struct s_interpret
 {
 	int					flag;
 	int					num;
-	struct s_clist		*data;
-	struct s_clist		*redirect;
+	struct s_clist		*list[5];
 	struct s_interpret	*next;
 	struct s_interpret	*son ;
 	struct s_interpret	*parent;
@@ -64,10 +71,15 @@ int			ft_strlen(char *str);
 t_clist		*ft_initclist(char *data, t_clist *next, int type, int on);
 t_interpret	*ft_initinlist(void);
 void		ft_linklist(t_clist *root, char *str, int type, int on);
-int			ft_savestr(t_interpret *in, char **line, int i);
+int			ft_savestr(t_interpret *in, char **line, int i, int type);
 int			ft_while2(char *str);
 int			ft_strexlen(char *str, char *ex, int size);
 char		*ft_strexcpy(char *str, int size, char *ex);
 int			ft_while3(char *str);
-void		ft_printdatas(t_clist *root);
+int			ft_inerror(t_interpret *in, int flag);
+int			ft_parentis(t_interpret *in, char **list, int i);
+int			ft_interpret(t_interpret **in, char *line);
+void		ft_printdatas(t_clist *root, int nthcmd, int type);
+void		ft_printcmds(t_interpret *in);
+
 #endif
