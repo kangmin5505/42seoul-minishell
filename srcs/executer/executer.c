@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 19:29:32 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/22 22:43:32 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/01/24 14:06:48 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ void	execute(char **strs, char *envp[])
 	if (ft_strncmp(cmd, "echo", cmd_len) == 0)
 		printf("echo\n");
 	else if (ft_strncmp(cmd, "cd", cmd_len) == 0)
-		printf("cd\n");
+	{
+		chdir("..");
+		pwd();
+		env(envp);
+	}
 	else if (ft_strncmp(cmd, "pwd", cmd_len) == 0)
 		pwd();
 	else if (ft_strncmp(cmd, "export", cmd_len) == 0)
