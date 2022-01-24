@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:51:27 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/25 03:41:30 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/25 04:17:02 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,8 @@ int	ft_interpret(t_interpret **in, char *line)
 
 int ft_inerror(t_interpret *in, int flag)
 {
+	if (in->parent)
+		printf("errorforsure\n");
 	if (in->parent && (ATEXIT & flag))
 		return (-1);
 	return (0);
@@ -151,5 +153,6 @@ int ft_inerror(t_interpret *in, int flag)
 int	ft_parentis(t_interpret *in, char **list, int i)
 {
 	in->son = ft_initinlist();
+	in->son->parent = in;
 	return (ft_interpret(&(in->son), *list));
 }

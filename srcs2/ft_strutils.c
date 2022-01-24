@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:55:14 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/25 00:43:58 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/25 04:21:29 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,7 @@ int	ft_while3(char *str)
 	i = 0;
 	while (*(str + i))
 	{
-		if (ft_match(str + i, " "))
-			return (i);
-		else if(ft_match(str + i, "'"))
-			return (i);
-		else if (ft_match(str + i, "\""))
+		if (ft_match(str + i, " ") || ft_spc(str + i))
 			return (i);
 		++i;
 	}
