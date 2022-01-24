@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:51:27 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/25 04:35:16 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/25 05:18:58 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int	ft_savestr(t_interpret *in, char **line, int i, int type)
 	int	cond1;
 	int	cond2;
 	char	*rs;
+	int	ret;
 
+	ret = 2;
 	if (i == 0 || i == SPACE)
 		flag = SPACE;
 	else if (i == Q || i == QUOTE)
@@ -30,7 +32,7 @@ int	ft_savestr(t_interpret *in, char **line, int i, int type)
 	if (flag == SPACE)
 		size = ft_while3(*line);
 	else
-		size = ft_while(*line, flag, OFF, flag - SPACE);
+		size = ft_while(*line, flag, OFF, END);
 	if (size < 0)
 		return (-1);
 	rs = ft_strcpy(*line, 0, size, 0);
@@ -47,22 +49,26 @@ int	ft_savestr(t_interpret *in, char **line, int i, int type)
 		ft_linklist(in->list[O], rs, flag, cond1 || cond2);
 	else if (type == DOUT) 
 		ft_linklist(in->list[DO], rs, flag, cond1 || cond2);
-	if (flag == DQUOTE || flag == QUOTE)
+	if (flag != SPACE)
 		*line += 1;
 	if (cond1)
 	{
 		*line += 1;
-		ft_savestr(in, line, *(*line - 1), type);
+		ret = ft_savestr(in, line, *(*line - 1), type);
+		if (ret == -1)
+			return (ret);
 	}
 	else if (cond2)
 	{
 		*line += 1;
 		if (*(*line - 1) != SPACE && *(*line - 1) != DQUOTE && *(*line - 1)!= QUOTE)
-			ft_savestr(in, line, (--*line - *line), type);
+			ret = ft_savestr(in, line, (--*line - *line), type);
 		else
-			ft_savestr(in, line, *(*line - 1), type);
+			ret = ft_savestr(in, line, *(*line - 1), type);
+		if (ret == -1)
+			return (ret);
 	}
-	return (2);
+	return (ret);
 }
 
 int	ft_redirect(t_interpret *in, char **line, int i)
@@ -135,7 +141,10 @@ int	ft_interpret(t_interpret **in, char *line)
 				return (c);
 		}
 		else
-			ft_savestr(root, &line, SPACE, DATA);
+		{
+			if (ft_savestr(root, &line, SPACE, DATA) == -1)
+				return (-1);
+		}
 	}
 	if (ft_inerror(root, ATEXIT))
 		return (-1);

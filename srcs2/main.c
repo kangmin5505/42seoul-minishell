@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 23:01:07 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/25 04:38:33 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/25 05:02:23 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	main(int n, char **args)
 {
 	char	*a = "echo <<hello && hw good 'bye'\"sh\" | wow";
-	char	*b;
+	char	*b = "eafagshSRHr\n";
 	t_interpret	*in;
 	int	errc;
 
