@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:14:23 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/24 21:15:39 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/24 21:31:15 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ int			ft_match(char *str, char *tof);
 int			ft_while(char *str, char del, int not, int end);
 char		*ft_strcpy(char *str, int off, int size, int fit);
 int			ft_strlen(char *str);
-t_clist		*ft_initclist(char *data, t_clist *next, int type);
+t_clist		*ft_initclist(char *data, t_clist *next, int type, int on);
 t_interpret	*ft_initinlist(void);
-void		ft_linklist(t_clist *root, char *str, int type);
+void		ft_linklist(t_clist *root, char *str, int type, int on);
 int			ft_savestr(t_interpret *in, char **line, int i);
 int			ft_while2(char *str);
 int			ft_strexlen(char *str, char *ex, int size);

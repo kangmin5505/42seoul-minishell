@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:51:27 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/24 21:19:45 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/24 21:35:07 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ int	ft_savestr(t_interpret *in, char **line, int i)
 {
 	int	size;
 	int	flag;
+	int	cond1;
+	int	cond2;
+	char	*rs;
 
 	if (i == 0)
 		flag = SPACE;
@@ -30,25 +33,24 @@ int	ft_savestr(t_interpret *in, char **line, int i)
 		size = ft_while(*line, flag, OFF, flag - SPACE);
 	if (size < 0)
 		return (-1);
-	ft_linklist(in->data, ft_strcpy(*line, 0, size, 0), flag);	
+	rs = ft_strcpy(*line, 0, size, 0);
 	*line += size;
-	if ((flag == SPACE) && (**line == DQUOTE || **line == QUOTE))
+	cond1 = ((flag == SPACE) && (**line == DQUOTE || **line == QUOTE));
+	cond2 = ((flag == DQUOTE || flag == QUOTE)) && (*(*(line) + 1) == DQUOTE || *(*(line) + 1) == QUOTE || *(*(line) + 1) != SPACE);
+	ft_linklist(in->data, rs, flag, cond1 || cond2);
+	if (cond1)
 	{
-		in->data->on = 1;
 		*line += 1;
 		ft_savestr(in, line, *(*line - 1));
 	}
-	else if ((flag == DQUOTE || flag == QUOTE))
-		if (*(*(line) + 1) == DQUOTE || *(*(line) + 1) == QUOTE || *(*(line) + 1) != SPACE)
-		{
-			in->data->on = 1;
-			*line += 2;
-			if (*(*line - 1) != SPACE && *(*line - 1) != DQUOTE && *(*line - 1)!= QUOTE)
-				ft_savestr(in, line, 0);
-			else
-				ft_savestr(in, line, *(*line - 1));
-		}
-	in->data->on = 0;
+	else if (cond2)
+	{
+		*line += 2;
+		if (*(*line - 1) != SPACE && *(*line - 1) != DQUOTE && *(*line - 1)!= QUOTE)
+			ft_savestr(in, line, 0);
+		else
+			ft_savestr(in, line, *(*line - 1));
+	}
 	return (size);
 }
 

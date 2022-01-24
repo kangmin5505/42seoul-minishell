@@ -6,13 +6,13 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:14:12 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/24 21:18:16 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/24 21:31:28 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_interpret.h"
 
-t_clist	*ft_initclist(char *data, t_clist *next, int type)
+t_clist	*ft_initclist(char *data, t_clist *next, int type, int on)
 {
 	t_clist	*rs;
 
@@ -20,6 +20,7 @@ t_clist	*ft_initclist(char *data, t_clist *next, int type)
 	rs->data = data;
 	rs->next = next;
 	rs->type = type;
+	rs->on = on;
 	return (rs);
 }
 
@@ -28,7 +29,7 @@ t_interpret	*ft_initinlist(void)
 	t_interpret	*rs;
 
 	rs = (t_interpret *)malloc(sizeof(t_interpret));
-	rs->data = ft_initclist(0, 0, 0);
+	rs->data = ft_initclist(0, 0, 0, 0);
 	rs->parent = 0;
 	rs->son = 0;
 	rs->next = 0;
@@ -37,18 +38,19 @@ t_interpret	*ft_initinlist(void)
 	return (rs);
 }
 
-void	ft_linklist(t_clist *root, char *str, int type)
+void	ft_linklist(t_clist *root, char *str, int type, int on)
 {
 	if (root->data == 0)
 	{
 		root->data = str;
 		root->type = type;
 		root->next = 0;
+		root->on = on;
 		return ;
 	}
 	while (root->next != 0)
 		root = root->next;
-	root->next = ft_initclist(str, 0, type);
+	root->next = ft_initclist(str, 0, type, on);
 }
 
 void	ft_printdatas(t_clist *root)
