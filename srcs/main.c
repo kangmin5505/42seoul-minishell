@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:03:11 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/21 17:52:27 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/01/22 22:47:46 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,26 @@
 
 struct termios	g_origin_tcattr;
 
+void	free_strs(char **strs)
+{
+	char	**temp;
+
+	temp = strs;
+	while (*strs)
+	{
+		free(*strs);
+		strs++;
+	}
+	free(temp);
+}
+
 int	main(int argc, char *argv[], char *envp[])
 {
 	char	*line;
+	char	**strs;
 
 	argc = 0;
 	argv = 0;
-	envp = 0;
 
 	set_shell();
 	while (1)
@@ -28,7 +41,12 @@ int	main(int argc, char *argv[], char *envp[])
 		line = readline_shell();
 		add_history_shell(line);
 		// parse
-		// execute
+		if (*line != '\0')
+		{
+			strs = ft_split(line, ' ');
+			execute(strs, envp);
+			free_strs(strs);
+		}
 		free(line);
 	}
 	return (0);

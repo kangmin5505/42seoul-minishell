@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   executer.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 15:03:40 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/22 19:36:04 by kangkim          ###   ########.fr       */
+/*   Created: 2022/01/22 19:36:25 by kangkim           #+#    #+#             */
+/*   Updated: 2022/01/22 22:46:12 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef EXECUTER_H
+# define EXECUTER_H
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
-# include <termios.h>
-# include <dirent.h>
-# include <limits.h>
+void	execute(char **strs, char *envp[]);
 
-# include "readline/readline.h"
-# include "readline/history.h"
-# include "libft.h"
-# include "shell.h"
-# include "executer.h"
+void	pwd(void);
 
+void	env(char *envp[]);
 
 #endif
