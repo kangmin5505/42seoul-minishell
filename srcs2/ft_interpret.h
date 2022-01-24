@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:14:23 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/23 18:53:22 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/24 21:15:39 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 typedef struct s_clist
 {
 	char			*data;
+	int				on;
 	int				type;
 	struct s_clist	*next;
 }				t_clist;
@@ -62,9 +63,11 @@ char		*ft_strcpy(char *str, int off, int size, int fit);
 int			ft_strlen(char *str);
 t_clist		*ft_initclist(char *data, t_clist *next, int type);
 t_interpret	*ft_initinlist(void);
-void		ft_linklist(t_clist **data, char *str, int type);
+void		ft_linklist(t_clist *root, char *str, int type);
 int			ft_savestr(t_interpret *in, char **line, int i);
 int			ft_while2(char *str);
 int			ft_strexlen(char *str, char *ex, int size);
 char		*ft_strexcpy(char *str, int size, char *ex);
+int			ft_while3(char *str);
+void		ft_printdatas(t_clist *root);
 #endif

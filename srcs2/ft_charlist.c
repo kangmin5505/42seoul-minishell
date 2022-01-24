@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:14:12 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/23 15:48:59 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/24 21:18:16 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,32 @@ t_interpret	*ft_initinlist(void)
 	return (rs);
 }
 
-void	ft_linklist(t_clist **data, char *str, int type)
+void	ft_linklist(t_clist *root, char *str, int type)
 {
-	if ((*data)->data == 0)
+	if (root->data == 0)
 	{
-		(*data)->data = str;
-		(*data)->type = type;
+		root->data = str;
+		root->type = type;
+		root->next = 0;
 		return ;
 	}
-	(*data)->next = ft_initclist(str, 0, type);
-	(*data) = (*data)->next;
+	while (root->next != 0)
+		root = root->next;
+	root->next = ft_initclist(str, 0, type);
+}
+
+void	ft_printdatas(t_clist *root)
+{
+	int	i;
+
+	i = -1;
+	while (root)
+	{
+		printf("%dth data-> %s\n", ++i, root->data);
+		printf("%dth join-> %s\n", i, (root->on) ? "CONTINUED" : "NOT CONTINUED");
+		printf("%dth type-> %s\n", i, (root->type == SPACE) ? "SPACE" : (root->type == DQUOTE) ? "DQUOTE" : "QUOTE");
+		root = root->next;
+	}
 }
 
 /*int		clean_list(c_list *list)

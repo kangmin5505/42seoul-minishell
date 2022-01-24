@@ -6,11 +6,12 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:51:27 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/23 18:32:57 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/24 21:19:45 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_interpret.h"
+#include <stdio.h>
 
 int	ft_savestr(t_interpret *in, char **line, int i)
 {
@@ -19,19 +20,39 @@ int	ft_savestr(t_interpret *in, char **line, int i)
 
 	if (i == 0)
 		flag = SPACE;
-	else if (i == Q)
+	else if (i == Q || i == QUOTE)
 		flag = QUOTE;
-	else if (i == DQ)
+	else if (i == DQ || i == DQUOTE)
 		flag = DQUOTE;
-	size = ft_while(*line, flag, OFF, flag - SPACE);
+	if (flag == SPACE)
+		size = ft_while3(*line);
+	else
+		size = ft_while(*line, flag, OFF, flag - SPACE);
 	if (size < 0)
 		return (-1);
-	ft_linklist(&in->data, ft_strcpy(*line, 0, size, 0));
-	*line += size + (flag - 10) / 23;
+	ft_linklist(in->data, ft_strcpy(*line, 0, size, 0), flag);	
+	*line += size;
+	if ((flag == SPACE) && (**line == DQUOTE || **line == QUOTE))
+	{
+		in->data->on = 1;
+		*line += 1;
+		ft_savestr(in, line, *(*line - 1));
+	}
+	else if ((flag == DQUOTE || flag == QUOTE))
+		if (*(*(line) + 1) == DQUOTE || *(*(line) + 1) == QUOTE || *(*(line) + 1) != SPACE)
+		{
+			in->data->on = 1;
+			*line += 2;
+			if (*(*line - 1) != SPACE && *(*line - 1) != DQUOTE && *(*line - 1)!= QUOTE)
+				ft_savestr(in, line, 0);
+			else
+				ft_savestr(in, line, *(*line - 1));
+		}
+	in->data->on = 0;
 	return (size);
 }
 
-int	ft_redirection(t_interpret *in, char **line, int i)
+/*int	ft_redirection(t_interpret *in, char **line, int i)
 {
 	int	size;
 
@@ -40,22 +61,22 @@ int	ft_redirection(t_interpret *in, char **line, int i)
 		return (-1);
 	*line += size;
 	size = ft_wh
-}
+}*/
 
-int	ft_select(t_interpret *in, char *line, int i)
+/*int	ft_select(t_interpret *in, char *line, int i)
 {
 	int	sign;
 
 	if (i == Q || i == DQ)
-		sign = ft_savestr(in, line, i);
-	else if (i == OPAR)
-		sign= ft_parentis(in, line, i);
-	else if (i == CPAR && in->mom)
-		return (0);
-	else if (i == AND || i == OR || i == PIPE)
-		sign = ft_next(in, line, i);
-	else if (i == DOUT || i == IN || i == OUT || i == DIN)
-		sign = ft_redirection(in, line, i);
+		sign = ft_savestr(in, &line, i);
+	//else if (i == OPAR)
+		//sign= ft_parentis(in, line, i);
+	//else if (i == CPAR && in->mom)
+		//return (0);
+	//else if (i == AND || i == OR || i == PIPE)
+		//sign = ft_next(in, line, i);
+	//else if (i == DOUT || i == IN || i == OUT || i == DIN)
+		//sign = ft_redirection(in, line, i);
 	return (sign);
 }
 
@@ -93,4 +114,4 @@ int	ft_parentis(t_interpret *in, char **list, const char *i)
 	*list += strlen(i);
 	in->son = ft_newinlist();
 	return (ft_interpret(in->son, list));
-}
+}*/

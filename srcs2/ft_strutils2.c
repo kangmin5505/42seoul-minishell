@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:16:23 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/23 20:08:48 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/24 20:47:00 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	*ft_strexcpy(char *str, int size, char *ex)
 	return (rs);
 }
 
-int	ft_alotsize(char *str)
+/*int	ft_alotsize(char *str)
 {
 	
-}
+}*/
