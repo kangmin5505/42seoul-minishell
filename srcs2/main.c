@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 23:01:07 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/25 05:02:23 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/25 05:19:55 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,6 @@ int	main(int n, char **args)
 	errc = ft_interpret(&in, (n >= 2) ? args[1] : a);
 	if (errc != -1)
 		ft_printcmds(in, 0);
+	else
+		printf("parsing error\n");
 }
