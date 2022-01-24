@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:14:23 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/25 03:32:43 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/25 04:38:24 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ int			ft_inerror(t_interpret *in, int flag);
 int			ft_parentis(t_interpret *in, char **list, int i);
 int			ft_interpret(t_interpret **in, char *line);
 void		ft_printdatas(t_clist *root, int nthcmd, int type);
-void		ft_printcmds(t_interpret *in);
+void		ft_printcmds(t_interpret *in, int depth);
 
 #endif

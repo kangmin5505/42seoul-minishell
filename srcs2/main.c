@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 23:01:07 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/25 04:28:42 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/25 04:38:33 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ int	main(int n, char **args)
 	in = ft_initinlist();
 	errc = ft_interpret(&in, (n >= 2) ? args[1] : a);
 	if (errc != -1)
-		ft_printcmds(in);
+		ft_printcmds(in, 0);
 }

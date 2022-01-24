@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:14:12 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/25 03:57:21 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/25 04:39:41 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_linklist(t_clist *root, char *str, int type, int on)
 	root->next = ft_initclist(str, 0, type, on);
 }
 
-void	ft_printcmds(t_interpret *in)
+void	ft_printcmds(t_interpret *in, int depth)
 {
 	int	i;
 	int	j;
@@ -66,14 +66,14 @@ void	ft_printcmds(t_interpret *in)
 	while (in)
 	{
 		if (in->son)
-			ft_printcmds(in->son);
+			ft_printcmds(in->son, depth + 1);
 		if (in->son == 0)
 		{
-			printf("\n<--- %dth cmd start --->\n", i);
+			printf("\n<--- depth->%d %dth cmd start --->\n", depth, i);
 			j = -1;
 			while (++j < 5)
 				ft_printdatas(in->list[j], i, j);
-			printf("\n<--- %dth cmd end --->\n", i);
+			printf("\n<--- depth->%d  %dth cmd end --->\n", depth, i);
 		}
 		in = in->next;
 		++i;
