@@ -30,8 +30,8 @@ Kernel configured for up to 10 processors.
 Processor type: arm64e (ARM64E)
 Processors active: 0 1 2 3 4 5 6 7 8 9
 Primary memory available: 32.00 gigabytes
-Default processor set: 483 tasks, 2156 threads, 10 processors
-Load average: 1.27, Mach factor: 8.82
+Default processor set: 483 tasks, 2195 threads, 10 processors
+Load average: 2.10, Mach factor: 8.00
 /bin/machine           = unknown
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
@@ -57,67 +57,64 @@ configure:2537: result: aarch64-apple-darwin21.2.0
 configure:2650: checking whether make sets $(MAKE)
 configure:2672: result: yes
 configure:2729: checking for gcc
-configure:2745: found /usr/bin/gcc
-configure:2756: result: gcc
+configure:2756: result: cc
 configure:2985: checking for C compiler version
-configure:2994: gcc --version >&5
-Apple clang version 13.0.0 (clang-1300.0.29.30)
-Target: arm64-apple-darwin21.2.0
-Thread model: posix
-InstalledDir: /Library/Developer/CommandLineTools/usr/bin
-Configured with: --prefix=/Library/Developer/CommandLineTools/usr --with-gxx-include-dir=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/4.2.1
-configure:3005: $? = 0
-configure:2994: gcc -v >&5
-Configured with: --prefix=/Library/Developer/CommandLineTools/usr --with-gxx-include-dir=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/4.2.1
+configure:2994: cc --version >&5
 Apple clang version 13.0.0 (clang-1300.0.29.30)
 Target: arm64-apple-darwin21.2.0
 Thread model: posix
 InstalledDir: /Library/Developer/CommandLineTools/usr/bin
 configure:3005: $? = 0
-configure:2994: gcc -V >&5
+configure:2994: cc -v >&5
+Apple clang version 13.0.0 (clang-1300.0.29.30)
+Target: arm64-apple-darwin21.2.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+configure:3005: $? = 0
+configure:2994: cc -V >&5
 clang: error: argument to '-V' is missing (expected 1 value)
 clang: error: no input files
 configure:3005: $? = 1
-configure:2994: gcc -qversion >&5
+configure:2994: cc -qversion >&5
 clang: error: unknown argument '-qversion'; did you mean '--version'?
 clang: error: no input files
 configure:3005: $? = 1
 configure:3025: checking whether the C compiler works
-configure:3047: gcc    conftest.c  >&5
+configure:3047: cc    conftest.c  >&5
 configure:3051: $? = 0
 configure:3099: result: yes
 configure:3102: checking for C compiler default output file name
 configure:3104: result: a.out
 configure:3110: checking for suffix of executables
-configure:3117: gcc -o conftest    conftest.c  >&5
+configure:3117: cc -o conftest    conftest.c  >&5
 configure:3121: $? = 0
 configure:3143: result: 
 configure:3165: checking whether we are cross compiling
-configure:3173: gcc -o conftest    conftest.c  >&5
+configure:3173: cc -o conftest    conftest.c  >&5
 configure:3177: $? = 0
 configure:3184: ./conftest
 configure:3188: $? = 0
 configure:3203: result: no
 configure:3208: checking for suffix of object files
-configure:3230: gcc -c   conftest.c >&5
+configure:3230: cc -c   conftest.c >&5
 configure:3234: $? = 0
 configure:3255: result: o
 configure:3259: checking whether we are using the GNU C compiler
-configure:3278: gcc -c   conftest.c >&5
+configure:3278: cc -c   conftest.c >&5
 configure:3278: $? = 0
 configure:3287: result: yes
-configure:3296: checking whether gcc accepts -g
-configure:3316: gcc -c -g  conftest.c >&5
+configure:3296: checking whether cc accepts -g
+configure:3316: cc -c -g  conftest.c >&5
 configure:3316: $? = 0
 configure:3357: result: yes
-configure:3374: checking for gcc option to accept ISO C89
-configure:3437: gcc  -c -g -O2  conftest.c >&5
+configure:3374: checking for cc option to accept ISO C89
+configure:3437: cc  -c -g -O2  conftest.c >&5
 configure:3437: $? = 0
 configure:3450: result: none needed
 configure:3476: checking how to run the C preprocessor
-configure:3507: gcc -E  conftest.c
+configure:3507: cc -E  conftest.c
 configure:3507: $? = 0
-configure:3521: gcc -E  conftest.c
+configure:3521: cc -E  conftest.c
 conftest.c:9:10: fatal error: 'ac_nonexistent.h' file not found
 #include <ac_nonexistent.h>
          ^~~~~~~~~~~~~~~~~~
@@ -133,10 +130,10 @@ configure: failed program was:
 | #define PACKAGE_URL ""
 | /* end confdefs.h.  */
 | #include <ac_nonexistent.h>
-configure:3546: result: gcc -E
-configure:3566: gcc -E  conftest.c
+configure:3546: result: cc -E
+configure:3566: cc -E  conftest.c
 configure:3566: $? = 0
-configure:3580: gcc -E  conftest.c
+configure:3580: cc -E  conftest.c
 conftest.c:9:10: fatal error: 'ac_nonexistent.h' file not found
 #include <ac_nonexistent.h>
          ^~~~~~~~~~~~~~~~~~
@@ -157,51 +154,51 @@ configure:3667: result: /usr/bin/grep
 configure:3672: checking for egrep
 configure:3734: result: /usr/bin/grep -E
 configure:3739: checking for ANSI C header files
-configure:3759: gcc -c -g -O2  conftest.c >&5
+configure:3759: cc -c -g -O2  conftest.c >&5
 configure:3759: $? = 0
-configure:3832: gcc -o conftest -g -O2   conftest.c  >&5
+configure:3832: cc -o conftest -g -O2   conftest.c  >&5
 configure:3832: $? = 0
 configure:3832: ./conftest
 configure:3832: $? = 0
 configure:3843: result: yes
 configure:3856: checking for sys/types.h
-configure:3856: gcc -c -g -O2  conftest.c >&5
+configure:3856: cc -c -g -O2  conftest.c >&5
 configure:3856: $? = 0
 configure:3856: result: yes
 configure:3856: checking for sys/stat.h
-configure:3856: gcc -c -g -O2  conftest.c >&5
+configure:3856: cc -c -g -O2  conftest.c >&5
 configure:3856: $? = 0
 configure:3856: result: yes
 configure:3856: checking for stdlib.h
-configure:3856: gcc -c -g -O2  conftest.c >&5
+configure:3856: cc -c -g -O2  conftest.c >&5
 configure:3856: $? = 0
 configure:3856: result: yes
 configure:3856: checking for string.h
-configure:3856: gcc -c -g -O2  conftest.c >&5
+configure:3856: cc -c -g -O2  conftest.c >&5
 configure:3856: $? = 0
 configure:3856: result: yes
 configure:3856: checking for memory.h
-configure:3856: gcc -c -g -O2  conftest.c >&5
+configure:3856: cc -c -g -O2  conftest.c >&5
 configure:3856: $? = 0
 configure:3856: result: yes
 configure:3856: checking for strings.h
-configure:3856: gcc -c -g -O2  conftest.c >&5
+configure:3856: cc -c -g -O2  conftest.c >&5
 configure:3856: $? = 0
 configure:3856: result: yes
 configure:3856: checking for inttypes.h
-configure:3856: gcc -c -g -O2  conftest.c >&5
+configure:3856: cc -c -g -O2  conftest.c >&5
 configure:3856: $? = 0
 configure:3856: result: yes
 configure:3856: checking for stdint.h
-configure:3856: gcc -c -g -O2  conftest.c >&5
+configure:3856: cc -c -g -O2  conftest.c >&5
 configure:3856: $? = 0
 configure:3856: result: yes
 configure:3856: checking for unistd.h
-configure:3856: gcc -c -g -O2  conftest.c >&5
+configure:3856: cc -c -g -O2  conftest.c >&5
 configure:3856: $? = 0
 configure:3856: result: yes
 configure:3869: checking minix/config.h usability
-configure:3869: gcc -c -g -O2  conftest.c >&5
+configure:3869: cc -c -g -O2  conftest.c >&5
 conftest.c:52:10: fatal error: 'minix/config.h' file not found
 #include <minix/config.h>
          ^~~~~~~~~~~~~~~~
@@ -262,7 +259,7 @@ configure: failed program was:
 | #include <minix/config.h>
 configure:3869: result: no
 configure:3869: checking minix/config.h presence
-configure:3869: gcc -E  conftest.c
+configure:3869: cc -E  conftest.c
 conftest.c:19:10: fatal error: 'minix/config.h' file not found
 #include <minix/config.h>
          ^~~~~~~~~~~~~~~~
@@ -292,10 +289,10 @@ configure:3869: result: no
 configure:3869: checking for minix/config.h
 configure:3869: result: no
 configure:3890: checking whether it is safe to define __EXTENSIONS__
-configure:3908: gcc -c -g -O2  conftest.c >&5
+configure:3908: cc -c -g -O2  conftest.c >&5
 configure:3908: $? = 0
 configure:3915: result: yes
-configure:3938: checking whether gcc needs -traditional
+configure:3938: checking whether cc needs -traditional
 conftest.c:24:10: fatal error: 'termio.h' file not found
 #include <termio.h>
          ^~~~~~~~~~
@@ -310,21 +307,21 @@ configure:4208: checking for ranlib
 configure:4224: found /usr/bin/ranlib
 configure:4235: result: ranlib
 configure:4261: checking for an ANSI C-conforming const
-configure:4327: gcc -c -g -O2  conftest.c >&5
+configure:4327: cc -c -g -O2  conftest.c >&5
 configure:4327: $? = 0
 configure:4334: result: yes
 configure:4342: checking for function prototypes
 configure:4345: result: yes
 configure:4358: checking whether char is unsigned
-configure:4377: gcc -c -g -O2  conftest.c >&5
+configure:4377: cc -c -g -O2  conftest.c >&5
 configure:4377: $? = 0
 configure:4384: result: no
 configure:4391: checking for working volatile
-configure:4410: gcc -c -g -O2  conftest.c >&5
+configure:4410: cc -c -g -O2  conftest.c >&5
 configure:4410: $? = 0
 configure:4417: result: yes
 configure:4426: checking return type of signal handlers
-configure:4444: gcc -c -g -O2  conftest.c >&5
+configure:4444: cc -c -g -O2  conftest.c >&5
 conftest.c:32:8: error: indirection requires pointer operand ('void' invalid)
 return *(signal (0, 0)) (0) == 1;
        ^~~~~~~~~~~~~~~~~~~~
@@ -368,9 +365,9 @@ configure: failed program was:
 | }
 configure:4451: result: void
 configure:4460: checking for size_t
-configure:4460: gcc -c -g -O2  conftest.c >&5
+configure:4460: cc -c -g -O2  conftest.c >&5
 configure:4460: $? = 0
-configure:4460: gcc -c -g -O2  conftest.c >&5
+configure:4460: cc -c -g -O2  conftest.c >&5
 conftest.c:63:21: error: expected expression
 if (sizeof ((size_t)))
                     ^
@@ -446,9 +443,9 @@ configure: failed program was:
 | }
 configure:4460: result: yes
 configure:4471: checking for ssize_t
-configure:4471: gcc -c -g -O2  conftest.c >&5
+configure:4471: cc -c -g -O2  conftest.c >&5
 configure:4471: $? = 0
-configure:4471: gcc -c -g -O2  conftest.c >&5
+configure:4471: cc -c -g -O2  conftest.c >&5
 conftest.c:63:22: error: expected expression
 if (sizeof ((ssize_t)))
                      ^
@@ -526,39 +523,39 @@ configure:4471: result: yes
 configure:4483: checking for ANSI C header files
 configure:4587: result: yes
 configure:4596: checking whether stat file-mode macros are broken
-configure:4623: gcc -c -g -O2  conftest.c >&5
+configure:4623: cc -c -g -O2  conftest.c >&5
 configure:4623: $? = 0
 configure:4630: result: no
 configure:4641: checking for dirent.h that defines DIR
-configure:4660: gcc -c -g -O2  conftest.c >&5
+configure:4660: cc -c -g -O2  conftest.c >&5
 configure:4660: $? = 0
 configure:4668: result: yes
 configure:4681: checking for library containing opendir
-configure:4712: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4712: cc -o conftest -g -O2   conftest.c  >&5
 configure:4712: $? = 0
 configure:4729: result: none required
 configure:4800: checking for fcntl
-configure:4800: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4800: cc -o conftest -g -O2   conftest.c  >&5
 configure:4800: $? = 0
 configure:4800: result: yes
 configure:4800: checking for kill
-configure:4800: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4800: cc -o conftest -g -O2   conftest.c  >&5
 configure:4800: $? = 0
 configure:4800: result: yes
 configure:4800: checking for lstat
-configure:4800: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4800: cc -o conftest -g -O2   conftest.c  >&5
 configure:4800: $? = 0
 configure:4800: result: yes
 configure:4800: checking for readlink
-configure:4800: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4800: cc -o conftest -g -O2   conftest.c  >&5
 configure:4800: $? = 0
 configure:4800: result: yes
 configure:4813: checking for fnmatch
-configure:4813: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4813: cc -o conftest -g -O2   conftest.c  >&5
 configure:4813: $? = 0
 configure:4813: result: yes
 configure:4813: checking for memmove
-configure:4813: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4813: cc -o conftest -g -O2   conftest.c  >&5
 conftest.c:57:6: warning: incompatible redeclaration of library function 'memmove' [-Wincompatible-library-redeclaration]
 char memmove ();
      ^
@@ -567,27 +564,27 @@ conftest.c:57:6: note: 'memmove' is a builtin with type 'void *(void *, const vo
 configure:4813: $? = 0
 configure:4813: result: yes
 configure:4813: checking for pselect
-configure:4813: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4813: cc -o conftest -g -O2   conftest.c  >&5
 configure:4813: $? = 0
 configure:4813: result: yes
 configure:4813: checking for putenv
-configure:4813: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4813: cc -o conftest -g -O2   conftest.c  >&5
 configure:4813: $? = 0
 configure:4813: result: yes
 configure:4813: checking for select
-configure:4813: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4813: cc -o conftest -g -O2   conftest.c  >&5
 configure:4813: $? = 0
 configure:4813: result: yes
 configure:4813: checking for setenv
-configure:4813: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4813: cc -o conftest -g -O2   conftest.c  >&5
 configure:4813: $? = 0
 configure:4813: result: yes
 configure:4813: checking for setlocale
-configure:4813: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4813: cc -o conftest -g -O2   conftest.c  >&5
 configure:4813: $? = 0
 configure:4813: result: yes
 configure:4813: checking for strcasecmp
-configure:4813: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4813: cc -o conftest -g -O2   conftest.c  >&5
 conftest.c:63:6: warning: incompatible redeclaration of library function 'strcasecmp' [-Wincompatible-library-redeclaration]
 char strcasecmp ();
      ^
@@ -596,7 +593,7 @@ conftest.c:63:6: note: 'strcasecmp' is a builtin with type 'int (const char *, c
 configure:4813: $? = 0
 configure:4813: result: yes
 configure:4813: checking for strpbrk
-configure:4813: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4813: cc -o conftest -g -O2   conftest.c  >&5
 conftest.c:64:6: warning: incompatible redeclaration of library function 'strpbrk' [-Wincompatible-library-redeclaration]
 char strpbrk ();
      ^
@@ -605,11 +602,11 @@ conftest.c:64:6: note: 'strpbrk' is a builtin with type 'char *(const char *, co
 configure:4813: $? = 0
 configure:4813: result: yes
 configure:4813: checking for tcgetattr
-configure:4813: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4813: cc -o conftest -g -O2   conftest.c  >&5
 configure:4813: $? = 0
 configure:4813: result: yes
 configure:4813: checking for vsnprintf
-configure:4813: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4813: cc -o conftest -g -O2   conftest.c  >&5
 conftest.c:66:6: warning: incompatible redeclaration of library function 'vsnprintf' [-Wincompatible-library-redeclaration]
 char vsnprintf ();
      ^
@@ -618,11 +615,11 @@ conftest.c:66:6: note: 'vsnprintf' is a builtin with type 'int (char *, unsigned
 configure:4813: $? = 0
 configure:4813: result: yes
 configure:4825: checking for isascii
-configure:4825: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4825: cc -o conftest -g -O2   conftest.c  >&5
 configure:4825: $? = 0
 configure:4825: result: yes
 configure:4825: checking for isxdigit
-configure:4825: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4825: cc -o conftest -g -O2   conftest.c  >&5
 conftest.c:68:6: warning: incompatible redeclaration of library function 'isxdigit' [-Wincompatible-library-redeclaration]
 char isxdigit ();
      ^
@@ -631,15 +628,15 @@ conftest.c:68:6: note: 'isxdigit' is a builtin with type 'int (int)'
 configure:4825: $? = 0
 configure:4825: result: yes
 configure:4837: checking for getpwent
-configure:4837: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4837: cc -o conftest -g -O2   conftest.c  >&5
 configure:4837: $? = 0
 configure:4837: result: yes
 configure:4837: checking for getpwnam
-configure:4837: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4837: cc -o conftest -g -O2   conftest.c  >&5
 configure:4837: $? = 0
 configure:4837: result: yes
 configure:4837: checking for getpwuid
-configure:4837: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4837: cc -o conftest -g -O2   conftest.c  >&5
 configure:4837: $? = 0
 configure:4837: result: yes
 configure:4847: checking for uid_t in sys/types.h
@@ -647,23 +644,23 @@ configure:4866: result: yes
 configure:4879: checking for unistd.h
 configure:4879: result: yes
 configure:4889: checking for working chown
-configure:4922: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4922: cc -o conftest -g -O2   conftest.c  >&5
 configure:4922: $? = 0
 configure:4922: ./conftest
 configure:4922: $? = 0
 configure:4934: result: yes
 configure:4942: checking for working strcoll
-configure:4963: gcc -o conftest -g -O2   conftest.c  >&5
+configure:4963: cc -o conftest -g -O2   conftest.c  >&5
 configure:4963: $? = 0
 configure:4963: ./conftest
 configure:4963: $? = 0
 configure:4973: result: yes
 configure:4987: checking fcntl.h usability
-configure:4987: gcc -c -g -O2  conftest.c >&5
+configure:4987: cc -c -g -O2  conftest.c >&5
 configure:4987: $? = 0
 configure:4987: result: yes
 configure:4987: checking fcntl.h presence
-configure:4987: gcc -E  conftest.c
+configure:4987: cc -E  conftest.c
 configure:4987: $? = 0
 configure:4987: result: yes
 configure:4987: checking for fcntl.h
@@ -673,7 +670,7 @@ configure:4987: result: yes
 configure:4987: checking for stdlib.h
 configure:4987: result: yes
 configure:4987: checking varargs.h usability
-configure:4987: gcc -c -g -O2  conftest.c >&5
+configure:4987: cc -c -g -O2  conftest.c >&5
 In file included from conftest.c:88:
 /Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include/varargs.h:11:4: error: "Please use <stdarg.h> instead of <varargs.h>"
   #error "Please use <stdarg.h> instead of <varargs.h>"
@@ -771,7 +768,7 @@ configure: failed program was:
 | #include <varargs.h>
 configure:4987: result: no
 configure:4987: checking varargs.h presence
-configure:4987: gcc -E  conftest.c
+configure:4987: cc -E  conftest.c
 In file included from conftest.c:55:
 /Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include/varargs.h:11:4: error: "Please use <stdarg.h> instead of <varargs.h>"
   #error "Please use <stdarg.h> instead of <varargs.h>"
@@ -838,21 +835,21 @@ configure:4987: result: no
 configure:4987: checking for varargs.h
 configure:4987: result: no
 configure:4987: checking stdarg.h usability
-configure:4987: gcc -c -g -O2  conftest.c >&5
+configure:4987: cc -c -g -O2  conftest.c >&5
 configure:4987: $? = 0
 configure:4987: result: yes
 configure:4987: checking stdarg.h presence
-configure:4987: gcc -E  conftest.c
+configure:4987: cc -E  conftest.c
 configure:4987: $? = 0
 configure:4987: result: yes
 configure:4987: checking for stdarg.h
 configure:4987: result: yes
 configure:4987: checking stdbool.h usability
-configure:4987: gcc -c -g -O2  conftest.c >&5
+configure:4987: cc -c -g -O2  conftest.c >&5
 configure:4987: $? = 0
 configure:4987: result: yes
 configure:4987: checking stdbool.h presence
-configure:4987: gcc -E  conftest.c
+configure:4987: cc -E  conftest.c
 configure:4987: $? = 0
 configure:4987: result: yes
 configure:4987: checking for stdbool.h
@@ -862,31 +859,31 @@ configure:4987: result: yes
 configure:4987: checking for strings.h
 configure:4987: result: yes
 configure:4987: checking limits.h usability
-configure:4987: gcc -c -g -O2  conftest.c >&5
+configure:4987: cc -c -g -O2  conftest.c >&5
 configure:4987: $? = 0
 configure:4987: result: yes
 configure:4987: checking limits.h presence
-configure:4987: gcc -E  conftest.c
+configure:4987: cc -E  conftest.c
 configure:4987: $? = 0
 configure:4987: result: yes
 configure:4987: checking for limits.h
 configure:4987: result: yes
 configure:4987: checking locale.h usability
-configure:4987: gcc -c -g -O2  conftest.c >&5
+configure:4987: cc -c -g -O2  conftest.c >&5
 configure:4987: $? = 0
 configure:4987: result: yes
 configure:4987: checking locale.h presence
-configure:4987: gcc -E  conftest.c
+configure:4987: cc -E  conftest.c
 configure:4987: $? = 0
 configure:4987: result: yes
 configure:4987: checking for locale.h
 configure:4987: result: yes
 configure:4987: checking pwd.h usability
-configure:4987: gcc -c -g -O2  conftest.c >&5
+configure:4987: cc -c -g -O2  conftest.c >&5
 configure:4987: $? = 0
 configure:4987: result: yes
 configure:4987: checking pwd.h presence
-configure:4987: gcc -E  conftest.c
+configure:4987: cc -E  conftest.c
 configure:4987: $? = 0
 configure:4987: result: yes
 configure:4987: checking for pwd.h
@@ -894,27 +891,27 @@ configure:4987: result: yes
 configure:4987: checking for memory.h
 configure:4987: result: yes
 configure:4987: checking termcap.h usability
-configure:4987: gcc -c -g -O2  conftest.c >&5
+configure:4987: cc -c -g -O2  conftest.c >&5
 configure:4987: $? = 0
 configure:4987: result: yes
 configure:4987: checking termcap.h presence
-configure:4987: gcc -E  conftest.c
+configure:4987: cc -E  conftest.c
 configure:4987: $? = 0
 configure:4987: result: yes
 configure:4987: checking for termcap.h
 configure:4987: result: yes
 configure:4987: checking termios.h usability
-configure:4987: gcc -c -g -O2  conftest.c >&5
+configure:4987: cc -c -g -O2  conftest.c >&5
 configure:4987: $? = 0
 configure:4987: result: yes
 configure:4987: checking termios.h presence
-configure:4987: gcc -E  conftest.c
+configure:4987: cc -E  conftest.c
 configure:4987: $? = 0
 configure:4987: result: yes
 configure:4987: checking for termios.h
 configure:4987: result: yes
 configure:4987: checking termio.h usability
-configure:4987: gcc -c -g -O2  conftest.c >&5
+configure:4987: cc -c -g -O2  conftest.c >&5
 conftest.c:98:10: fatal error: 'termio.h' file not found
 #include <termio.h>
          ^~~~~~~~~~
@@ -1021,7 +1018,7 @@ configure: failed program was:
 | #include <termio.h>
 configure:4987: result: no
 configure:4987: checking termio.h presence
-configure:4987: gcc -E  conftest.c
+configure:4987: cc -E  conftest.c
 conftest.c:65:10: fatal error: 'termio.h' file not found
 #include <termio.h>
          ^~~~~~~~~~
@@ -1097,17 +1094,17 @@ configure:4987: result: no
 configure:4987: checking for termio.h
 configure:4987: result: no
 configure:5000: checking sys/ioctl.h usability
-configure:5000: gcc -c -g -O2  conftest.c >&5
+configure:5000: cc -c -g -O2  conftest.c >&5
 configure:5000: $? = 0
 configure:5000: result: yes
 configure:5000: checking sys/ioctl.h presence
-configure:5000: gcc -E  conftest.c
+configure:5000: cc -E  conftest.c
 configure:5000: $? = 0
 configure:5000: result: yes
 configure:5000: checking for sys/ioctl.h
 configure:5000: result: yes
 configure:5000: checking sys/pte.h usability
-configure:5000: gcc -c -g -O2  conftest.c >&5
+configure:5000: cc -c -g -O2  conftest.c >&5
 conftest.c:99:10: fatal error: 'sys/pte.h' file not found
 #include <sys/pte.h>
          ^~~~~~~~~~~
@@ -1215,7 +1212,7 @@ configure: failed program was:
 | #include <sys/pte.h>
 configure:5000: result: no
 configure:5000: checking sys/pte.h presence
-configure:5000: gcc -E  conftest.c
+configure:5000: cc -E  conftest.c
 conftest.c:66:10: fatal error: 'sys/pte.h' file not found
 #include <sys/pte.h>
          ^~~~~~~~~~~
@@ -1292,7 +1289,7 @@ configure:5000: result: no
 configure:5000: checking for sys/pte.h
 configure:5000: result: no
 configure:5000: checking sys/stream.h usability
-configure:5000: gcc -c -g -O2  conftest.c >&5
+configure:5000: cc -c -g -O2  conftest.c >&5
 conftest.c:99:10: fatal error: 'sys/stream.h' file not found
 #include <sys/stream.h>
          ^~~~~~~~~~~~~~
@@ -1400,7 +1397,7 @@ configure: failed program was:
 | #include <sys/stream.h>
 configure:5000: result: no
 configure:5000: checking sys/stream.h presence
-configure:5000: gcc -E  conftest.c
+configure:5000: cc -E  conftest.c
 conftest.c:66:10: fatal error: 'sys/stream.h' file not found
 #include <sys/stream.h>
          ^~~~~~~~~~~~~~
@@ -1477,27 +1474,27 @@ configure:5000: result: no
 configure:5000: checking for sys/stream.h
 configure:5000: result: no
 configure:5000: checking sys/select.h usability
-configure:5000: gcc -c -g -O2  conftest.c >&5
+configure:5000: cc -c -g -O2  conftest.c >&5
 configure:5000: $? = 0
 configure:5000: result: yes
 configure:5000: checking sys/select.h presence
-configure:5000: gcc -E  conftest.c
+configure:5000: cc -E  conftest.c
 configure:5000: $? = 0
 configure:5000: result: yes
 configure:5000: checking for sys/select.h
 configure:5000: result: yes
 configure:5000: checking sys/file.h usability
-configure:5000: gcc -c -g -O2  conftest.c >&5
+configure:5000: cc -c -g -O2  conftest.c >&5
 configure:5000: $? = 0
 configure:5000: result: yes
 configure:5000: checking sys/file.h presence
-configure:5000: gcc -E  conftest.c
+configure:5000: cc -E  conftest.c
 configure:5000: $? = 0
 configure:5000: result: yes
 configure:5000: checking for sys/file.h
 configure:5000: result: yes
 configure:5013: checking for sys/ptem.h
-configure:5013: gcc -c -g -O2  conftest.c >&5
+configure:5013: cc -c -g -O2  conftest.c >&5
 conftest.c:74:10: fatal error: 'sys/ptem.h' file not found
 #include <sys/ptem.h>
          ^~~~~~~~~~~~
@@ -1582,31 +1579,31 @@ configure:5013: result: no
 configure:5036: checking for special C compiler options needed for large files
 configure:5081: result: no
 configure:5087: checking for _FILE_OFFSET_BITS value needed for large files
-configure:5112: gcc -c -g -O2  conftest.c >&5
+configure:5112: cc -c -g -O2  conftest.c >&5
 configure:5112: $? = 0
 configure:5144: result: no
 configure:5231: checking for type of signal functions
-configure:5254: gcc -o conftest -g -O2   conftest.c  >&5
+configure:5254: cc -o conftest -g -O2   conftest.c  >&5
 configure:5254: $? = 0
 configure:5312: result: posix
 configure:5327: checking if signal handlers must be reinstalled when invoked
-configure:5387: gcc -o conftest -g -O2   conftest.c  >&5
+configure:5387: cc -o conftest -g -O2   conftest.c  >&5
 configure:5387: $? = 0
 configure:5387: ./conftest
 configure:5387: $? = 0
 configure:5398: result: no
 configure:5407: checking for presence of POSIX-style sigsetjmp/siglongjmp
-configure:5461: gcc -o conftest -g -O2   conftest.c  >&5
+configure:5461: cc -o conftest -g -O2   conftest.c  >&5
 configure:5461: $? = 0
 configure:5461: ./conftest
 configure:5461: $? = 0
 configure:5472: result: present
 configure:5479: checking for lstat
-configure:5498: gcc -o conftest -g -O2   conftest.c  >&5
+configure:5498: cc -o conftest -g -O2   conftest.c  >&5
 configure:5498: $? = 0
 configure:5506: result: yes
 configure:5514: checking whether or not strcoll and strcmp differ
-configure:5567: gcc -o conftest -g -O2   conftest.c  >&5
+configure:5567: cc -o conftest -g -O2   conftest.c  >&5
 configure:5567: $? = 0
 configure:5567: ./conftest
 configure:5567: $? = 1
@@ -1723,7 +1720,7 @@ configure: failed program was:
 | 
 configure:5578: result: no
 configure:5586: checking whether the ctype macros accept non-ascii characters
-configure:5633: gcc -o conftest -g -O2   conftest.c  >&5
+configure:5633: cc -o conftest -g -O2   conftest.c  >&5
 configure:5633: $? = 0
 configure:5633: ./conftest
 configure:5633: $? = 0
@@ -1733,23 +1730,23 @@ configure:5677: result: yes
 configure:5685: checking whether termios.h defines TIOCGWINSZ
 configure:5708: result: yes
 configure:5746: checking for sig_atomic_t in signal.h
-configure:5764: gcc -o conftest -g -O2   conftest.c  >&5
+configure:5764: cc -o conftest -g -O2   conftest.c  >&5
 configure:5764: $? = 0
 configure:5772: result: yes
 configure:5789: checking whether signal handlers are of type void
-configure:5813: gcc -c -g -O2  conftest.c >&5
+configure:5813: cc -c -g -O2  conftest.c >&5
 configure:5813: $? = 0
 configure:5820: result: yes
 configure:5828: checking for TIOCSTAT in sys/ioctl.h
-configure:5845: gcc -c -g -O2  conftest.c >&5
+configure:5845: cc -c -g -O2  conftest.c >&5
 configure:5845: $? = 0
 configure:5853: result: yes
 configure:5860: checking for FIONREAD in sys/ioctl.h
-configure:5877: gcc -c -g -O2  conftest.c >&5
+configure:5877: cc -c -g -O2  conftest.c >&5
 configure:5877: $? = 0
 configure:5885: result: yes
 configure:5892: checking for speed_t in sys/types.h
-configure:5908: gcc -c -g -O2  conftest.c >&5
+configure:5908: cc -c -g -O2  conftest.c >&5
 conftest.c:80:1: error: use of undeclared identifier 'speed_t'
 speed_t x;
 ^
@@ -1841,19 +1838,19 @@ configure: failed program was:
 | }
 configure:5916: result: no
 configure:5923: checking for struct winsize in sys/ioctl.h and termios.h
-configure:5940: gcc -c -g -O2  conftest.c >&5
+configure:5940: cc -c -g -O2  conftest.c >&5
 configure:5940: $? = 0
 configure:5967: result: sys/ioctl.h
 configure:5982: checking for struct dirent.d_ino
-configure:6020: gcc -c -g -O2  conftest.c >&5
+configure:6020: cc -c -g -O2  conftest.c >&5
 configure:6020: $? = 0
 configure:6028: result: yes
 configure:6036: checking for struct dirent.d_fileno
-configure:6074: gcc -c -g -O2  conftest.c >&5
+configure:6074: cc -c -g -O2  conftest.c >&5
 configure:6074: $? = 0
 configure:6082: result: yes
 configure:6092: checking libaudit.h usability
-configure:6092: gcc -c -g -O2  conftest.c >&5
+configure:6092: cc -c -g -O2  conftest.c >&5
 conftest.c:112:10: fatal error: 'libaudit.h' file not found
 #include <libaudit.h>
          ^~~~~~~~~~~~
@@ -1974,7 +1971,7 @@ configure: failed program was:
 | #include <libaudit.h>
 configure:6092: result: no
 configure:6092: checking libaudit.h presence
-configure:6092: gcc -E  conftest.c
+configure:6092: cc -E  conftest.c
 conftest.c:79:10: fatal error: 'libaudit.h' file not found
 #include <libaudit.h>
          ^~~~~~~~~~~~
@@ -2064,7 +2061,7 @@ configure:6092: result: no
 configure:6092: checking for libaudit.h
 configure:6092: result: no
 configure:6102: checking whether AUDIT_USER_TTY is declared
-configure:6102: gcc -c -g -O2  conftest.c >&5
+configure:6102: cc -c -g -O2  conftest.c >&5
 conftest.c:79:10: fatal error: 'linux/audit.h' file not found
 #include <linux/audit.h>
          ^~~~~~~~~~~~~~~
@@ -2167,10 +2164,10 @@ configure: failed program was:
 | }
 configure:6102: result: no
 configure:6129: checking for tgetent
-configure:6129: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6129: cc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture arm64:
   "_tgetent", referenced from:
-      _main in conftest-79fc9b.o
+      _main in conftest-997439.o
 ld: symbol(s) not found for architecture arm64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:6129: $? = 1
@@ -2294,43 +2291,43 @@ configure: failed program was:
 | }
 configure:6129: result: no
 configure:6133: checking for tgetent in -ltermcap
-configure:6158: gcc -o conftest -g -O2   conftest.c -ltermcap   >&5
+configure:6158: cc -o conftest -g -O2   conftest.c -ltermcap   >&5
 configure:6158: $? = 0
 configure:6167: result: yes
 configure:6344: checking which library has the termcap functions
 configure:6347: result: using libtermcap
 configure:6404: checking wctype.h usability
-configure:6404: gcc -c -g -O2  conftest.c >&5
+configure:6404: cc -c -g -O2  conftest.c >&5
 configure:6404: $? = 0
 configure:6404: result: yes
 configure:6404: checking wctype.h presence
-configure:6404: gcc -E  conftest.c
+configure:6404: cc -E  conftest.c
 configure:6404: $? = 0
 configure:6404: result: yes
 configure:6404: checking for wctype.h
 configure:6404: result: yes
 configure:6416: checking wchar.h usability
-configure:6416: gcc -c -g -O2  conftest.c >&5
+configure:6416: cc -c -g -O2  conftest.c >&5
 configure:6416: $? = 0
 configure:6416: result: yes
 configure:6416: checking wchar.h presence
-configure:6416: gcc -E  conftest.c
+configure:6416: cc -E  conftest.c
 configure:6416: $? = 0
 configure:6416: result: yes
 configure:6416: checking for wchar.h
 configure:6416: result: yes
 configure:6428: checking langinfo.h usability
-configure:6428: gcc -c -g -O2  conftest.c >&5
+configure:6428: cc -c -g -O2  conftest.c >&5
 configure:6428: $? = 0
 configure:6428: result: yes
 configure:6428: checking langinfo.h presence
-configure:6428: gcc -E  conftest.c
+configure:6428: cc -E  conftest.c
 configure:6428: $? = 0
 configure:6428: result: yes
 configure:6428: checking for langinfo.h
 configure:6428: result: yes
 configure:6441: checking mbstr.h usability
-configure:6441: gcc -c -g -O2  conftest.c >&5
+configure:6441: cc -c -g -O2  conftest.c >&5
 conftest.c:116:10: fatal error: 'mbstr.h' file not found
 #include <mbstr.h>
          ^~~~~~~~~
@@ -2455,7 +2452,7 @@ configure: failed program was:
 | #include <mbstr.h>
 configure:6441: result: no
 configure:6441: checking mbstr.h presence
-configure:6441: gcc -E  conftest.c
+configure:6441: cc -E  conftest.c
 conftest.c:83:10: fatal error: 'mbstr.h' file not found
 #include <mbstr.h>
          ^~~~~~~~~
@@ -2549,14 +2546,14 @@ configure:6441: result: no
 configure:6441: checking for mbstr.h
 configure:6441: result: no
 configure:6452: checking for mbrlen
-configure:6452: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6452: cc -o conftest -g -O2   conftest.c  >&5
 configure:6452: $? = 0
 configure:6452: result: yes
 configure:6458: checking for mbscasecmp
-configure:6458: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6458: cc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture arm64:
   "_mbscasecmp", referenced from:
-      _main in conftest-7c6055.o
+      _main in conftest-aea333.o
 ld: symbol(s) not found for architecture arm64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:6458: $? = 1
@@ -2684,10 +2681,10 @@ configure: failed program was:
 | }
 configure:6458: result: no
 configure:6464: checking for mbscmp
-configure:6464: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6464: cc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture arm64:
   "_mbscmp", referenced from:
-      _main in conftest-83beb0.o
+      _main in conftest-37d374.o
 ld: symbol(s) not found for architecture arm64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:6464: $? = 1
@@ -2815,18 +2812,18 @@ configure: failed program was:
 | }
 configure:6464: result: no
 configure:6470: checking for mbsnrtowcs
-configure:6470: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6470: cc -o conftest -g -O2   conftest.c  >&5
 configure:6470: $? = 0
 configure:6470: result: yes
 configure:6476: checking for mbsrtowcs
-configure:6476: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6476: cc -o conftest -g -O2   conftest.c  >&5
 configure:6476: $? = 0
 configure:6476: result: yes
 configure:6483: checking for mbschr
-configure:6483: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6483: cc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture arm64:
   "_mbschr", referenced from:
-      _main in conftest-070030.o
+      _main in conftest-0f0652.o
 ld: symbol(s) not found for architecture arm64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:6483: $? = 1
@@ -2956,71 +2953,71 @@ configure: failed program was:
 | }
 configure:6483: result: no
 configure:6498: checking for wcrtomb
-configure:6498: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6498: cc -o conftest -g -O2   conftest.c  >&5
 configure:6498: $? = 0
 configure:6498: result: yes
 configure:6504: checking for wcscoll
-configure:6504: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6504: cc -o conftest -g -O2   conftest.c  >&5
 configure:6504: $? = 0
 configure:6504: result: yes
 configure:6510: checking for wcsdup
-configure:6510: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6510: cc -o conftest -g -O2   conftest.c  >&5
 configure:6510: $? = 0
 configure:6510: result: yes
 configure:6516: checking for wcwidth
-configure:6516: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6516: cc -o conftest -g -O2   conftest.c  >&5
 configure:6516: $? = 0
 configure:6516: result: yes
 configure:6522: checking for wctype
-configure:6522: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6522: cc -o conftest -g -O2   conftest.c  >&5
 configure:6522: $? = 0
 configure:6522: result: yes
 configure:6529: checking for wcswidth
-configure:6529: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6529: cc -o conftest -g -O2   conftest.c  >&5
 configure:6529: $? = 0
 configure:6529: result: yes
 configure:6545: checking whether mbrtowc and mbstate_t are properly declared
-configure:6565: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6565: cc -o conftest -g -O2   conftest.c  >&5
 configure:6565: $? = 0
 configure:6573: result: yes
 configure:6589: checking for iswlower
-configure:6589: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6589: cc -o conftest -g -O2   conftest.c  >&5
 configure:6589: $? = 0
 configure:6589: result: yes
 configure:6589: checking for iswupper
-configure:6589: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6589: cc -o conftest -g -O2   conftest.c  >&5
 configure:6589: $? = 0
 configure:6589: result: yes
 configure:6589: checking for towlower
-configure:6589: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6589: cc -o conftest -g -O2   conftest.c  >&5
 configure:6589: $? = 0
 configure:6589: result: yes
 configure:6589: checking for towupper
-configure:6589: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6589: cc -o conftest -g -O2   conftest.c  >&5
 configure:6589: $? = 0
 configure:6589: result: yes
 configure:6589: checking for iswctype
-configure:6589: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6589: cc -o conftest -g -O2   conftest.c  >&5
 configure:6589: $? = 0
 configure:6589: result: yes
 configure:6599: checking for nl_langinfo and CODESET
-configure:6615: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6615: cc -o conftest -g -O2   conftest.c  >&5
 configure:6615: $? = 0
 configure:6623: result: yes
 configure:6630: checking for wchar_t in wchar.h
-configure:6650: gcc -c -g -O2  conftest.c >&5
+configure:6650: cc -c -g -O2  conftest.c >&5
 configure:6650: $? = 0
 configure:6657: result: yes
 configure:6665: checking for wctype_t in wctype.h
-configure:6684: gcc -c -g -O2  conftest.c >&5
+configure:6684: cc -c -g -O2  conftest.c >&5
 configure:6684: $? = 0
 configure:6691: result: yes
 configure:6699: checking for wint_t in wctype.h
-configure:6718: gcc -c -g -O2  conftest.c >&5
+configure:6718: cc -c -g -O2  conftest.c >&5
 configure:6718: $? = 0
 configure:6725: result: yes
 configure:6733: checking for wcwidth broken with unicode combining characters
-configure:6764: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6764: cc -o conftest -g -O2   conftest.c  >&5
 configure:6764: $? = 0
 configure:6764: ./conftest
 configure:6764: $? = 1
@@ -3150,7 +3147,7 @@ configure: failed program was:
 | 
 configure:6774: result: no
 configure:6803: checking size of wchar_t
-configure:6808: gcc -o conftest -g -O2   conftest.c  >&5
+configure:6808: cc -o conftest -g -O2   conftest.c  >&5
 configure:6808: $? = 0
 configure:6808: ./conftest
 configure:6808: $? = 0
@@ -3180,6 +3177,7 @@ config.status:941: creating examples/Makefile
 config.status:941: creating shlib/Makefile
 config.status:941: creating readline.pc
 config.status:941: creating config.h
+config.status:1116: config.h is unchanged
 config.status:1130: executing default commands
 
 ## ---------------- ##
@@ -3191,8 +3189,8 @@ ac_cv_c_char_unsigned=no
 ac_cv_c_compiler_gnu=yes
 ac_cv_c_const=yes
 ac_cv_c_volatile=yes
-ac_cv_env_CC_set=
-ac_cv_env_CC_value=
+ac_cv_env_CC_set=set
+ac_cv_env_CC_value=cc
 ac_cv_env_CFLAGS_set=
 ac_cv_env_CFLAGS_value=
 ac_cv_env_CPPFLAGS_set=
@@ -3292,9 +3290,9 @@ ac_cv_objext=o
 ac_cv_path_EGREP='/usr/bin/grep -E'
 ac_cv_path_GREP=/usr/bin/grep
 ac_cv_path_install='/opt/homebrew/bin/ginstall -c'
-ac_cv_prog_CPP='gcc -E'
+ac_cv_prog_CPP='cc -E'
 ac_cv_prog_ac_ct_AR=ar
-ac_cv_prog_ac_ct_CC=gcc
+ac_cv_prog_ac_ct_CC=cc
 ac_cv_prog_ac_ct_RANLIB=ranlib
 ac_cv_prog_cc_c89=
 ac_cv_prog_cc_g=yes
@@ -3339,9 +3337,9 @@ AR='ar'
 ARFLAGS='cr'
 BRACKETED_PASTE='-DBRACKETED_PASTE_DEFAULT=1'
 BUILD_DIR='/Users/kangmin/Desktop/42seoul-minishell/srcs/readline'
-CC='gcc'
+CC='cc'
 CFLAGS='-g -O2 -Wno-parentheses -Wno-format-security'
-CPP='gcc -E'
+CPP='cc -E'
 CPPFLAGS=''
 CROSS_COMPILE=''
 DEFS='-DHAVE_CONFIG_H'
@@ -3387,7 +3385,7 @@ SHLIB_MAJOR='8'
 SHLIB_MINOR='1'
 SHLIB_STATUS='supported'
 SHLIB_XLDFLAGS='-dynamiclib -install_name $(libdir)/`echo $@ | sed "s:\..*::"`.$(SHLIB_MAJOR).$(SHLIB_LIBSUFF) -current_version $(SHLIB_MAJOR)$(SHLIB_MINOR) -compatibility_version $(SHLIB_MAJOR)$(SHLIB_MINOR) -v'
-SHOBJ_CC='gcc'
+SHOBJ_CC='cc'
 SHOBJ_CFLAGS='-fno-common'
 SHOBJ_LD='${CC}'
 SHOBJ_LDFLAGS='-dynamiclib -dynamic -undefined dynamic_lookup '
@@ -3398,7 +3396,7 @@ STATIC_INSTALL_TARGET='install-static'
 STATIC_TARGET='static'
 TERMCAP_LIB='-ltermcap'
 TERMCAP_PKG_CONFIG_LIB='termcap'
-ac_ct_CC='gcc'
+ac_ct_CC='cc'
 bindir='${exec_prefix}/bin'
 build='aarch64-apple-darwin21.2.0'
 build_alias=''

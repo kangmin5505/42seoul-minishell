@@ -46,7 +46,7 @@ OBJEXT = o
 DESTDIR =
 
 DEFS = -DHAVE_CONFIG_H
-CC = gcc
+CC = cc
 CFLAGS = -g -O2 -Wno-parentheses -Wno-format-security
 LOCAL_CFLAGS =  -DREADLINE_LIBRARY -DRL_LIBRARY_VERSION='"$(RL_LIBRARY_VERSION)"'
 CPPFLAGS = 

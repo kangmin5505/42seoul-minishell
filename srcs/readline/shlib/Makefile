@@ -38,7 +38,7 @@ INSTALL = /opt/homebrew/bin/ginstall -c
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_DATA = ${INSTALL} -m 644
 
-CC = gcc
+CC = cc
 RANLIB = ranlib
 AR = ar
 ARFLAGS = cr
@@ -77,7 +77,7 @@ LOCAL_DEFS =
 # dynamic loading of shared objects, please update the script and send the
 # changes to bash-maintainers@gnu.org.
 #
-SHOBJ_CC = gcc
+SHOBJ_CC = cc
 SHOBJ_CFLAGS = -fno-common
 SHOBJ_LD = ${CC}
 

@@ -37,7 +37,7 @@ INSTALL = /opt/homebrew/bin/ginstall -c
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_DATA = ${INSTALL} -m 644
 
-CC = gcc
+CC = cc
 RANLIB = ranlib
 AR = ar
 ARFLAGS = cr
