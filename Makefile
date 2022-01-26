@@ -6,7 +6,7 @@
 #    By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 20:38:43 by kangkim           #+#    #+#              #
-#    Updated: 2022/01/22 22:44:33 by kangkim          ###   ########.fr        #
+#    Updated: 2022/01/26 11:00:24 by kangkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,18 +20,24 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 SRCS_DIR = srcs
+SRCS2_DIR = srcs2
 SHELL_DIR = $(SRCS_DIR)/shell
 EXECUTER_DIR = $(SRCS_DIR)/executer
 INCLUDE_DIR = includes
 
-SHELL_SRCS := set_shell.c read_shell.c
+SHELL_SRCS := set_shell.c read_shell.c check_line.c
 SHELL_SRCS := $(addprefix $(SHELL_DIR)/, $(SHELL_SRCS))
 
 EXECUTER_SRCS := executer.c pwd.c env.c
 EXECUTER_SRCS := $(addprefix $(EXECUTER_DIR)/, $(EXECUTER_SRCS))
 
-SRCS := $(SRCS_DIR)/main.c $(SHELL_SRCS) $(EXECUTER_SRCS)
-OBJS := $(SRCS:.c=.o)
+SRCS = $(SRCS_DIR)/main.c $(SHELL_SRCS) $(EXECUTER_SRCS)
+OBJS = $(SRCS:.c=.o)
+
+SRCS2 := ft_charlist.c ft_interpret.c temp_main.c \
+	 ft_strutils.c ft_strutils2.c
+SRCS2 := $(addprefix $(SRCS2_DIR)/, $(SRCS2))
+OBJS2 = $(SRCS2:.c=.o)
 
 LIBFT_DIR = $(SRCS_DIR)/libft
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -42,24 +48,25 @@ LIBHISTORY = $(LIBREADLINE_DIR)/libhistory.a
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) $(LIBFT) $(LIBREADLINE) $(LIBHISTORY)
+# CFLAGS 추
+$(NAME) : $(OBJS) $(OBJS2) $(LIBFT) $(LIBREADLINE) $(LIBHISTORY)
 	@echo "$(_GREEN)[ Try to make $(NAME) ]$(_END)"
 	@$(CC) $(CFLAGS) -lncurses -o $@ $^
 	@echo "$(_GREEN)[ Done ]$(_END)"
 
 %.o : %.c
-	@$(CC) -c $(CFLAGS) -I$(INCLUDE_DIR) -I$(LIBREADLINE_DIR) -o $@ $<
+	@$(CC) -c $(CFLAGS) -I./$(INCLUDE_DIR) -I./$(LIBREADLINE_DIR) -o $@ $<
 
 $(LIBFT) :
 	@$(MAKE) -C $(LIBFT_DIR) all
 
 clean :
 	@$(MAKE) -C $(LIBFT_DIR) clean
-	@$(RM) $(OBJS)
+	@$(RM) $(OBJS) $(OBJS2)
 
 fclean :
 	@$(MAKE) -C $(LIBFT_DIR) fclean
-	@$(RM) $(OBJS)
+	@$(RM) $(OBJS) $(OBJS2)
 	@$(RM) $(NAME)
 
 re : fclean all

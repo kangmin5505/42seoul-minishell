@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 13:55:25 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/20 14:11:45 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/25 22:28:28 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #define FLAG 15
 #define AND 1
 #define OR 2
+
+#include "minishell.h"
 
 int	ft_e(t_interpret *in)
 {

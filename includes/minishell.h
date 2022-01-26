@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:03:40 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/22 19:36:04 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/01/26 10:15:40 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@
 # include "libft.h"
 # include "shell.h"
 # include "executer.h"
+
+/* sakim's header file */
+# include "ft_interpret.h"
+
+# define TRUE	0
+# define FALSE	-1
 
 
 #endif

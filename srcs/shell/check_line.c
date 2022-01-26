@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell.h                                            :+:      :+:    :+:   */
+/*   check_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 16:09:26 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/26 10:14:59 by kangkim          ###   ########.fr       */
+/*   Created: 2022/01/26 10:10:59 by kangkim           #+#    #+#             */
+/*   Updated: 2022/01/26 11:35:57 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "minishell.h"
 
-/* set_shell.c */
-void	set_shell(void);
-void	register_signal(void);
-void	sig_handler(int signo);
-void	set_tcattr(void);
-void	exit_shell(int status);
+int	check_line(char *line)
+{
+	int	single_quote;
+	int	double_quotes;
 
-/* read_shell.c */
-void	get_shell_name(char *shell_name);
-char	*readline_shell(void);
-void	add_history_shell(const char *line);
-
-/* check_line */
-int		check_line(char *line);
-
-#endif
+	single_quote = 0;
+	double_quotes = 0;
+	while (*line != '\0')
+	{
+		if (*line == '\'')
+			single_quote++;
+		else if (*line == '\"')
+			double_quotes++;
+		line++;
+	}
+	if (single_quote % 2 == 0 && double_quotes % 2 == 0)
+		return (TRUE);
+	return (FALSE);
+}

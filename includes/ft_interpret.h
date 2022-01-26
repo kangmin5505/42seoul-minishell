@@ -6,17 +6,13 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:14:23 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/25 04:38:24 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/25 22:20:01 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_INTERPRET_H
 
 # define FT_INTERPRET_H
-
-# include <stdlib.h>
-# include <readline/readline.h>
-# include <readline/history.h>
 
 # define Q 1
 # define DQ 2
@@ -63,11 +59,12 @@ typedef struct s_interpret
 	struct s_interpret	*parent;
 }				t_interpret;
 
+void		temp_main(char *line);
+
 int			ft_spc(char *line);
 int			ft_match(char *str, char *tof);
 int			ft_while(char *str, char del, int not, int end);
 char		*ft_strcpy(char *str, int off, int size, int fit);
-int			ft_strlen(char *str);
 t_clist		*ft_initclist(char *data, t_clist *next, int type, int on);
 t_interpret	*ft_initinlist(void);
 void		ft_linklist(t_clist *root, char *str, int type, int on);

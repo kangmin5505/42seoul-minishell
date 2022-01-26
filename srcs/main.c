@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:03:11 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/22 22:47:46 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/01/26 11:14:10 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,24 @@ void	free_strs(char **strs)
 int	main(int argc, char *argv[], char *envp[])
 {
 	char	*line;
-	char	**strs;
 
 	argc = 0;
 	argv = 0;
+	envp = 0;
 
 	set_shell();
 	while (1)
 	{
 		line = readline_shell();
 		add_history_shell(line);
-		// parse
-		if (*line != '\0')
+		if (check_line(line) == FALSE)
 		{
-			strs = ft_split(line, ' ');
-			execute(strs, envp);
-			free_strs(strs);
+			printf("check_line error\n");
+			continue ;
 		}
+		// parse
+		temp_main(line);
+		// execute
 		free(line);
 	}
 	return (0);

@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_int.c                                           :+:      :+:    :+:   */
+/*   temp_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 14:21:49 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/20 14:29:13 by gimsang-w        ###   ########.fr       */
+/*   Created: 2022/01/07 23:01:07 by gimsang-w         #+#    #+#             */
+/*   Updated: 2022/01/26 11:31:32 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
+#include "minishell.h"
 
-int	main(void)
+void	temp_main(char *line)
 {
-	char *m = "HELLOA\n";
-	int	i;
+	t_interpret	*in;
+	int	errc;
 
-	printf("%s\n", m);
-	return (0);
+	in = ft_initinlist();
+	errc = ft_interpret(&in, line);
+	if (errc != -1)
+		ft_printcmds(in, 0);
+	else
+		printf("parsing error\n");
 }

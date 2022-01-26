@@ -6,12 +6,11 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:51:27 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/25 05:18:58 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/26 11:33:14 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_interpret.h"
-#include <stdio.h>
+#include "minishell.h"
 
 int	ft_savestr(t_interpret *in, char **line, int i, int type)
 {
@@ -23,6 +22,8 @@ int	ft_savestr(t_interpret *in, char **line, int i, int type)
 	int	ret;
 
 	ret = 2;
+	/* ADD flag = 0 */
+	flag = 0;
 	if (i == 0 || i == SPACE)
 		flag = SPACE;
 	else if (i == Q || i == QUOTE)
@@ -43,11 +44,11 @@ int	ft_savestr(t_interpret *in, char **line, int i, int type)
 		ft_linklist(in->list[DATA], rs, flag, cond1 || cond2);
 	else if (type == IN)
 		ft_linklist(in->list[I], rs, flag, cond1 || cond2);
-	else if (type == DIN) 
+	else if (type == DIN)
 		ft_linklist(in->list[DI], rs, flag, cond1 || cond2);
-	else if (type == OUT) 
+	else if (type == OUT)
 		ft_linklist(in->list[O], rs, flag, cond1 || cond2);
-	else if (type == DOUT) 
+	else if (type == DOUT)
 		ft_linklist(in->list[DO], rs, flag, cond1 || cond2);
 	if (flag != SPACE)
 		*line += 1;
@@ -94,6 +95,8 @@ int	ft_redirect(t_interpret *in, char **line, int i)
 
 int	ft_next(t_interpret **in, char **line, int i)
 {
+	/* ADD line = NULL */
+	line = NULL;
 	printf("next\n");
 	(*in)->flag = i;
 	(*in)->next = ft_initinlist();
@@ -105,6 +108,8 @@ int	ft_select(t_interpret **in, char **line, int i)
 {
 	int	sign;
 
+	/* ADD sign = 0 */
+	sign = 0;
 	if (i == Q || i == DQ)
 		sign = ft_savestr(*in, line, i, DATA);
 	else if (i == OPAR)
@@ -124,7 +129,9 @@ int	ft_interpret(t_interpret **in, char *line)
 	int			i;
 	int			c;
 	t_interpret	*root;
-	
+
+	/* ADD i = 0 */
+	i = 0;
 	if (!line || !*line)
 		return (0);
 	root = *in;
@@ -164,6 +171,8 @@ int	ft_parentis(t_interpret *in, char **list, int i)
 {
 	int	x;
 
+	/* ADD i = 0 */
+	i = 0;
 	in->son = ft_initinlist();
 	in->son->parent = in;
 	x = ft_interpret(&(in->son), *list);
