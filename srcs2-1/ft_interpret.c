@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:51:27 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/29 21:24:16 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/29 23:26:39 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	ft_select(t_interpret **in, char **line, int i)
 		else if (i == OPAR)
 			sign = ft_parentis(*in, line, i);
 		else if (i == CPAR && (*in)->parent)
-			sign = RET_TO_PAR;
+			sign = ft_inerror(*in, 0);
 		else if (i == CPAR && (*in)->parent == 0)
 			sign = PARSE_ERR_CPAR;
 		else if (i == DOUT || i == IN || i == OUT || i == DIN)
@@ -89,26 +89,20 @@ int	ft_select(t_interpret **in, char **line, int i)
 	return (sign);
 }
 
-#include <unistd.h>
-
 int	ft_interpret(t_interpret **in, char **line)
 {
-	int			i;
 	int			c;
 	t_interpret	*root;
 
-	if (!line || !*line)
-		return (0);
 	root = *in;
 	while (**line)
 	{
 		*line += ft_while(*line, SPACE, ON, NOTEND);
 		if (!**line)
 			break ;
-		i = ft_spc(*line);
-		if (i)
+		if (ft_spc(*line))
 		{
-			*line += i / 8 + 1;
+			*line += ft_spc(*line) / 8 + 1;
 			c = ft_select(&root, line, i);
 			if (c <= 0)
 				return (c);
@@ -116,12 +110,10 @@ int	ft_interpret(t_interpret **in, char **line)
 		else
 		{
 			if (root->son)
-				return (PARSE_ERR_EMPTYNEXT - 1);
+				return (PARSE_ERR_EMPTYNEXT);
 			if (ft_savestr(root, line, SPACE, DATA) < 0)
-				return (-1);
+				return (PARSE_ERR_UNFIN_Q);
 		}
 	}
-	if (root->parent)
-		return (PARSE_ERR_UNFIN_CPAR);
 	return (ft_inerror(root, ATEXIT));
 }

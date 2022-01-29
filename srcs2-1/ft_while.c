@@ -6,14 +6,41 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 21:10:00 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/29 23:05:03 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/29 23:49:55 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 int	ft_process(t_interpret *in)
 {
 
+}
+
+void	ft_merge(t_interpret *in)
+{
+	t_interpret	*root;
+	t_clist		*t;
+	t_clist		*o;
+	int			i;
+
+	root = in;
+	while (root)
+	{
+		root = ft_iterator(in);
+		i = -1;
+		while (++i < 5)
+		{
+			o = 0;
+			t = root->list[i];
+			while (t)
+			{
+				if (o)
+					o->next =  ft_merge_list(t);
+				else
+					o = ft_merge_list(t);
+				t = o->next;
+			}
+		}
+	}
 }
 
 char	*ft_substitute(const char *str)
