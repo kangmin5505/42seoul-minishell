@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:14:23 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/29 18:45:03 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/29 20:56:57 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include "ft_errcode.h"
 
 # define Q 1
 # define DQ 2
@@ -76,10 +77,14 @@ int			ft_while2(char *str);
 int			ft_strexlen(char *str, char *ex, int size);
 char		*ft_strexcpy(char *str, int size, char *ex);
 int			ft_while3(char *str);
-int			ft_inerror(t_interpret *in);
+int			ft_inerror(t_interpret *in, int flag);
 int			ft_parentis(t_interpret *in, char **list, int i);
-int			ft_interpret(t_interpret **in, char **li);
+int			ft_interpret(t_interpret **in, char **line);
 void		ft_printdatas(t_clist *root, int nthcmd, int type);
 void		ft_printcmds(t_interpret *in, int depth);
-
+int			ft_redirect(t_interpret *in, char **line, int i);
+int			ft_next(t_interpret **in, char **line, int i);
+int			ft_parentis(t_interpret *in, char **list, int i);
+int			ft_fsel1(int type);
+int			ft_fsel0(int i);
 #endif

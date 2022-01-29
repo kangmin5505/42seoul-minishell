@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 23:01:07 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/29 18:54:54 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/29 21:58:15 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	main(int n, char **args)
 	int	errc;
 
 	in = ft_initinlist();
-	errc = ft_interpret(&in, (n >= 2) ? args + 1 : &a);
-	if (errc != -1)
+	errc = ft_interpret(&in, (n >= 2) ? args + 1 : &b);
+	if (errc >= 0)
 		ft_printcmds(in, 0);
 	else
 		printf("parsing error\n");

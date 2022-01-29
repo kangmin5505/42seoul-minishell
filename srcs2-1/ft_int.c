@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_int.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/07 23:01:07 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/29 18:54:54 by gimsang-w        ###   ########.fr       */
+/*   Created: 2022/01/20 14:21:49 by gimsang-w         #+#    #+#             */
+/*   Updated: 2022/01/20 14:29:13 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "ft_interpret.h"
+#include <unistd.h>
 
-int	main(int n, char **args)
+int	main(void)
 {
-	char	*a = "echo <<hello && hw good 'bye'\"sh\" | wow";
-	char	*b = "eafagshSRHr\n";
-	t_interpret	*in;
-	int	errc;
+	char *m = "HELLOA\n";
+	int	i;
 
-	in = ft_initinlist();
-	errc = ft_interpret(&in, (n >= 2) ? args + 1 : &a);
-	if (errc != -1)
-		ft_printcmds(in, 0);
-	else
-		printf("parsing error\n");
+	printf("%s\n", m);
+	return (0);
 }

@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/07 23:01:07 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/29 18:54:54 by gimsang-w        ###   ########.fr       */
+/*   Created: 2022/01/27 21:24:16 by gimsang-w         #+#    #+#             */
+/*   Updated: 2022/01/29 20:11:57 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "ft_interpret.h"
 
-int	main(int n, char **args)
+int	ft_inerror(t_interpret *in, int flag)
 {
-	char	*a = "echo <<hello && hw good 'bye'\"sh\" | wow";
-	char	*b = "eafagshSRHr\n";
-	t_interpret	*in;
-	int	errc;
+	int	i;
+	int	j;
 
-	in = ft_initinlist();
-	errc = ft_interpret(&in, (n >= 2) ? args + 1 : &a);
-	if (errc != -1)
-		ft_printcmds(in, 0);
+	j = 0;
+	i = -1;
+	while (++i < 5)
+		if (in->list[i]->data)
+			++j;
+	if (j || in->son)
+		return (0);
 	else
-		printf("parsing error\n");
+		return (-1);
+	return (0);
 }
