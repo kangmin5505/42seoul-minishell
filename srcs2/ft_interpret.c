@@ -6,12 +6,15 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:51:27 by gimsang-w         #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/01/29 19:09:25 by gimsang-w        ###   ########.fr       */
+=======
+/*   Updated: 2022/01/26 11:33:14 by kangkim          ###   ########.fr       */
+>>>>>>> 368222a710288de8621bed9e47e5a56353969caf
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_interpret.h"
-#include <stdio.h>
+#include "minishell.h"
 
 int	ft_savestr(t_interpret *in, char **line, int i, int type)
 {
@@ -23,6 +26,8 @@ int	ft_savestr(t_interpret *in, char **line, int i, int type)
 	int	ret;
 
 	ret = 2;
+	/* ADD flag = 0 */
+	flag = 0;
 	if (i == 0 || i == SPACE)
 		flag = SPACE;
 	else if (i == Q || i == QUOTE)
@@ -43,11 +48,11 @@ int	ft_savestr(t_interpret *in, char **line, int i, int type)
 		ft_linklist(in->list[DATA], rs, flag, cond1 || cond2);
 	else if (type == IN)
 		ft_linklist(in->list[I], rs, flag, cond1 || cond2);
-	else if (type == DIN) 
+	else if (type == DIN)
 		ft_linklist(in->list[DI], rs, flag, cond1 || cond2);
-	else if (type == OUT) 
+	else if (type == OUT)
 		ft_linklist(in->list[O], rs, flag, cond1 || cond2);
-	else if (type == DOUT) 
+	else if (type == DOUT)
 		ft_linklist(in->list[DO], rs, flag, cond1 || cond2);
 	if (flag != SPACE)
 		*line += 1;
@@ -94,6 +99,12 @@ int	ft_redirect(t_interpret *in, char **line, int i)
 
 int	ft_next(t_interpret **in, char **line, int i)
 {
+<<<<<<< HEAD
+=======
+	/* ADD line = NULL */
+	line = NULL;
+	printf("next\n");
+>>>>>>> 368222a710288de8621bed9e47e5a56353969caf
 	(*in)->flag = i;
 	(*in)->next = ft_initinlist();
 	(*in)->next->parent = (*in)->parent;
@@ -105,8 +116,20 @@ int	ft_select(t_interpret **in, char **line, int i)
 {
 	int	sign;
 
+<<<<<<< HEAD
 	sign = 0;
 	if (i == AND || i == OR || i == PIPE)
+=======
+	/* ADD sign = 0 */
+	sign = 0;
+	if (i == Q || i == DQ)
+		sign = ft_savestr(*in, line, i, DATA);
+	else if (i == OPAR)
+		sign= ft_parentis(*in, line, i);
+	else if (i == CPAR && (*in)->parent)
+		return (0);
+	else if (i == AND || i == OR || i == PIPE)
+>>>>>>> 368222a710288de8621bed9e47e5a56353969caf
 		sign = ft_next(in, line, i);
 	else
 	{
@@ -132,9 +155,15 @@ int	ft_interpret(t_interpret **in, char **li)
 	int			i;
 	int			c;
 	t_interpret	*root;
+<<<<<<< HEAD
 	char		*line;
 
 	line = *li;
+=======
+
+	/* ADD i = 0 */
+	i = 0;
+>>>>>>> 368222a710288de8621bed9e47e5a56353969caf
 	if (!line || !*line)
 		return (0);
 	root = *in;
@@ -186,6 +215,8 @@ int	ft_parentis(t_interpret *in, char **list, int i)
 {
 	int	x;
 
+	/* ADD i = 0 */
+	i = 0;
 	in->son = ft_initinlist();
 	in->son->parent = in;
 	x = ft_interpret(&(in->son), list);

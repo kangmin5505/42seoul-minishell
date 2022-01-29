@@ -151,10 +151,13 @@
 #endif
 #define PAGE CTRL('L')
 
+/*
 #ifdef SPACE
 #undef SPACE
 #endif
-#define SPACE ' '	/* XXX - was 0x20 */
+#define SPACE ' '
+*/
+/* XXX - was 0x20 */
 
 #ifdef ESC
 #undef ESC

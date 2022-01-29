@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:03:40 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/22 19:36:04 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/01/29 11:31:45 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,22 @@
 # include <termios.h>
 # include <dirent.h>
 # include <limits.h>
+# include <sys/stat.h>
 
 # include "readline/readline.h"
 # include "readline/history.h"
 # include "libft.h"
 # include "shell.h"
 # include "executer.h"
+# include "envs.h"
+# include "structure.h"
+# include "utils.h"
+
+/* sakim's header file */
+# include "ft_interpret.h"
+
+# define TRUE	0
+# define FALSE	-1
 
 
 #endif

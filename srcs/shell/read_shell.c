@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 16:08:27 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/22 19:59:00 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/01/28 18:22:59 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ char	*readline_shell(void)
 
 	get_shell_name(shell_name);
 	line = readline(shell_name);
-	if (line == NULL)
-		exit_shell(EXIT_SUCCESS);
 	return (line);
 }
 

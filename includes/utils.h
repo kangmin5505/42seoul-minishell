@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_int.c                                           :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
+/*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 14:21:49 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/20 14:29:13 by gimsang-w        ###   ########.fr       */
+/*   Created: 2022/01/28 18:51:02 by kangkim           #+#    #+#             */
+/*   Updated: 2022/01/29 12:39:04 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
+#ifndef UTILS_H
+# define UTILS_H
 
-int	main(void)
-{
-	char *m = "HELLOA\n";
-	int	i;
+char	*ft_strjoin2(const char *s1, const char *s2, const char *substr);
+char	*ft_strndup(const char *s1, int n);
+int		ft_strcmp(const char *s1, const char *s2);
 
-	printf("%s\n", m);
-	return (0);
-}
+#endif
