@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:51:27 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/29 23:26:39 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/30 00:10:58 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,12 @@ int	ft_savestr(t_interpret *in, char **line, int i, int type)
 	return (SUCCESS);
 }
 
-int	ft_select(t_interpret **in, char **line, int i)
+int	ft_select(t_interpret **in, char **line, int *val)
 {
 	int	sign;
+	int	i;
 
+	i = *val;
 	if (i == AND || i == OR || i == PIPE)
 		sign = ft_next(in, line, i);
 	else
@@ -86,6 +88,7 @@ int	ft_select(t_interpret **in, char **line, int i)
 		else if (i == DOUT || i == IN || i == OUT || i == DIN)
 			sign = ft_redirect(*in, line, i);
 	}
+	*val = sign;
 	return (sign);
 }
 
@@ -100,11 +103,11 @@ int	ft_interpret(t_interpret **in, char **line)
 		*line += ft_while(*line, SPACE, ON, NOTEND);
 		if (!**line)
 			break ;
-		if (ft_spc(*line))
+		c = ft_spc(*line);
+		if (c)
 		{
-			*line += ft_spc(*line) / 8 + 1;
-			c = ft_select(&root, line, i);
-			if (c <= 0)
+			*line += c / 8 + 1;
+			if (ft_select(&root, line, &c) <= 0)
 				return (c);
 		}
 		else

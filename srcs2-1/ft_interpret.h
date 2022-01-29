@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:14:23 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/29 20:56:57 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/30 00:32:23 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,7 @@ int			ft_next(t_interpret **in, char **line, int i);
 int			ft_parentis(t_interpret *in, char **list, int i);
 int			ft_fsel1(int type);
 int			ft_fsel0(int i);
+void		ft_freeclist(t_clist *c);
+void		ft_freeinlist(t_interpret *in);
+void		*ft_iteration(void *p);
 #endif

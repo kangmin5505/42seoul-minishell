@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 23:01:07 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/29 21:58:15 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/01/30 00:33:29 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ int	main(int n, char **args)
 		ft_printcmds(in, 0);
 	else
 		printf("parsing error\n");
+	ft_freeinlist(in);
 }
