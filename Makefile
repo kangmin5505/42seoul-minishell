@@ -6,7 +6,7 @@
 #    By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 20:38:43 by kangkim           #+#    #+#              #
-#    Updated: 2022/01/26 11:00:24 by kangkim          ###   ########.fr        #
+#    Updated: 2022/01/28 23:08:17 by kangkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,18 +23,27 @@ SRCS_DIR = srcs
 SRCS2_DIR = srcs2
 SHELL_DIR = $(SRCS_DIR)/shell
 EXECUTER_DIR = $(SRCS_DIR)/executer
+ENVS_DIR = $(SRCS_DIR)/envs
+UTILS_DIR = $(SRCS_DIR)/utils
 INCLUDE_DIR = includes
 
-SHELL_SRCS := set_shell.c read_shell.c check_line.c
+SHELL_SRCS = set_shell.c read_shell.c check_line.c
 SHELL_SRCS := $(addprefix $(SHELL_DIR)/, $(SHELL_SRCS))
 
-EXECUTER_SRCS := executer.c pwd.c env.c
+EXECUTER_SRCS = executer.c pwd.c
 EXECUTER_SRCS := $(addprefix $(EXECUTER_DIR)/, $(EXECUTER_SRCS))
 
-SRCS = $(SRCS_DIR)/main.c $(SHELL_SRCS) $(EXECUTER_SRCS)
+ENVS_SRCS = envs.c envs_func.c envs_utils.c
+ENVS_SRCS := $(addprefix $(ENVS_DIR)/, $(ENVS_SRCS))
+
+UTILS_SRCS = utils.c
+UTILS_SRCS := $(addprefix $(UTILS_DIR)/, $(UTILS_SRCS))
+
+SRCS = $(SRCS_DIR)/main.c $(SHELL_SRCS) $(EXECUTER_SRCS) $(ENVS_SRCS) \
+       $(UTILS_SRCS)
 OBJS = $(SRCS:.c=.o)
 
-SRCS2 := ft_charlist.c ft_interpret.c temp_main.c \
+SRCS2 = ft_charlist.c ft_interpret.c \
 	 ft_strutils.c ft_strutils2.c
 SRCS2 := $(addprefix $(SRCS2_DIR)/, $(SRCS2))
 OBJS2 = $(SRCS2:.c=.o)

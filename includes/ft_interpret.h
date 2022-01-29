@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:14:23 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/25 22:20:01 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/01/28 23:12:21 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,6 @@
 # define DI 2
 # define O 3
 # define DO 4
-
-typedef struct s_clist
-{
-	char			*data;
-	int				on;
-	int				type;
-	struct s_clist	*next;
-}				t_clist;
-
-typedef struct s_interpret
-{
-	int					flag;
-	int					num;
-	struct s_clist		*list[5];
-	struct s_interpret	*next;
-	struct s_interpret	*son ;
-	struct s_interpret	*parent;
-}				t_interpret;
 
 void		temp_main(char *line);
 
