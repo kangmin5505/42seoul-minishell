@@ -1,45 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.c                                        :+:      :+:    :+:   */
+/*   ft_strutils3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/27 21:21:21 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/02 05:27:10 by gimsang-w        ###   ########.fr       */
+/*   Created: 2022/02/01 02:27:01 by gimsang-w         #+#    #+#             */
+/*   Updated: 2022/02/03 05:11:04 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_interpret.h"
 
-int	ft_fsel0(int i)
+char	*ft_strjoin(char *str1, char *str2)
 {
-	int	flag;
+	char	*rs;
+	int		size1;
+	int		size2;
+	int		i;
 
-	flag = SPACE;
-	if (i == 0 || i == SPACE)
-		flag = SPACE;
-	else if (i == Q || i == QUOTE)
-		flag = QUOTE;
-	else if (i == DQ || i == DQUOTE)
-		flag = DQUOTE;
-	return (flag);
-}
-
-int	ft_fsel1(int type)
-{
-	int	i;
-
-	i = 0;
-	if (type == DATA)
-		i = DATA;
-	else if (type == IN)
-		i = I;
-	else if (type == DIN)
-		i = DI;
-	else if (type == OUT)
-		i = O;
-	else if (type == DOUT)
-		i = DO;
-	return (i);
+	i = -1;
+	if (!str1 && !str2)
+		return (0);
+	size1 = ft_strlen(str1);
+	size2 = ft_strlen(str2);
+	rs = malloc(sizeof(char) * (size1 + size2 + 1));
+	while (++i < size1 + size2)
+	{
+		if (i < size1)
+			rs[i] = str1[i];
+		else
+			rs[i] = str2[i - size1];
+	}
+	rs[i] = 0;
+	return (rs);
 }

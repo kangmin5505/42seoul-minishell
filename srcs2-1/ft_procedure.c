@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 21:15:36 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/29 20:28:48 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/02 05:52:57 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@ int	ft_redirect(t_interpret *in, char **line, int i)
 	if (size == -1)
 		return (PARSE_ERR_NODEL);
 	*line += size;
-	if (**line == QUOTE || **line == DQUOTE)
+	if (**line == QUOTE)
 	{
 		*line += 1;
-		if (**line == QUOTE)
-			return (ft_savestr(in, line, Q, i));
-		else
-			return (ft_savestr(in, line, DQ, i));
+		return (ft_savestr(in, line, Q, i));
+	}
+	if (**line == DQUOTE)
+	{
+		*line += 1;
+		return (ft_savestr(in, line, DQ, i));
 	}
 	else if (ft_spc(*line))
 		return (PARSE_ERR_NODEL);

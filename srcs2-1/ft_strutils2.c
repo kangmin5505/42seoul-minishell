@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:16:23 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/27 16:28:53 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/03 05:11:19 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	ft_strlen(char *str)
 {
 	register int	i;
 
+	if (!str)
+		return (0);
 	i = 0;
 	while (*(str + i))
 		++i;

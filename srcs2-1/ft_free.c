@@ -6,31 +6,23 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 00:23:14 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/30 00:57:49 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/01 02:26:23 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_interpret.h"
 
-
-void	*ft_iteration(void *p)
+void	*ft_iterator(void *p)
 {
 	t_interpret	*in;
 
 	in = p;
 	if (in->son)
-	{
-		while (in->son)
-			in = in->son;
-		return (in);
-	}
+		return (ft_iterator(in->son));
 	if (in->next)
 		return (in->next);
 	if (in->parent)
-	{
-		in->parent->son = 0;
 		return (in->parent);
-	}
 	return (0);
 }
 
@@ -56,15 +48,10 @@ void	ft_freeinlist(t_interpret *in)
 	while (in)
 	{
 		i = -1;
-		if (in->son)
-			in = (t_interpret *)ft_iteration(in);
-		if (!in)
-			return ;
 		while (++i < 5)
-			if (in->list[i])
-				ft_freeclist(in->list[i]);
+			ft_freeclist(in->list[i]);
 		tmp = in;
-		in = (t_interpret *)ft_iteration(in);
+		in = (t_interpret *)ft_iterator(in);
 		free(tmp);
 	}
 }

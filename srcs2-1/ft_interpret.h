@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_interpret.h                                     :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:14:23 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/30 00:32:23 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/03 05:26:37 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 # define FT_INTERPRET_H
 
+# include <unistd.h>
+# include <fcntl.h>
 # include <stdlib.h>
 # include <readline/readline.h>
 # include <readline/history.h>
@@ -46,6 +48,8 @@
 # define O 3
 # define DO 4
 
+# define VAR 1
+# define NOVAR 2
 typedef struct s_clist
 {
 	char			*data;
@@ -89,5 +93,14 @@ int			ft_fsel1(int type);
 int			ft_fsel0(int i);
 void		ft_freeclist(t_clist *c);
 void		ft_freeinlist(t_interpret *in);
-void		*ft_iteration(void *p);
+char		*ft_strjoin(char *str1, char *str2);
+void		*ft_iterator(void *p);
+t_clist		*ft_merge_list(t_clist *t);
+void		ft_merge(t_interpret *in);
+char		*ft_substitute(char *str);
+char		*ft_val(char **t, int type);
+void		ft_delimeters(t_interpret *in);
+void		ft_deltotmp(char *del);
+void		ft_valpret_all(t_interpret *in);
+void		ft_valpret(t_clist *t, int flag);
 #endif
