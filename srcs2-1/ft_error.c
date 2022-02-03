@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 21:24:16 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/04 07:50:25 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/04 08:01:03 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ void	ft_error(int i, t_interpret *in)
 	if (i == PARSE_ERR_NODEL)
 		write(1, NODEL, ft_strlen(NODEL));
 	if (i == PARSE_ERR_CPAR)
-		write(1, CPAR, ft_strlen(CPAR));
-	if (i == PARSE_ERR_UNFIN_PAR)
-		write(1, UNFINPAR, ft_strlen(UNFINPAR));
+		write(1, CP, ft_strlen(CP));
+	if (i == PARSE_ERR_UNFIN_CPAR)
+		write(1, UNFINCP, ft_strlen(UNFINCP));
 	if (i == PARSE_ERR_UNFIN_Q)
 		write(1, UNFINQ, ft_strlen(UNFINQ));
 	if (i == PARSE_ERR_EMPTYNEXT)
 		write(1, EMPTY, ft_strlen(EMPTY));
 	if (i == PARSE_ERR_UNFIN_CPAR)
-		write(1, UNFIN_CPAR, ft_strlen(UNFIN_CPAR));
-	exit();
+		write(1, UNFINCP, ft_strlen(UNFINCP));
+	exit(i);
 }

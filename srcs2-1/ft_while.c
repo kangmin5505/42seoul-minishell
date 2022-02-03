@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 21:10:00 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/04 07:32:00 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/04 08:11:16 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ t_clist	*ft_merge_list(t_clist *t)
 	t_clist	*tmp;
 	char	*rs;
 	char	*tmpd;
+	int		order;
 
 	rs = 0;
+	order = 0;
 	root = t;
 	while (root)
 	{
@@ -30,11 +32,15 @@ t_clist	*ft_merge_list(t_clist *t)
 			if (!rs)
 			{
 				rs = ft_strjoin(root->data, root->next->data);
+				order = root->order + root->next->order;
 				if (root->data)
 					free(root->data);
 			}
 			else
+			{
+				order += root->next->order;
 				rs = ft_strjoin(rs, root->next->data);
+			}
 			if (root->next->data)
 				free(root->next->data);
 			if (tmpd)
@@ -49,6 +55,7 @@ t_clist	*ft_merge_list(t_clist *t)
 	if (root == t)
 		return (t);
 	root = ft_initclist(rs, 0, 0, 0);
+	root->order = order;
 	if (tmp)
 		root->next = tmp->next;
 	else
@@ -248,12 +255,12 @@ void	ft_deltotmp(char *del)
 	int		fd;
 	int		size;
 
-	tmp = ft_strjoin("tmp/", del);
-	fd = open(tmp, O_CREAT | O_WRONLY);
-	free(tmp);
+	//tmp = ft_strjoin("tmp/", del);
+	fd = open(del, O_CREAT | O_WRONLY);
+	//free(tmp);
 	readline(tmp);
 	size = ft_strlen(tmp);
-	while(ft_strcmp(tmp, del) == 0)
+	while(ft_strcmp(tmp, del) != 0)
 	{
 		write(fd, tmp, size);
 		write(fd, "\n", 1);

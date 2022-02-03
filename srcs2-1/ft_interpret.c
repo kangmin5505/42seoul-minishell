@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:51:27 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/03 00:24:04 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/04 08:09:07 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,11 @@ int	ft_execute(t_interpret *in, char **line, int type, int i)
 
 int	ft_savestr(t_interpret *in, char **line, int i, int type)
 {
-	int		size;
-	int		flag;
-	int		cond;
-	char	*rs;
+	int			size;
+	int			flag;
+	int			cond;
+	char		*rs;
+	static int	n;
 
 	flag = ft_fsel0(i);
 	if (flag == SPACE)
@@ -60,6 +61,7 @@ int	ft_savestr(t_interpret *in, char **line, int i, int type)
 	if (flag == DQUOTE || flag == QUOTE)
 		*line += 1;
 	ft_linklist(in->list[ft_fsel1(type)], rs, flag, cond);
+	in->list[ft_fsel1(type)]->order = n++;
 	if (cond)
 		return (ft_execute(in, line, type, cond));
 	return (SUCCESS);
