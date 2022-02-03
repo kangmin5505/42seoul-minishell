@@ -6,13 +6,13 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 05:38:38 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/03 12:38:39 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/04 07:38:45 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_interpret.h"
 
-int	ft_process(t_interpret *in, t_interpret **r)
+int	ft_processpipe(t_interpret *in, t_interpret *r)
 {
 	int			fd[2];
 	t_interpret	*root;
@@ -24,7 +24,7 @@ int	ft_process(t_interpret *in, t_interpret **r)
 	pid = 0;
 	ret = 1;
 	root = in;
-	tmp = 0;
+	(((a1 && a2 && a3) && a4))
 	while (root)
 	{
 		while (root->son)
@@ -39,9 +39,10 @@ int	ft_process(t_interpret *in, t_interpret **r)
 				close(STDOUT_FILENO);
 				dup2(fd[1], STDOUT_FILENO);
 				if (root->son == 0)
-					ret &= ft_run(root);
+					ft_run(root);
 				else
-					ret &= ft_run(*tmp);
+					ft_run(tmp);
+				//ret &= env;작성이 필요한부분
 			}
 			else
 			{
@@ -53,19 +54,17 @@ int	ft_process(t_interpret *in, t_interpret **r)
 		else if (root->flag == AND || root->flag == OR)
 		{
 			if (root->son == 0)
-				ret &= ft_run(root);
+				ft_run(root);
 			else
-				ret &= ft_run(*tmp);
+				ft_run(tmp);
+			//ret &= env;작성이 필요한부분
 			if (ret != 1 && root->flag == AND)
 				return (0);
 			else if (ret == 1 && root->flag == OR)
 				return (0);
 		}
 		else if (root->parent)
-		{
-			*tmp = root;
 			return (ret);
-		}
 		else
 			ret &= ft_run(root);
 		root = root->next;

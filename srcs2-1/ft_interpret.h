@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:14:23 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/03 05:26:37 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/04 07:32:21 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "ft_errcode.h"
+# include "minishell.h"
 
 # define Q 1
 # define DQ 2
@@ -103,4 +104,6 @@ void		ft_delimeters(t_interpret *in);
 void		ft_deltotmp(char *del);
 void		ft_valpret_all(t_interpret *in);
 void		ft_valpret(t_clist *t, int flag);
+int			ft_processpipe(t_interpret *in);
+void		ft_processline(char *line);
 #endif

@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 21:10:00 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/03 10:11:00 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/04 07:32:00 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,13 +144,12 @@ char	*ft_getenv(char *str)
 	return (0);
 }
 
-#define RETURNCODE "a1"
-
 char	*ft_val(char **t, int type)
 {
 	int		s;
 	char	*rs;
 	char	*n;
+	char	*tmp;
 
 	rs = 0;
 	s = 0;
@@ -161,10 +160,11 @@ char	*ft_val(char **t, int type)
 		if (t[0][s] == '?' && s == 0)
 		{
 			t[0] += s;
-			return (ft_getenv(RETURNCODE));
+			return (ft_atoi(ft_get_exit_status(g_envs)));
 		}
 		n = ft_strcpy(t[0], 0, s, 0);
-		rs = ft_getenv(n);
+		tmp = getenvs(g_envs, n);
+		rs = ft_strcpy(tmp, 0, ft_strlen(tmp), 0);
 		free(n);
 	}
 	else
