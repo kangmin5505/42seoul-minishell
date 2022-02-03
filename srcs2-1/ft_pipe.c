@@ -6,13 +6,12 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 05:38:38 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/03 11:32:23 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/03 11:37:13 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_interpret.h"
 
-//pipe waiting system implementation
 int	ft_process(t_interpret *in)
 {
 	int			fd[2];
