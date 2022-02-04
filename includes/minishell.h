@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:03:40 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/04 12:10:08 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/04 14:15:18 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include <fcntl.h>
 # include <sys/errno.h>
 
-# include "readline/readline.h"
-# include "readline/history.h"
+# include "readline.h"
+# include "history.h"
 # include "libft.h"
 # include "shell.h"
 # include "executer.h"

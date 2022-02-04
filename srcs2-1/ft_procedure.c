@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 21:15:36 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/04 11:22:06 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/04 17:34:06 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_next(t_interpret **in, int i)
 	(*in)->next = ft_initinlist();
 	(*in)->next->parent = (*in)->parent;
 	*in = (*in)->next;
-	return (SUCCESS);
+	return (SUCCESS_A);
 }
 
 int	ft_parentis(t_interpret *in, char **list)
@@ -52,6 +52,6 @@ int	ft_parentis(t_interpret *in, char **list)
 	in->son->parent = in;
 	rs = ft_interpret(&(in->son), list);
 	if (rs == RET_TO_PAR)
-		rs = SUCCESS;
+		rs = SUCCESS_A;
 	return (rs);
 }

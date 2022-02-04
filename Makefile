@@ -6,7 +6,7 @@
 #    By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 20:38:43 by kangkim           #+#    #+#              #
-#    Updated: 2022/02/04 12:49:40 by kangkim          ###   ########.fr        #
+#    Updated: 2022/02/04 17:31:23 by kangkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,6 @@ LIBHISTORY = $(LIBREADLINE_DIR)/libhistory.a
 
 all : $(NAME)
 
-# CFLAGS 추
 $(NAME) : $(OBJS) $(OBJS2) $(LIBFT) $(LIBREADLINE) $(LIBHISTORY)
 	@echo "$(_GREEN)[ Try to make $(NAME) ]$(_END)"
 	@$(CC) $(CFLAGS) -lncurses -o $@ $^

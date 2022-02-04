@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:03:11 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/04 12:49:22 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/04 16:49:38 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	main(int argc, char *argv[], char *envp[])
 		line = readline_shell();
 		if (line == NULL)
 			exit_shell(EXIT_SUCCESS);
-		printf("%s\n", line);
 		add_history_shell(line);
 		if (check_line(line) == FALSE)
 			print_line_error();

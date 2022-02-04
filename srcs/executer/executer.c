@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 19:29:32 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/04 12:41:33 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/04 19:03:51 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	**get_argv(t_interpret *in)
 	curr = in->list[0];
 	while (idx < size)
 	{
-		argv[idx] = strdup(curr->data);
+		argv[idx] = ft_strdup(curr->data);
 		idx++;
 		curr = curr->next;
 	}
@@ -112,6 +112,7 @@ void	ft_run(t_interpret *in)
 		builtin_exit(in);
 	else
 		external_cmd(cmd, argv);
-	printf("exit_status : %d\n", get_exit_status());
+	ft_putstr_fd("exit_status : ", STDERR_FILENO);
+	ft_putendl_fd(ft_itoa(get_exit_status()), STDERR_FILENO);
 	free_args(argv);
 }
