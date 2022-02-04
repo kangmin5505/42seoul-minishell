@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 05:38:38 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/04 07:38:45 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/04 10:30:58 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_processpipe(t_interpret *in, t_interpret *r)
 					ft_run(root);
 				else
 					ft_run(tmp);
-				//ret &= env;작성이 필요한부분
+				ret += get_exit_status();
 			}
 			else
 			{
@@ -57,10 +57,10 @@ int	ft_processpipe(t_interpret *in, t_interpret *r)
 				ft_run(root);
 			else
 				ft_run(tmp);
-			//ret &= env;작성이 필요한부분
-			if (ret != 1 && root->flag == AND)
+			ret += get_exit_status();
+			if (ret == 0 && root->flag == AND)
 				return (0);
-			else if (ret == 1 && root->flag == OR)
+			else if (ret != 0 && root->flag == OR)
 				return (0);
 		}
 		else if (root->parent)

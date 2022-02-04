@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 21:10:00 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/04 08:11:16 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/04 10:32:02 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,12 @@ t_clist	*ft_merge_list(t_clist *t)
 			if (!rs)
 			{
 				rs = ft_strjoin(root->data, root->next->data);
-				order = root->order + root->next->order;
+				order = root->order;
 				if (root->data)
 					free(root->data);
 			}
 			else
-			{
-				order += root->next->order;
 				rs = ft_strjoin(rs, root->next->data);
-			}
 			if (root->next->data)
 				free(root->next->data);
 			if (tmpd)
