@@ -6,11 +6,11 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:16:23 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/25 21:59:26 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/02 04:45:52 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "ft_interpret.h"
 
 char	*ft_strcpy(char *str, int off, int size, int fit)
 {

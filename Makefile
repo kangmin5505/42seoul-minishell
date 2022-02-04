@@ -6,7 +6,7 @@
 #    By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 20:38:43 by kangkim           #+#    #+#              #
-#    Updated: 2022/01/28 23:08:17 by kangkim          ###   ########.fr        #
+#    Updated: 2022/02/04 07:34:23 by gimsang-w        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 SRCS_DIR = srcs
-SRCS2_DIR = srcs2
+SRCS2_DIR = srcs2-1
 SHELL_DIR = $(SRCS_DIR)/shell
 EXECUTER_DIR = $(SRCS_DIR)/executer
 ENVS_DIR = $(SRCS_DIR)/envs
@@ -44,7 +44,8 @@ SRCS = $(SRCS_DIR)/main.c $(SHELL_SRCS) $(EXECUTER_SRCS) $(ENVS_SRCS) \
 OBJS = $(SRCS:.c=.o)
 
 SRCS2 = ft_charlist.c ft_interpret.c \
-	 ft_strutils.c ft_strutils2.c
+	 ft_strutils.c ft_strutils2.c ft_strutils3.c ft_procedure.c ft_select.c \
+	 ft_while.c ft_pipe.c ft_free.c ft_charlist.c ft_errorcode.c ft_process.c
 SRCS2 := $(addprefix $(SRCS2_DIR)/, $(SRCS2))
 OBJS2 = $(SRCS2:.c=.o)
 

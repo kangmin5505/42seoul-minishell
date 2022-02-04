@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:03:11 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/29 11:12:22 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/04 10:14:43 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	main(int argc, char *argv[], char *envp[])
 {
 	char		*line;
 	t_envs		envs;
-	t_interpret	*in;
-	int			errc;
+	//t_interpret	*in;
+	//int			errc;
 
 	argc = 0;
 	argv = 0;
@@ -38,17 +38,8 @@ int	main(int argc, char *argv[], char *envp[])
 		}
 		// parse
 		if (*line != '\0')
-		{
-			in = ft_initinlist();
-			errc = ft_interpret(&in, line);
-			if (errc == -1)
-			{
-				free(line);
-				exit_shell(&envs, EXIT_FAILURE);
-			}
-			// execute
-			execute(in, &envs);
-		}
+			ft_processline(line);
+		// execute
 		free(line);
 	}
 	return (0);

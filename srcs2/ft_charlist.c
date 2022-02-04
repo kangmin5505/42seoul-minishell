@@ -6,15 +6,12 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:14:12 by gimsang-w         #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/01/25 18:12:59 by gimsang-w        ###   ########.fr       */
-=======
+/*   Updated: 2022/02/02 04:46:16 by gimsang-w        ###   ########.fr       */
 /*   Updated: 2022/01/25 21:50:16 by kangkim          ###   ########.fr       */
->>>>>>> 368222a710288de8621bed9e47e5a56353969caf
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "ft_interpret.h"
 
 t_clist	*ft_initclist(char *data, t_clist *next, int type, int on)
 {

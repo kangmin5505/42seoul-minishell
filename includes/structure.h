@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 18:26:49 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/29 11:24:21 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/04 08:07:06 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_clist
 {
 	char			*data;
 	int				on;
+	int				order;
 	int				type;
 	struct s_clist	*next;
 }				t_clist;

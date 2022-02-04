@@ -1,4 +1,4 @@
- /************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_interpret.h                                     :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:14:23 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/04 07:32:21 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/02 04:46:55 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,9 @@
 
 # define FT_INTERPRET_H
 
-# include <unistd.h>
-# include <fcntl.h>
 # include <stdlib.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include "ft_errcode.h"
-# include "minishell.h"
 
 # define Q 1
 # define DQ 2
@@ -49,8 +45,6 @@
 # define O 3
 # define DO 4
 
-# define VAR 1
-# define NOVAR 2
 typedef struct s_clist
 {
 	char			*data;
@@ -98,12 +92,8 @@ char		*ft_strjoin(char *str1, char *str2);
 void		*ft_iterator(void *p);
 t_clist		*ft_merge_list(t_clist *t);
 void		ft_merge(t_interpret *in);
-char		*ft_substitute(char *str);
+char		*ft_substitute(const char *str);
 char		*ft_val(char **t, int type);
 void		ft_delimeters(t_interpret *in);
-void		ft_deltotmp(char *del);
-void		ft_valpret_all(t_interpret *in);
-void		ft_valpret(t_clist *t, int flag);
-int			ft_processpipe(t_interpret *in);
-void		ft_processline(char *line);
+void		ft_deltotmp(const char *del);
 #endif

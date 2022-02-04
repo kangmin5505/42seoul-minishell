@@ -1,29 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_select.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/07 23:01:07 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/02 04:44:20 by gimsang-w        ###   ########.fr       */
+/*   Created: 2022/01/27 21:21:21 by gimsang-w         #+#    #+#             */
+/*   Updated: 2022/01/27 22:00:19 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "ft_interpret.h"
 
-int	main(int n, char **args)
+int	ft_fsel0(int i)
 {
-	char	*a = "echo <<hello && hw good 'bye'\"sh\" | wow";
-	char	*b = "eafagshSRHr\"agag\" << hello'hgoo'";
-	t_interpret	*in;
-	int	errc;
+	int	flag;
 
-	in = ft_initinlist();
-	errc = ft_interpret(&in, (n >= 2) ? args + 1 : &a);
-	if (errc != -1)
-		ft_printcmds(in, 0);
-	else
-		printf("parsing error\n");
+	flag = SPACE;
+	if (i == 0 || i == SPACE)
+		flag = SPACE;
+	else if (i == Q || i == QUOTE)
+		flag = QUOTE;
+	else if (i == DQ || i == DQUOTE)
+		flag = DQUOTE;
+	return (flag);
+}
+
+int	ft_fsel1(int type)
+{
+	int	i;
+
+	i = 0;
+	if (type == DATA)
+		i = DATA;
+	else if (type == IN)
+		i = I;
+	else if (type == DIN)
+		i = DIN;
+	else if (type == OUT)
+		i = O;
+	else if (type == DOUT)
+		i = DO;
+	return (i);
 }

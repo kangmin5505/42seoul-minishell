@@ -6,11 +6,11 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:55:14 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/25 21:50:37 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/02 04:45:42 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "ft_interpret.h"
 
 int	ft_while(char *str, char del, int not, int end)
 {
