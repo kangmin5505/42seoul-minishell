@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_interpret.h                                     :+:      :+:    :+:   */
@@ -6,17 +6,21 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:14:23 by gimsang-w         #+#    #+#             */
-<<<<<<< HEAD:srcs2/ft_interpret.h
-/*   Updated: 2022/01/29 18:45:03 by gimsang-w        ###   ########.fr       */
-=======
-/*   Updated: 2022/01/28 23:12:21 by kangkim          ###   ########.fr       */
->>>>>>> 368222a710288de8621bed9e47e5a56353969caf:includes/ft_interpret.h
+/*   Updated: 2022/02/04 07:32:21 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_INTERPRET_H
 
 # define FT_INTERPRET_H
+
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include "ft_errcode.h"
+# include "minishell.h"
 
 # define Q 1
 # define DQ 2
@@ -45,12 +49,31 @@
 # define O 3
 # define DO 4
 
-void		temp_main(char *line);
+# define VAR 1
+# define NOVAR 2
+typedef struct s_clist
+{
+	char			*data;
+	int				on;
+	int				type;
+	struct s_clist	*next;
+}				t_clist;
+
+typedef struct s_interpret
+{
+	int					flag;
+	int					num;
+	struct s_clist		*list[5];
+	struct s_interpret	*next;
+	struct s_interpret	*son ;
+	struct s_interpret	*parent;
+}				t_interpret;
 
 int			ft_spc(char *line);
 int			ft_match(char *str, char *tof);
 int			ft_while(char *str, char del, int not, int end);
 char		*ft_strcpy(char *str, int off, int size, int fit);
+int			ft_strlen(char *str);
 t_clist		*ft_initclist(char *data, t_clist *next, int type, int on);
 t_interpret	*ft_initinlist(void);
 void		ft_linklist(t_clist *root, char *str, int type, int on);
@@ -59,10 +82,28 @@ int			ft_while2(char *str);
 int			ft_strexlen(char *str, char *ex, int size);
 char		*ft_strexcpy(char *str, int size, char *ex);
 int			ft_while3(char *str);
-int			ft_inerror(t_interpret *in);
+int			ft_inerror(t_interpret *in, int flag);
 int			ft_parentis(t_interpret *in, char **list, int i);
-int			ft_interpret(t_interpret **in, char **li);
+int			ft_interpret(t_interpret **in, char **line);
 void		ft_printdatas(t_clist *root, int nthcmd, int type);
 void		ft_printcmds(t_interpret *in, int depth);
-
+int			ft_redirect(t_interpret *in, char **line, int i);
+int			ft_next(t_interpret **in, char **line, int i);
+int			ft_parentis(t_interpret *in, char **list, int i);
+int			ft_fsel1(int type);
+int			ft_fsel0(int i);
+void		ft_freeclist(t_clist *c);
+void		ft_freeinlist(t_interpret *in);
+char		*ft_strjoin(char *str1, char *str2);
+void		*ft_iterator(void *p);
+t_clist		*ft_merge_list(t_clist *t);
+void		ft_merge(t_interpret *in);
+char		*ft_substitute(char *str);
+char		*ft_val(char **t, int type);
+void		ft_delimeters(t_interpret *in);
+void		ft_deltotmp(char *del);
+void		ft_valpret_all(t_interpret *in);
+void		ft_valpret(t_clist *t, int flag);
+int			ft_processpipe(t_interpret *in);
+void		ft_processline(char *line);
 #endif

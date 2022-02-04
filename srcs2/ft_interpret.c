@@ -99,6 +99,7 @@ int	ft_next(t_interpret **in, char **line, int i)
 	line = NULL;
 	(*in)->flag = i;
 	(*in)->next = ft_initinlist();
+	(*in)->next->parent = (*in)->parent;
 	*in = (*in)->next;
 	return (2);
 }
@@ -107,6 +108,8 @@ int	ft_select(t_interpret **in, char **line, int i)
 {
 	int	sign;
 
+	sign = 0;
+	if (i == AND || i == OR || i == PIPE)
 	/* ADD sign = 0 */
 	sign = 0;
 	if (i == Q || i == DQ)
@@ -117,51 +120,79 @@ int	ft_select(t_interpret **in, char **line, int i)
 		return (0);
 	else if (i == AND || i == OR || i == PIPE)
 		sign = ft_next(in, line, i);
-	else if (i == DOUT || i == IN || i == OUT || i == DIN)
-		sign = ft_redirect(*in, line, i);
+	else
+	{
+		if ((*in)->son)
+			sign = -1;
+		if (i == Q || i == DQ)
+			sign = ft_savestr(*in, line, i, DATA);
+		else if (i == OPAR)
+			sign = ft_parentis(*in, line, i);
+		else if (i == CPAR && (*in)->parent)
+			return (ft_inerror(*in));
+		else if (i == CPAR && (*in)->parent == 0)
+			return (-1);
+		else if (i == DOUT || i == IN || i == OUT || i == DIN)
+			sign = ft_redirect(*in, line, i);
+	}
 	return (sign);
 }
 
 
-int	ft_interpret(t_interpret **in, char *line)
+int	ft_interpret(t_interpret **in, char **li)
 {
 	int			i;
 	int			c;
 	t_interpret	*root;
+	char		*line;
+
+	line = *li;
 
 	/* ADD i = 0 */
 	i = 0;
 	if (!line || !*line)
 		return (0);
 	root = *in;
-	while (*line)
+	while (**li)
 	{
-		line += ft_while(line, SPACE, ON, NOTEND);
-		if (!*line)
+		*li += ft_while(*li, SPACE, ON, NOTEND);
+		if (!**li)
 			break ;
-		if ((i = ft_spc(line)))
+		if ((i = ft_spc(*li)))
 		{
-			line += i / 8 + 1;
-			c = ft_select(&root, &line, i);
+			*li += i / 8 + 1;
+			c = ft_select(&root, li, i);
 			if (c == -1 || c == 0)
 				return (c);
 		}
 		else
 		{
-			if (ft_savestr(root, &line, SPACE, DATA) == -1)
+			if ((root)->son)
+				return (-1);
+			if (ft_savestr(root, li, SPACE, DATA) == -1)
 				return (-1);
 		}
 	}
-	if (ft_inerror(root, ATEXIT))
+	if (root->parent)
+		return (-1);
+	if (ft_inerror(root))
 		return (-1);
 	return (0);
 }
 
-int ft_inerror(t_interpret *in, int flag)
+int ft_inerror(t_interpret *in)
 {
-	if (in->parent)
-		printf("errorforsure\n");
-	if (in->parent && (ATEXIT & flag))
+	int	i;
+	int	j;
+
+	j = 0;
+	i = -1;
+	while (++i < 5)
+		if (in->list[i]->data)
+			++j;
+	if (j || in->son)
+		return (0);
+	else
 		return (-1);
 	return (0);
 }
@@ -174,7 +205,7 @@ int	ft_parentis(t_interpret *in, char **list, int i)
 	i = 0;
 	in->son = ft_initinlist();
 	in->son->parent = in;
-	x = ft_interpret(&(in->son), *list);
+	x = ft_interpret(&(in->son), list);
 	if (x == 0)
 		x = 2;
 	return (x);
