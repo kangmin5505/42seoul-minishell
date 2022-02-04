@@ -6,11 +6,11 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 00:23:14 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/01 02:26:23 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/04 11:19:30 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_interpret.h"
+#include "minishell.h"
 
 void	*ft_iterator(void *p)
 {

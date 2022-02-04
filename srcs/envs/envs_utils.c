@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 17:23:37 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/29 11:40:10 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/04 09:22:11 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@ char	*join_name_value(t_dict *dict)
 	return (name_value);
 }
 
-char	**get_envp(t_envs *envs)
+char	**get_envp(void)
 {
 	char	**envp;
 	int		size;
 	int		idx;
 	t_dict	*curr;
 
-	size = envs->size;
+	size = g_envs->size;
 	envp = (char **)malloc(sizeof(char *) * (size + 1));
 	idx = 0;
-	curr = envs->head;
+	curr = g_envs->head;
 	while (idx < size)
 	{
 		envp[idx] = ft_strdup(curr->name_value);
@@ -48,12 +48,12 @@ char	**get_envp(t_envs *envs)
 	return (envp);
 }
 
-char	**get_paths(t_envs *envs)
+char	**get_paths(void)
 {
 	t_dict	*curr;
 	char	**paths;
 
-	curr = envs->head;
+	curr = g_envs->head;
 	while (curr)
 	{
 		if (ft_strcmp(curr->name, "PATH") == 0)

@@ -1,13 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_inlist.c                                        :+:      :+:    :+:   */
+/*   builtin_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
+/*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 00:37:06 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/25 21:50:27 by kangkim          ###   ########.fr       */
+/*   Created: 2022/02/02 22:01:02 by kangkim           #+#    #+#             */
+/*   Updated: 2022/02/03 23:27:00 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	builtin_env(void)
+{
+	env();
+	g_envs->exit_status = SUCCESS;
+}

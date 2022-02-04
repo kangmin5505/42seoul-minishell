@@ -6,7 +6,7 @@
 #    By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 20:38:43 by kangkim           #+#    #+#              #
-#    Updated: 2022/02/04 07:34:23 by gimsang-w        ###   ########.fr        #
+#    Updated: 2022/02/04 12:49:40 by kangkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,26 +26,32 @@ EXECUTER_DIR = $(SRCS_DIR)/executer
 ENVS_DIR = $(SRCS_DIR)/envs
 UTILS_DIR = $(SRCS_DIR)/utils
 INCLUDE_DIR = includes
+COMMANDS_DIR = $(SRCS_DIR)/commands
 
 SHELL_SRCS = set_shell.c read_shell.c check_line.c
 SHELL_SRCS := $(addprefix $(SHELL_DIR)/, $(SHELL_SRCS))
 
-EXECUTER_SRCS = executer.c pwd.c
+EXECUTER_SRCS = executer.c executer_utils.c
 EXECUTER_SRCS := $(addprefix $(EXECUTER_DIR)/, $(EXECUTER_SRCS))
 
-ENVS_SRCS = envs.c envs_func.c envs_utils.c
+ENVS_SRCS = envs.c envs_func.c envs_utils.c envs_utils2.c
 ENVS_SRCS := $(addprefix $(ENVS_DIR)/, $(ENVS_SRCS))
 
 UTILS_SRCS = utils.c
 UTILS_SRCS := $(addprefix $(UTILS_DIR)/, $(UTILS_SRCS))
 
+COMMANDS_SRCS = builtin_env.c builtin_exit.c builtin_echo.c builtin_cd.c \
+		builtin_pwd.c builtin_unset.c builtin_export.c
+COMMANDS_SRCS := $(addprefix $(COMMANDS_DIR)/, $(COMMANDS_SRCS))
+
 SRCS = $(SRCS_DIR)/main.c $(SHELL_SRCS) $(EXECUTER_SRCS) $(ENVS_SRCS) \
-       $(UTILS_SRCS)
+       $(UTILS_SRCS) $(COMMANDS_SRCS)
 OBJS = $(SRCS:.c=.o)
 
 SRCS2 = ft_charlist.c ft_interpret.c \
-	 ft_strutils.c ft_strutils2.c ft_strutils3.c ft_procedure.c ft_select.c \
-	 ft_while.c ft_pipe.c ft_free.c ft_charlist.c ft_errorcode.c ft_process.c
+	 ft_strutils.c ft_strutils2.c ft_procedure.c ft_select.c \
+	 ft_while.c ft_pipe.c ft_free.c ft_charlist.c ft_process.c \
+	 ft_error.c
 SRCS2 := $(addprefix $(SRCS2_DIR)/, $(SRCS2))
 OBJS2 = $(SRCS2:.c=.o)
 

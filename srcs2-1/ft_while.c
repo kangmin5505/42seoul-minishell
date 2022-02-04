@@ -6,11 +6,11 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 21:10:00 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/04 10:32:02 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/04 11:26:38 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_interpret.h"
+#include "minishell.h"
 
 t_clist	*ft_merge_list(t_clist *t)
 {
@@ -125,16 +125,6 @@ char	*ft_substitute(char *str)
 	return (rs);
 }
 
-int	ft_strcmp(char *str1, char *str2)
-{
-	while (*str1 && *str1 == *str2)
-	{
-		++str1;
-		++str2;
-	}
-	return (*str1 - *str2);
-}
-
 char	*ft_getenv(char *str)
 {
 	static char *list[5] = {"a1", "a2", "a3", "a4", "a5"};
@@ -164,10 +154,10 @@ char	*ft_val(char **t, int type)
 		if (t[0][s] == '?' && s == 0)
 		{
 			t[0] += s;
-			return (ft_atoi(ft_get_exit_status(g_envs)));
+			return (ft_itoa(get_exit_status()));
 		}
 		n = ft_strcpy(t[0], 0, s, 0);
-		tmp = getenvs(g_envs, n);
+		tmp = get_env(n);
 		rs = ft_strcpy(tmp, 0, ft_strlen(tmp), 0);
 		free(n);
 	}
@@ -247,7 +237,6 @@ void	ft_delimeters(t_interpret *in)
 
 void	ft_deltotmp(char *del)
 {
-	t_clist	*c;
 	char	*tmp;
 	int		fd;
 	int		size;

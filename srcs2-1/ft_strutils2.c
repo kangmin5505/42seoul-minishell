@@ -6,23 +6,11 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:16:23 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/03 05:11:19 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/04 11:22:25 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_interpret.h"
-
-int	ft_strlen(char *str)
-{
-	register int	i;
-
-	if (!str)
-		return (0);
-	i = 0;
-	while (*(str + i))
-		++i;
-	return (i);
-}
+#include "minishell.h"
 
 char	*ft_strcpy(char *str, int off, int size, int fit)
 {

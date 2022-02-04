@@ -6,11 +6,11 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 21:21:21 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/02 05:27:10 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/04 11:20:01 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_interpret.h"
+#include "minishell.h"
 
 int	ft_fsel0(int i)
 {

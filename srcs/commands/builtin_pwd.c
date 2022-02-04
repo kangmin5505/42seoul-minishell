@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell.h                                            :+:      :+:    :+:   */
+/*   builtin_pwd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 16:09:26 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/03 23:14:01 by kangkim          ###   ########.fr       */
+/*   Created: 2022/02/03 13:44:03 by kangkim           #+#    #+#             */
+/*   Updated: 2022/02/03 23:32:04 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "minishell.h"
 
-# include "structure.h"
+void	builtin_pwd(void)
+{
+	char	*pwd;
+	char	buf[PATH_MAX];
 
-/* set_shell.c */
-void	set_shell(void);
-void	register_signal(void);
-void	sig_handler(int signo);
-void	set_tcattr(void);
-void	exit_shell(int status);
-
-/* read_shell.c */
-void	get_shell_name(char *shell_name);
-char	*readline_shell(void);
-void	add_history_shell(const char *line);
-
-/* check_line */
-int		check_line(char *line);
-
-#endif
+	pwd = getcwd(buf, PATH_MAX);
+	ft_putendl_fd(pwd, STDOUT_FILENO);
+	g_envs->exit_status = SUCCESS;
+}

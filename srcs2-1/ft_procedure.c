@@ -6,11 +6,11 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 21:15:36 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/02 05:52:57 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/04 11:22:06 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_interpret.h"
+#include "minishell.h"
 
 int	ft_redirect(t_interpret *in, char **line, int i)
 {
@@ -35,7 +35,7 @@ int	ft_redirect(t_interpret *in, char **line, int i)
 	return (ft_savestr(in, line, SPACE, i));
 }
 
-int	ft_next(t_interpret **in, char **line, int i)
+int	ft_next(t_interpret **in, int i)
 {
 	(*in)->flag = i;
 	(*in)->next = ft_initinlist();
@@ -44,7 +44,7 @@ int	ft_next(t_interpret **in, char **line, int i)
 	return (SUCCESS);
 }
 
-int	ft_parentis(t_interpret *in, char **list, int i)
+int	ft_parentis(t_interpret *in, char **list)
 {
 	int	rs;
 

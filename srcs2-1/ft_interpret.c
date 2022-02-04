@@ -6,11 +6,11 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:51:27 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/04 10:19:56 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/04 12:48:43 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_interpret.h"
+#include "minishell.h"
 
 int	ft_execute(t_interpret *in, char **line, int type, int i)
 {
@@ -57,7 +57,7 @@ int	ft_savestr(t_interpret *in, char **line, int i, int type)
 	cond = (((flag == SPACE) && (**line == DQUOTE || **line == QUOTE))) * 2
 		+ (((flag == DQUOTE || flag == QUOTE))
 			&& (*(*line + 1) == DQUOTE || *(*line + 1)
-				== QUOTE || (*(*line + 1) != SPACE) && *(*line + 1) != 0)) * 3;
+				== QUOTE || ((*(*line + 1) != SPACE) && *(*line + 1) != 0))) * 3;
 	if (flag == DQUOTE || flag == QUOTE)
 		*line += 1;
 	ft_linklist(in->list[ft_fsel1(type)], rs, flag, cond);
@@ -74,7 +74,7 @@ int	ft_select(t_interpret **in, char **line, int *val)
 
 	i = *val;
 	if (i == AND || i == OR || i == PIPE)
-		sign = ft_next(in, line, i);
+		sign = ft_next(in, i);
 	else
 	{
 		if ((*in)->son)
@@ -82,7 +82,7 @@ int	ft_select(t_interpret **in, char **line, int *val)
 		if (i == Q || i == DQ)
 			sign = ft_savestr(*in, line, i, DATA);
 		else if (i == OPAR)
-			sign = ft_parentis(*in, line, i);
+			sign = ft_parentis(*in, line);
 		else if (i == CPAR && (*in)->parent)
 			sign = ft_inerror(*in, 0);
 		else if (i == CPAR && (*in)->parent == 0)

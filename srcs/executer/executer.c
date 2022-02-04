@@ -6,24 +6,11 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 19:29:32 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/29 14:03:18 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/04 12:41:33 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	free_args(char	**args)
-{
-	char	**temp;
-
-	temp = args;
-	while (*temp)
-	{
-		free(*temp);
-		temp++;
-	}
-	free(args);
-}
 
 char	**get_argv(t_interpret *in)
 {
@@ -52,7 +39,7 @@ char	**get_argv(t_interpret *in)
 	return (argv);
 }
 
-char	*find_path(t_envs *envs, char *cmd)
+char	*find_path(char *cmd)
 {
 	char		**paths;
 	char		*path;
@@ -60,7 +47,7 @@ char	*find_path(t_envs *envs, char *cmd)
 
 	if (stat(cmd, &buf) == 0)
 		return (cmd);
-	paths = envs->paths;
+	paths = g_envs->paths;
 	while (*paths)
 	{
 		path = ft_strjoin2(*paths, cmd, "/");
@@ -72,27 +59,37 @@ char	*find_path(t_envs *envs, char *cmd)
 	return (NULL);
 }
 
-void	external_cmd(char *cmd, char **argv, t_envs *envs)
+void	external_cmd(char *cmd, char **argv)
 {
-	 pid_t	pid;
-	 char	*path;
+	pid_t	pid;
+	char	*path;
+	int		wstatus;
 
-	 pid = fork();
-	 if (pid == 0)
-	 {
-		 path = find_path(envs, cmd);
-		 if (path == NULL)
-			 perror("minishell: command not found:");
-		 execve(path, argv, envs->envp);
-		 exit(1);
-	 }
-	 else
-	 {
-		 wait(0);
-	 }
+	pid = fork();
+	if (pid == -1)
+		perror(strerror(errno));
+	else if (pid == 0)
+	{
+		path = find_path(cmd);
+		if (path == NULL)
+		{
+			print_external_cmd_error(cmd);
+			exit(127);
+		}
+		else
+		{
+			execve(path, argv, g_envs->envp);
+			perror(strerror(errno));
+		}
+	}
+	else
+	{
+		waitpid(pid, &wstatus, WUNTRACED);
+		g_envs->exit_status = WEXITSTATUS(wstatus);
+	}
 }
 
-void	execute(t_interpret *in, t_envs *envs)
+void	ft_run(t_interpret *in)
 {
 	char	**argv;
 	char	*cmd;
@@ -100,20 +97,21 @@ void	execute(t_interpret *in, t_envs *envs)
 	argv = get_argv(in);
 	cmd = in->list[0]->data;
 	if (ft_strcmp("echo", cmd) == 0)
-		printf("echo\n");
+		builtin_echo(in);
 	else if (ft_strcmp("cd", cmd) == 0)
-		printf("cd\n");
+		builtin_cd(in);
 	else if (ft_strcmp("pwd", cmd) == 0)
-		printf("pwd\n");
+		builtin_pwd();
 	else if (ft_strcmp("export", cmd) == 0)
-		printf("export\n");
+		builtin_export(in);
 	else if (ft_strcmp("unset", cmd) == 0)
-		unset_env(envs, "PATH");
+		builtin_unset(in);
 	else if (ft_strcmp("env", cmd) == 0)
-		env(envs);
+		builtin_env();
 	else if (ft_strcmp("exit", cmd) == 0)
-		printf("exit\n");
+		builtin_exit(in);
 	else
-		external_cmd(cmd, argv, envs);
+		external_cmd(cmd, argv);
+	printf("exit_status : %d\n", get_exit_status());
 	free_args(argv);
 }

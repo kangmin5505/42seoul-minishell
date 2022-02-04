@@ -6,19 +6,24 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 19:36:25 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/29 01:11:27 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/04 12:33:42 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXECUTER_H
 # define EXECUTER_H
 
+# include "commands.h"
 # include "structure.h"
 
-void	free_args(char **args);
+/* executer.c */
 char	**get_argv(t_interpret *in);
-void	execute(t_interpret *in, t_envs *envs);
+char	*find_path(char *cmd);
+void	external_cmd(char *cmd, char **argv);
+char	**get_argv(t_interpret *in);
+void	ft_run(t_interpret *in);
 
+/* executer_utils.c */
+void	print_external_cmd_error(char *cmd);
 
-void	pwd(void);
 #endif

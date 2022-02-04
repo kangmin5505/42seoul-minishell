@@ -6,29 +6,27 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 05:38:38 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/04 10:30:58 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/04 12:31:57 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_interpret.h"
+#include "minishell.h"
 
-int	ft_processpipe(t_interpret *in, t_interpret *r)
+int	ft_processpipe(t_interpret *in, t_interpret **r)
 {
 	int			fd[2];
 	t_interpret	*root;
 	t_interpret	*tmp;
 	int			pid;
 	int			ret;
-	int			stat;
 
 	pid = 0;
 	ret = 1;
 	root = in;
-	(((a1 && a2 && a3) && a4))
 	while (root)
 	{
 		while (root->son)
-			ret = ft_process(root->son, &tmp);
+			ret = ft_processpipe(root->son, &tmp);
 		if (root->flag == PIPE)
 		{
 			pipe(fd);
@@ -64,9 +62,15 @@ int	ft_processpipe(t_interpret *in, t_interpret *r)
 				return (0);
 		}
 		else if (root->parent)
+		{
+			*r = root;
 			return (ret);
+		}
 		else
-			ret &= ft_run(root);
+		{
+			 ft_run(root);
+			 ret += get_exit_status();
+		}
 		root = root->next;
 	}
 	return (ret);

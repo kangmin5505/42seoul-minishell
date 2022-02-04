@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 18:26:49 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/04 08:07:06 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/04 11:45:52 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ struct s_envs
 	int				size;
 	char			**envp;
 	char			**paths;
+	int				exit_status;
 	struct termios	origin_tcattr;
 };
 
@@ -37,8 +38,8 @@ typedef struct s_clist
 {
 	char			*data;
 	int				on;
-	int				order;
 	int				type;
+	int				order;
 	struct s_clist	*next;
 }				t_clist;
 

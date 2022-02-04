@@ -6,11 +6,11 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:14:12 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/29 20:56:45 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/04 11:20:56 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_interpret.h"
+#include "minishell.h"
 
 t_clist	*ft_initclist(char *data, t_clist *next, int type, int on)
 {

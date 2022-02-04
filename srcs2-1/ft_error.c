@@ -6,11 +6,11 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 21:24:16 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/04 08:01:03 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/04 12:30:31 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_interpret.h"
+#include "minishell.h"
 
 int	ft_inerror(t_interpret *in, int flag)
 {
@@ -33,7 +33,10 @@ int	ft_inerror(t_interpret *in, int flag)
 
 void	ft_error(int i, t_interpret *in)
 {
+	/*
 	ft_freeinlist(in);
+	*/
+	in = 0;
 	if (i == PARSE_ERR_NODEL)
 		write(1, NODEL, ft_strlen(NODEL));
 	if (i == PARSE_ERR_CPAR)
@@ -46,5 +49,4 @@ void	ft_error(int i, t_interpret *in)
 		write(1, EMPTY, ft_strlen(EMPTY));
 	if (i == PARSE_ERR_UNFIN_CPAR)
 		write(1, UNFINCP, ft_strlen(UNFINCP));
-	exit(i);
 }
