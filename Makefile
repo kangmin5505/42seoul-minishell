@@ -6,7 +6,7 @@
 #    By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 20:38:43 by kangkim           #+#    #+#              #
-#    Updated: 2022/01/28 23:08:17 by kangkim          ###   ########.fr        #
+#    Updated: 2022/02/04 09:38:13 by kangkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,21 +26,26 @@ EXECUTER_DIR = $(SRCS_DIR)/executer
 ENVS_DIR = $(SRCS_DIR)/envs
 UTILS_DIR = $(SRCS_DIR)/utils
 INCLUDE_DIR = includes
+COMMANDS_DIR = $(SRCS_DIR)/commands
 
 SHELL_SRCS = set_shell.c read_shell.c check_line.c
 SHELL_SRCS := $(addprefix $(SHELL_DIR)/, $(SHELL_SRCS))
 
-EXECUTER_SRCS = executer.c pwd.c
+EXECUTER_SRCS = executer.c executer_utils.c
 EXECUTER_SRCS := $(addprefix $(EXECUTER_DIR)/, $(EXECUTER_SRCS))
 
-ENVS_SRCS = envs.c envs_func.c envs_utils.c
+ENVS_SRCS = envs.c envs_func.c envs_utils.c envs_utils2.c
 ENVS_SRCS := $(addprefix $(ENVS_DIR)/, $(ENVS_SRCS))
 
 UTILS_SRCS = utils.c
 UTILS_SRCS := $(addprefix $(UTILS_DIR)/, $(UTILS_SRCS))
 
+COMMANDS_SRCS = builtin_env.c builtin_exit.c builtin_echo.c builtin_cd.c \
+		builtin_pwd.c builtin_unset.c builtin_export.c
+COMMANDS_SRCS := $(addprefix $(COMMANDS_DIR)/, $(COMMANDS_SRCS))
+
 SRCS = $(SRCS_DIR)/main.c $(SHELL_SRCS) $(EXECUTER_SRCS) $(ENVS_SRCS) \
-       $(UTILS_SRCS)
+       $(UTILS_SRCS) $(COMMANDS_SRCS)
 OBJS = $(SRCS:.c=.o)
 
 SRCS2 = ft_charlist.c ft_interpret.c \
@@ -57,7 +62,6 @@ LIBHISTORY = $(LIBREADLINE_DIR)/libhistory.a
 
 all : $(NAME)
 
-# CFLAGS 추
 $(NAME) : $(OBJS) $(OBJS2) $(LIBFT) $(LIBREADLINE) $(LIBHISTORY)
 	@echo "$(_GREEN)[ Try to make $(NAME) ]$(_END)"
 	@$(CC) $(CFLAGS) -lncurses -o $@ $^

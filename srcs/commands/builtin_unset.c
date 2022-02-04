@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell.h                                            :+:      :+:    :+:   */
+/*   builtin_unset.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 16:09:26 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/03 23:14:01 by kangkim          ###   ########.fr       */
+/*   Created: 2022/02/03 13:50:59 by kangkim           #+#    #+#             */
+/*   Updated: 2022/02/03 23:29:42 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "minishell.h"
 
-# include "structure.h"
+void	builtin_unset(t_interpret *in)
+{
+	t_clist	*curr;
+	char	*name;
 
-/* set_shell.c */
-void	set_shell(void);
-void	register_signal(void);
-void	sig_handler(int signo);
-void	set_tcattr(void);
-void	exit_shell(int status);
-
-/* read_shell.c */
-void	get_shell_name(char *shell_name);
-char	*readline_shell(void);
-void	add_history_shell(const char *line);
-
-/* check_line */
-int		check_line(char *line);
-
-#endif
+	curr = in->list[0]->next;
+	if (curr != NULL)
+	{
+		name = curr->data;
+		unset_env(name);
+	}
+	g_envs->exit_status = SUCCESS;
+}

@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:03:40 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/29 11:31:45 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/03 23:24:59 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <dirent.h>
 # include <limits.h>
 # include <sys/stat.h>
+# include <errno.h>
 
 # include "readline/readline.h"
 # include "readline/history.h"
@@ -30,12 +31,15 @@
 # include "envs.h"
 # include "structure.h"
 # include "utils.h"
+# include "commands.h"
 
 /* sakim's header file */
 # include "ft_interpret.h"
 
+extern t_envs	*g_envs;
 # define TRUE	0
 # define FALSE	-1
-
+# define SUCCESS 0
+# define FAILURE 1
 
 #endif

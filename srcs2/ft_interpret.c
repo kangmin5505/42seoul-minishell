@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:51:27 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/01/26 11:33:14 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/03 21:11:05 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ int	ft_next(t_interpret **in, char **line, int i)
 {
 	/* ADD line = NULL */
 	line = NULL;
-	printf("next\n");
 	(*in)->flag = i;
 	(*in)->next = ft_initinlist();
 	*in = (*in)->next;

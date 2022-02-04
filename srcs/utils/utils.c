@@ -6,11 +6,24 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 18:45:01 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/29 12:56:08 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/03 15:58:11 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	free_args(char	**args)
+{
+	char	**temp;
+
+	temp = args;
+	while (*temp)
+	{
+		free(*temp);
+		temp++;
+	}
+	free(args);
+}
 
 char	*ft_strjoin2(char const *s1, char const *s2, const char *substr)
 {

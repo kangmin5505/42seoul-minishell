@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 18:26:49 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/29 11:24:21 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/03 23:15:09 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ struct s_envs
 	int				size;
 	char			**envp;
 	char			**paths;
+	int				exit_status;
 	struct termios	origin_tcattr;
 };
 

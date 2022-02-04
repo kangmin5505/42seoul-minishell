@@ -6,25 +6,23 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 17:15:33 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/29 11:25:34 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/04 09:21:56 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	create_envs(t_envs *envs, char **envp)
+void	fill_envs_contents(char **envp)
 {
-	int		idx;
 	t_dict	*curr;
+	int		idx;
 
-	envs->head = NULL;
-	envs->size = 0;
 	while (*envp != NULL)
 	{
-		if (envs->head == NULL)
+		if (g_envs->head == NULL)
 		{
-			envs->head = (t_dict *)malloc(sizeof(t_dict));
-			curr = envs->head;
+			g_envs->head = (t_dict *)malloc(sizeof(t_dict));
+			curr = g_envs->head;
 		}
 		else
 		{
@@ -38,19 +36,28 @@ void	create_envs(t_envs *envs, char **envp)
 		curr->value = ft_strdup(*envp + idx + 1);
 		curr->name_value = ft_strdup(*envp);
 		curr->next = NULL;
-		envs->size++;
+		g_envs->size++;
 		envp++;
 	}
-	envs->envp = get_envp(envs);
-	envs->paths = get_paths(envs);
 }
 
-void	destroy_envs(t_envs *envs)
+void	init_envs(char **envp)
+{
+	g_envs = (t_envs *)malloc(sizeof(t_envs));
+	g_envs->head = NULL;
+	g_envs->size = 0;
+	fill_envs_contents(envp);
+	g_envs->envp = get_envp();
+	g_envs->paths = get_paths();
+	g_envs->exit_status = SUCCESS;
+}
+
+void	destroy_envs(void)
 {
 	t_dict	*curr;
 	t_dict	*next;
 
-	curr = envs->head;
+	curr = g_envs->head;
 	while (curr != NULL)
 	{
 		free(curr->name);
@@ -60,5 +67,5 @@ void	destroy_envs(t_envs *envs)
 		free(curr);
 		curr = next;
 	}
-	free_args(envs->envp);
+	free_args(g_envs->envp);
 }

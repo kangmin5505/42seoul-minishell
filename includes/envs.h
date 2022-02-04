@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 16:55:53 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/29 11:19:50 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/04 09:37:36 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,25 @@
 # define ENVS_H
 
 /* envs.c */
-void	create_envs(t_envs *envs, char **envp);
-void	destroy_envs(t_envs *envs);
+void	fill_envs_contents(char **envp, t_dict **curr);
+void	init_envs(char **envp);
+void	destroy_envs(void);
 
 /* envs_func.c */
-void	env(t_envs *envs);
-char	*get_env(t_envs *envs, const char *name);
-void	set_env(t_envs *envs, char *name, char *value);
-void	unset_env(t_envs *envs, char *name);
+void	env(void);
+char	*get_env(const char *name);
+void	set_env(char *name, char *value);
+void	unset_env(char *name);
+int		get_exit_status(void);
 
 /* envs_utils.c */
 char	*join_name_value(t_dict *dict);
-char	**get_envp(t_envs *envs);
-char	**get_paths(t_envs *envs);
+char	**get_envp(void);
+char	**get_paths(void);
+
+/* envs_utils2.c */
+void	unset_env_detail(t_dict *curr, t_dict *prev, char *name);
+void	set_env_change(t_dict *curr, char *value);
+void	set_env_new(t_dict *curr, t_dict *prev, char *name, char *value);
 
 #endif

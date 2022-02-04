@@ -6,16 +6,16 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 16:12:35 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/29 11:11:38 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/03 23:37:52 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	set_shell(t_envs *envs)
+void	set_shell(void)
 {
 	register_signal();
-	set_tcattr(envs);
+	set_tcattr();
 }
 
 void	register_signal(void)
@@ -35,19 +35,19 @@ void	sig_handler(int	signo)
 	}
 }
 
-void	set_tcattr(t_envs *envs)
+void	set_tcattr(void)
 {
 	struct termios	new_tcattr;
 
-	tcgetattr(STDIN_FILENO, &(envs->origin_tcattr));
+	tcgetattr(STDIN_FILENO, &(g_envs->origin_tcattr));
 	tcgetattr(STDIN_FILENO, &new_tcattr);
 	new_tcattr.c_lflag &= ~ECHOCTL;
 	tcsetattr(STDIN_FILENO, TCSANOW, &new_tcattr);
 }
 
-void	exit_shell(t_envs *envs, int status)
+void	exit_shell(int status)
 {
-	tcsetattr(STDIN_FILENO, TCSANOW, &(envs->origin_tcattr));
+	tcsetattr(STDIN_FILENO, TCSANOW, &(g_envs->origin_tcattr));
 	ft_putstr_fd("exit\n", STDOUT_FILENO);
 	exit(status);
 }

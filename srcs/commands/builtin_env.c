@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   builtin_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/22 22:32:19 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/22 22:34:00 by kangkim          ###   ########.fr       */
+/*   Created: 2022/02/02 22:01:02 by kangkim           #+#    #+#             */
+/*   Updated: 2022/02/03 23:27:00 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	pwd(void)
+void	builtin_env(void)
 {
-	char	*pwd;
-
-	pwd = getenv("PWD");
-	printf("%s\n", pwd);
+	env();
+	g_envs->exit_status = SUCCESS;
 }
