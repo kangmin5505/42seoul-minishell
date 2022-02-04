@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:14:12 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/04 11:20:56 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/04 20:11:36 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_interpret	*ft_initinlist(void)
 	rs->son = 0;
 	rs->next = 0;
 	rs->flag = 0;
-	rs->num = 0;
+	rs->visit = 0;
 	return (rs);
 }
 

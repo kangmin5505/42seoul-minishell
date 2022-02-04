@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 00:23:14 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/04 11:19:30 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/04 20:23:23 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,28 @@ void	*ft_iterator(void *p)
 	t_interpret	*in;
 
 	in = p;
-	if (in->son)
-		return (ft_iterator(in->son));
+	if (in->son && in->visit == 0)
+	{
+		while (in->son)
+			in = in->son;
+		return (in);
+	}
 	if (in->next)
+	{
+		if (in->son)
+			in->visit = 0;
 		return (in->next);
+	}
 	if (in->parent)
+	{
+		in->parent->visit = 1;
+		if (in->son)
+			in->visit = 0;
 		return (in->parent);
-	return (0);
+	}
+	if (in->son)
+		in->visit = 0;
+	return (in->next);
 }
 
 void	ft_freeclist(t_clist *t)
