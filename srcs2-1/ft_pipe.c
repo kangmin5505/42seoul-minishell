@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 05:38:38 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/04 21:08:23 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/05 03:43:26 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	ft_processpipe(t_interpret *in, t_interpret **r)
 				if (root->son == 0)
 					ft_run(root);
 				else
-					ft_run(tmp);
+					if (tmp)
+						ft_run(tmp);
 				close(STDOUT_FILENO);
 				ret += get_exit_status();
 			}
@@ -55,17 +56,33 @@ int	ft_processpipe(t_interpret *in, t_interpret **r)
 		else if (root->flag == AND || root->flag == OR)
 		{
 			if (root->son == 0)
+			{
 				ft_run(root);
+				if (root->flag == AND)
+					ret += get_exit_status();
+				else
+					ret = get_exit_status();
+			}
 			else
-				ft_run(tmp);
-			if (root->flag == AND)
-				ret += get_exit_status();
-			else
-				ret = get_exit_status();
+			{
+				if (tmp)
+				{
+					ft_run(tmp);
+					ret += get_exit_status();
+				}
+			}
 			if (ret != 0 && root->flag == AND)
+			{
+				if (r)
+					*r = 0;
 				return (0);
+			}
 			else if (ret == 0 && root->flag == OR)
+			{
+				if (r)
+					*r = 0;
 				return (0);
+			}
 		}
 		else if (root->parent)
 		{

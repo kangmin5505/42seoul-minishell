@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:51:27 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/04 17:33:38 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/05 03:42:39 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,31 +39,30 @@ int	ft_execute(t_interpret *in, char **line, int type, int i)
 
 int	ft_savestr(t_interpret *in, char **line, int i, int type)
 {
-	int			size;
-	int			flag;
-	int			cond;
+	int			data[3];
 	char		*rs;
 	static int	n;
 
-	flag = ft_fsel0(i);
-	if (flag == SPACE)
-		size = ft_while2(*line);
+	data[0] = ft_fsel0(i);
+	if (data[0] == SPACE)
+		data[2] = ft_while2(*line);
 	else
-		size = ft_while(*line, flag, OFF, END);
-	if (size < 0)
+		data[2] = ft_while(*line, data[0], OFF, END);
+	if (data[2] < 0)
 		return (PARSE_ERR_UNFIN_Q);
-	rs = ft_strcpy(*line, 0, size, 0);
-	*line += size;
-	cond = (((flag == SPACE) && (**line == DQUOTE || **line == QUOTE))) * 2
-		+ (((flag == DQUOTE || flag == QUOTE))
+	rs = ft_strcpy(*line, 0, data[2], 0);
+	*line += data[2];
+	data[1] = (((data[0] == SPACE) && (**line == DQUOTE || **line == QUOTE)))
+		* 2 + (((data[0] == DQUOTE || data[0] == QUOTE))
 			&& (*(*line + 1) == DQUOTE || *(*line + 1)
-				== QUOTE || ((*(*line + 1) != SPACE) && *(*line + 1) != 0))) * 3;
-	if (flag == DQUOTE || flag == QUOTE)
+				== QUOTE || ((*(*line + 1) != SPACE)
+					&& *(*line + 1) != 0))) * 3;
+	if (data[0] == DQUOTE || data[0] == QUOTE)
 		*line += 1;
-	ft_linklist(in->list[ft_fsel1(type)], rs, flag, cond);
+	ft_linklist(in->list[ft_fsel1(type)], rs, data[0], data[1]);
 	in->list[ft_fsel1(type)]->order = n++;
-	if (cond)
-		return (ft_execute(in, line, type, cond));
+	if (data[1])
+		return (ft_execute(in, line, type, data[1]));
 	return (SUCCESS_A);
 }
 
