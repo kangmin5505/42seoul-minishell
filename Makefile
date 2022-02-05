@@ -6,7 +6,7 @@
 #    By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 20:38:43 by kangkim           #+#    #+#              #
-#    Updated: 2022/02/04 17:31:23 by kangkim          ###   ########.fr        #
+#    Updated: 2022/02/06 00:45:53 by kangkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,9 @@ SHELL_DIR = $(SRCS_DIR)/shell
 EXECUTER_DIR = $(SRCS_DIR)/executer
 ENVS_DIR = $(SRCS_DIR)/envs
 UTILS_DIR = $(SRCS_DIR)/utils
-INCLUDE_DIR = includes
 COMMANDS_DIR = $(SRCS_DIR)/commands
+REDIRECTIONS_DIR = $(SRCS_DIR)/redirections
+INCLUDE_DIR = includes
 
 SHELL_SRCS = set_shell.c read_shell.c check_line.c
 SHELL_SRCS := $(addprefix $(SHELL_DIR)/, $(SHELL_SRCS))
@@ -44,8 +45,11 @@ COMMANDS_SRCS = builtin_env.c builtin_exit.c builtin_echo.c builtin_cd.c \
 		builtin_pwd.c builtin_unset.c builtin_export.c
 COMMANDS_SRCS := $(addprefix $(COMMANDS_DIR)/, $(COMMANDS_SRCS))
 
+REDIRECTIONS_SRCS = redirections_cmd.c output_redirections.c input_redirections.c
+REDIRECTIONS_SRCS := $(addprefix $(REDIRECTIONS_DIR)/, $(REDIRECTIONS_SRCS))
+
 SRCS = $(SRCS_DIR)/main.c $(SHELL_SRCS) $(EXECUTER_SRCS) $(ENVS_SRCS) \
-       $(UTILS_SRCS) $(COMMANDS_SRCS)
+       $(UTILS_SRCS) $(COMMANDS_SRCS) $(REDIRECTIONS_SRCS)
 OBJS = $(SRCS:.c=.o)
 
 SRCS2 = ft_charlist.c ft_interpret.c \

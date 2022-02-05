@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 09:31:31 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/04 12:42:55 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/05 23:06:58 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	print_echo(t_clist *arg)
 	while (arg != NULL)
 	{
 		ft_putstr_fd(arg->data, STDOUT_FILENO);
-		if (arg->next != NULL)
+		if (arg->data != NULL && arg->next != NULL)
 			ft_putstr_fd(" ", STDOUT_FILENO);
 		arg = arg->next;
 	}
@@ -45,7 +45,7 @@ void	builtin_echo(t_interpret *in)
 	char	*option_n;
 
 	arg = in->list[0]->next;
-	if (arg == NULL)
+	if (arg == NULL || arg->data == NULL)
 		return ;
 	option_n = arg->data;
 	if (check_option_n(option_n) == TRUE)

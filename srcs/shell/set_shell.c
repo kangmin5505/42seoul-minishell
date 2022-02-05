@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 16:12:35 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/03 23:37:52 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/05 11:43:50 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	register_signal(void)
 
 void	sig_handler(int	signo)
 {
-	if (signo == SIGINT)
+	if (signo)
 	{
 		ft_putstr_fd("\n", STDOUT_FILENO);
 		rl_on_new_line();

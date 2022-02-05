@@ -6,58 +6,11 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 19:29:32 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/04 19:03:51 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/05 21:31:17 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-char	**get_argv(t_interpret *in)
-{
-	char	**argv;
-	t_clist	*curr;
-	int		size;
-	int		idx;
-
-	curr = in->list[0];
-	size = 0;
-	while (curr)
-	{
-		size++;
-		curr = curr->next;
-	}
-	argv = (char **)malloc(sizeof(char *) * (size + 1));
-	idx = 0;
-	curr = in->list[0];
-	while (idx < size)
-	{
-		argv[idx] = ft_strdup(curr->data);
-		idx++;
-		curr = curr->next;
-	}
-	argv[idx] = NULL;
-	return (argv);
-}
-
-char	*find_path(char *cmd)
-{
-	char		**paths;
-	char		*path;
-	struct stat	buf;
-
-	if (stat(cmd, &buf) == 0)
-		return (cmd);
-	paths = g_envs->paths;
-	while (*paths)
-	{
-		path = ft_strjoin2(*paths, cmd, "/");
-		if (stat(path, &buf) == 0)
-			return (path);
-		free(path);
-		paths++;
-	}
-	return (NULL);
-}
 
 void	external_cmd(char *cmd, char **argv)
 {
@@ -84,18 +37,19 @@ void	external_cmd(char *cmd, char **argv)
 	}
 	else
 	{
-		waitpid(pid, &wstatus, WUNTRACED);
+		waitpid(pid, &wstatus, 0);
 		g_envs->exit_status = WEXITSTATUS(wstatus);
 	}
 }
 
-void	ft_run(t_interpret *in)
+void	execute_cmd(t_interpret *in)
 {
+
 	char	**argv;
 	char	*cmd;
 
 	argv = get_argv(in);
-	cmd = in->list[0]->data;
+	cmd = in->list[DATA]->data;
 	if (ft_strcmp("echo", cmd) == 0)
 		builtin_echo(in);
 	else if (ft_strcmp("cd", cmd) == 0)
@@ -112,7 +66,14 @@ void	ft_run(t_interpret *in)
 		builtin_exit(in);
 	else
 		external_cmd(cmd, argv);
-	ft_putstr_fd("exit_status : ", STDERR_FILENO);
-	ft_putendl_fd(ft_itoa(get_exit_status()), STDERR_FILENO);
 	free_args(argv);
+}
+
+void	ft_run(t_interpret *in)
+{
+	if (in->list[I]->data != NULL || in->list[DI]->data != NULL \
+		|| in->list[O]->data != NULL || in->list[DO]->data != NULL)
+		redirections_cmd(in);
+	else
+		execute_cmd(in);
 }

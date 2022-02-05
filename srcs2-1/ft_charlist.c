@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:14:12 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/04 20:11:36 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/05 19:54:48 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_clist	*ft_initclist(char *data, t_clist *next, int type, int on)
 	rs->data = data;
 	rs->next = next;
 	rs->type = type;
+	rs->order = 0;
 	rs->on = on;
 	return (rs);
 }

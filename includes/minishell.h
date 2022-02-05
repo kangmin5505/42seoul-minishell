@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:03:40 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/04 14:15:18 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/06 00:45:26 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # include "utils.h"
 # include "ft_interpret.h"
 # include "ft_errcode.h"
+# include "redirections.h"
 
 extern t_envs *g_envs;
 
@@ -41,5 +42,6 @@ extern t_envs *g_envs;
 # define FALSE	-1
 # define SUCCESS 0
 # define FAILURE 1
+# define BUFFER_SIZE 1024
 
 #endif
