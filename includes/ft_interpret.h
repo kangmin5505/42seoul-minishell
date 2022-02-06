@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:14:23 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/07 05:33:05 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/07 05:43:44 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,8 @@ int			ft_getsign(int i);
 void		ft_rtow(int a, int b);
 int			ft_sub(t_interpret *in);
 t_interpret	*ft_innext(t_interpret *in, int i);
+char		*ft_substitute(char *str);
+char		*ft_val(char **t, int type);
+void		ft_valpret_all(t_interpret *in);
+void		ft_valpret(t_clist *t, int flag);
 #endif
