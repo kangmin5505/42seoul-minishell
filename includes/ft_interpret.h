@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:14:23 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/06 21:49:21 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/07 05:33:05 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,8 @@ void		ft_processline(char *line);
 t_interpret	*ft_prepipeall(t_interpret *in);
 void		ft_error(int i, t_interpret *in);
 int			ft_pipelen(t_interpret *in);
+int			ft_getsign(int i);
+void		ft_rtow(int a, int b);
+int			ft_sub(t_interpret *in);
+t_interpret	*ft_innext(t_interpret *in, int i);
 #endif

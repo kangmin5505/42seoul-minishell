@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:47:59 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/07 05:03:03 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/07 05:37:58 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_processline(char *line)
 	if (i < 0)
 	{
 		ft_error(i, in);
-		exit(0) ;
+		return ;
 	}
 	ft_valpret_all(in);
 	ft_merge(in);
