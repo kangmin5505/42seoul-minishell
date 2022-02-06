@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 05:38:38 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/07 06:09:41 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/07 08:10:42 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	ft_processpipe(t_interpret *in)
 	while (root)
 	{
 		if (root->stype == PIPELINE)
-			ret = ft_forkpipe(in->son);
+			ret = ft_forkpipe(root->son);
 		if (root->flag == AND || root->flag == OR)
 		{
 			if (ft_flagandor(root, ret))
