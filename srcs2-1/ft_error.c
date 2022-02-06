@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 21:24:16 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/04 12:30:31 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/07 05:10:12 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,17 @@ int	ft_inerror(t_interpret *in, int flag)
 
 void	ft_error(int i, t_interpret *in)
 {
-	/*
 	ft_freeinlist(in);
-	*/
-	in = 0;
 	if (i == PARSE_ERR_NODEL)
 		write(1, NODEL, ft_strlen(NODEL));
 	if (i == PARSE_ERR_CPAR)
 		write(1, CP, ft_strlen(CP));
 	if (i == PARSE_ERR_UNFIN_CPAR)
 		write(1, UNFINCP, ft_strlen(UNFINCP));
+	if (i == PARSE_ERR_UNFIN_P)
+		write(1, UNFINP, ft_strlen(UNFINP));
 	if (i == PARSE_ERR_UNFIN_Q)
 		write(1, UNFINQ, ft_strlen(UNFINQ));
 	if (i == PARSE_ERR_EMPTYNEXT)
 		write(1, EMPTY, ft_strlen(EMPTY));
-	if (i == PARSE_ERR_UNFIN_CPAR)
-		write(1, UNFINCP, ft_strlen(UNFINCP));
 }

@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:47:59 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/07 04:44:15 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/07 05:03:03 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,15 @@ void	ft_processline(char *line)
 	in = ft_initinlist();
 	i = ft_interpret(&in, &line);
 	if (i < 0)
+	{
 		ft_error(i, in);
+		exit(0) ;
+	}
 	ft_valpret_all(in);
 	ft_merge(in);
 	root.next = in;
 	ft_prepipeall(&root);
 	in = root.next;
 	ft_processpipe(in);
+	ft_freeinlist(in);
 }

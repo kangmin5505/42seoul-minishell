@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 00:23:14 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/04 20:23:23 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/07 05:01:36 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,15 @@ void	ft_freeinlist(t_interpret *in)
 	while (in)
 	{
 		i = -1;
+		if (in->son)
+			ft_freeinlist(in->son);
 		while (++i < 5)
-			ft_freeclist(in->list[i]);
+		{
+			if (in->list[i])
+				ft_freeclist(in->list[i]);
+		}
 		tmp = in;
-		in = (t_interpret *)ft_iterator(in);
+		in = in->next;
 		free(tmp);
 	}
 }
