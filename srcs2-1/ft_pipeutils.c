@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 05:31:18 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/07 05:33:28 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/07 06:09:27 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,29 @@ t_interpret	*ft_innext(t_interpret *in, int i)
 	while (++x < i && in)
 		in = in->next;
 	return (in);
+}
+
+int	ft_forkpipeline(void)
+{
+	int	fd[2];
+	int	pid;
+
+	if (pipe(fd) < 0)
+		exit(-1);
+	pid = fork();
+	if (pid < 0)
+		exit(-1);
+	if (pid)
+	{
+		close(fd[1]);
+		dup2(fd[0], 0);
+		close(fd[0]);
+	}
+	else
+	{
+		close(fd[0]);
+		dup2(fd[1], 1);
+		close(fd[1]);
+	}
+	return (pid);
 }

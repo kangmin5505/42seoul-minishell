@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 05:38:38 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/07 05:33:35 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/07 06:09:41 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,15 @@
 int	ft_pipeline(t_interpret *in)
 {
 	int	i;
-	int	fd[2];
-	int	pid;
 	int	stat;
 
 	i = ft_pipelen(in);
 	while (--i)
 	{
-		if (pipe(fd) < 0)
-			exit(-1);
-		pid = fork();
-		if (pid < 0)
-			exit(-1);
-		if (pid)
+		if (ft_forkpipeline())
 		{
-			close(fd[1]);
-			dup2(fd[0], 0);
-			close(fd[0]);
 			wait(&stat);
 			break ;
-		}
-		else
-		{
-			close(fd[0]);
-			dup2(fd[1], 1);
-			close(fd[1]);
 		}
 	}
 	in = ft_innext(in, i);
