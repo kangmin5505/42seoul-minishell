@@ -6,7 +6,7 @@
 #    By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 20:38:43 by kangkim           #+#    #+#              #
-#    Updated: 2022/02/07 05:39:17 by gimsang-w        ###   ########.fr        #
+#    Updated: 2022/02/07 05:44:33 by gimsang-w        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ OBJS = $(SRCS:.c=.o)
 SRCS2 = ft_charlist.c ft_interpret.c \
 	 ft_strutils.c ft_strutils2.c ft_procedure.c ft_select.c \
 	 ft_while.c ft_pipe.c ft_free.c ft_charlist.c ft_process.c \
-	 ft_error.c ft_preprocess.c ft_pipeutils.c
+	 ft_error.c ft_preprocess.c ft_pipeutils.c ft_valueinterpret.c
 SRCS2 := $(addprefix $(SRCS2_DIR)/, $(SRCS2))
 OBJS2 = $(SRCS2:.c=.o)
 
