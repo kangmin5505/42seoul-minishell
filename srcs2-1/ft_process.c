@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:47:59 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/05 21:19:22 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/07 04:44:15 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	ft_processline(char *line)
 {
 	t_interpret	*in;
-	int	i;
+	t_interpret	root;
+	int			i;
 
 	in = ft_initinlist();
 	i = ft_interpret(&in, &line);
@@ -23,7 +24,8 @@ void	ft_processline(char *line)
 		ft_error(i, in);
 	ft_valpret_all(in);
 	ft_merge(in);
-	//ft_printcmds(in, 0);
-	//ft_delimeters(in); 시험이필요한부분
-	ft_processpipe(in, 0);
+	root.next = in;
+	ft_prepipeall(&root);
+	in = root.next;
+	ft_processpipe(in);
 }

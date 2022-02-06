@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:14:12 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/05 19:54:48 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/07 02:50:55 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ t_clist	*ft_initclist(char *data, t_clist *next, int type, int on)
 	rs->data = data;
 	rs->next = next;
 	rs->type = type;
-	rs->order = 0;
 	rs->on = on;
+	rs->order = 0;
 	return (rs);
 }
 
@@ -40,6 +40,7 @@ t_interpret	*ft_initinlist(void)
 	rs->next = 0;
 	rs->flag = 0;
 	rs->visit = 0;
+	rs->stype = 0;
 	return (rs);
 }
 
@@ -68,14 +69,11 @@ void	ft_printcmds(t_interpret *in, int depth)
 	{
 		if (in->son)
 			ft_printcmds(in->son, depth + 1);
-		if (in->son == 0)
-		{
-			printf("\n<--- depth->%d %dth cmd start --->\n", depth, i);
-			j = -1;
-			while (++j < 5)
-				ft_printdatas(in->list[j], i, j);
-			printf("\n<--- depth->%d  %dth cmd end --->\n", depth, i);
-		}
+		printf("\n<--- depth->%d %dth cmd start --->\n", depth, i);
+		j = -1;
+		while (++j < 5)
+			ft_printdatas(in->list[j], i, j);
+		printf("\n<--- depth->%d  %dth cmd end --->\n", depth, i);
 		in = in->next;
 		++i;
 	}

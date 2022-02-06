@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 21:15:36 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/04 17:34:00 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/06 20:21:41 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	ft_parentis(t_interpret *in, char **list)
 {
 	int	rs;
 
+	in->stype = SUBSHELL;
 	in->son = ft_initinlist();
 	in->son->parent = in;
 	rs = ft_interpret(&(in->son), list);

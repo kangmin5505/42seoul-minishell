@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:14:23 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/04 12:06:14 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/06 21:49:21 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 # define FT_INTERPRET_H
 
+# define PIPELINE 1
+# define SUBSHELL 2
 
 # define Q 1
 # define DQ 2
@@ -76,7 +78,9 @@ void		ft_delimeters(t_interpret *in);
 void		ft_deltotmp(char *del);
 void		ft_valpret_all(t_interpret *in);
 void		ft_valpret(t_clist *t, int flag);
-int			ft_processpipe(t_interpret *in, t_interpret **r);
+int			ft_processpipe(t_interpret *in);
 void		ft_processline(char *line);
+t_interpret	*ft_prepipeall(t_interpret *in);
 void		ft_error(int i, t_interpret *in);
+int			ft_pipelen(t_interpret *in);
 #endif

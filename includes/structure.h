@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 18:26:49 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/04 21:37:18 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/07 04:42:37 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_interpret
 {
 	int					flag;
 	int					visit;
+	int					stype;
 	struct s_clist		*list[5];
 	struct s_interpret	*next;
 	struct s_interpret	*son ;
