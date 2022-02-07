@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:56:42 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/05 21:30:02 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/07 11:01:12 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,14 @@ char	**get_argv(t_interpret *in)
 		curr = curr->next;
 	}
 	argv = (char **)malloc(sizeof(char *) * (size + 1));
-	idx = 0;
+	idx = -1;
 	curr = in->list[0];
-	while (idx < size)
+	while (++idx < size)
 	{
 		if (curr->data != NULL)
 			argv[idx] = ft_strdup(curr->data);
 		else
 			argv[idx] = ft_strdup("");
-		idx++;
 		curr = curr->next;
 	}
 	argv[idx] = NULL;
@@ -68,4 +67,3 @@ char	*find_path(char *cmd)
 	}
 	return (NULL);
 }
-

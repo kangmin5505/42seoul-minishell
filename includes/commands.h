@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 22:24:59 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/03 23:13:02 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/07 10:58:42 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,14 @@ void	builtin_pwd(void);
 void	builtin_unset(t_interpret *in);
 
 /* builtin_export.c */
+void	set_export_var(char *arg);
+void	execute_export(t_interpret *in);
+void	builtin_export(t_interpret *in);
+
+/* builtin_export_sub.c */
+void	print_export_error(char *arg);
 void	print_all_declares(void);
 int		is_valid_var_name(char *arg);
 int		get_equal_idx(char *arg);
-void	print_export_error(char *arg);
-void	builtin_export(t_interpret *in);
 
 #endif

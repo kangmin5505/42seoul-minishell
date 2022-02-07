@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 00:44:04 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/06 00:45:07 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/07 11:02:31 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,3 @@ void	open_input_redirection(t_clist *file)
 	dup2(fd, STDIN_FILENO);
 	close(fd);
 }
-

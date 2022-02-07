@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:27:41 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/06 00:45:12 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/07 11:02:22 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	output_redirections(t_interpret *in)
 
 void	redirections_cmd(t_interpret *in)
 {
-	int	input_backup_fd;
-	int	output_backup_fd;
+	int		input_backup_fd;
+	int		output_backup_fd;
 	char	*last_doublein_file;
 
 	input_backup_fd = dup(STDIN_FILENO);

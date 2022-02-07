@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 21:09:06 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/05 23:53:55 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/07 10:49:22 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	open_output_redirection(t_clist *file, int type)
 	int		fd;
 
 	file_name = file->data;
+	ft_putendl_fd(file_name, STDERR_FILENO);
 	if (type == O)
 		fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	else
@@ -30,8 +31,11 @@ void	trunc_file(char *file_name)
 {
 	int	fd;
 
-	fd = open(file_name, O_TRUNC);
-	close(fd);
+	if (file_name != NULL)
+	{
+		fd = open(file_name, O_TRUNC);
+		close(fd);
+	}
 }
 
 t_clist	*get_last_output(t_interpret *in, int type)

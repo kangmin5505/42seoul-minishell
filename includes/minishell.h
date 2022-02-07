@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:03:40 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/06 00:45:26 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/07 10:53:08 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # include "ft_errcode.h"
 # include "redirections.h"
 
-extern t_envs *g_envs;
+extern t_envs	*g_envs;
 
 # define TRUE	0
 # define FALSE	-1

@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 19:29:32 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/05 21:31:17 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/07 10:59:58 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ void	external_cmd(char *cmd, char **argv)
 	int		wstatus;
 
 	pid = fork();
-	if (pid == -1)
-		perror(strerror(errno));
-	else if (pid == 0)
+	if (pid == 0)
 	{
 		path = find_path(cmd);
 		if (path == NULL)
@@ -44,13 +42,14 @@ void	external_cmd(char *cmd, char **argv)
 
 void	execute_cmd(t_interpret *in)
 {
-
 	char	**argv;
 	char	*cmd;
 
 	argv = get_argv(in);
 	cmd = in->list[DATA]->data;
-	if (ft_strcmp("echo", cmd) == 0)
+	if (cmd == NULL)
+		;
+	else if (ft_strcmp("echo", cmd) == 0)
 		builtin_echo(in);
 	else if (ft_strcmp("cd", cmd) == 0)
 		builtin_cd(in);

@@ -6,7 +6,7 @@
 #    By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 20:38:43 by kangkim           #+#    #+#              #
-#    Updated: 2022/02/07 05:44:33 by gimsang-w        ###   ########.fr        #
+#    Updated: 2022/02/07 10:55:53 by kangkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ UTILS_SRCS = utils.c
 UTILS_SRCS := $(addprefix $(UTILS_DIR)/, $(UTILS_SRCS))
 
 COMMANDS_SRCS = builtin_env.c builtin_exit.c builtin_echo.c builtin_cd.c \
-		builtin_pwd.c builtin_unset.c builtin_export.c
+		builtin_pwd.c builtin_unset.c builtin_export.c builtin_export_sub.c
 COMMANDS_SRCS := $(addprefix $(COMMANDS_DIR)/, $(COMMANDS_SRCS))
 
 REDIRECTIONS_SRCS = redirections_cmd.c output_redirections.c input_redirections.c

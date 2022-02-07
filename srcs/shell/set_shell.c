@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 16:12:35 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/05 11:43:50 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/07 11:01:41 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	register_signal(void)
 	signal(SIGQUIT, SIG_IGN);
 }
 
-void	sig_handler(int	signo)
+void	sig_handler(int signo)
 {
 	if (signo)
 	{
