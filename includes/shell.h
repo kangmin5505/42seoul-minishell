@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 16:09:26 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/03 23:14:01 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/07 11:25:36 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,5 @@ void	exit_shell(int status);
 void	get_shell_name(char *shell_name);
 char	*readline_shell(void);
 void	add_history_shell(const char *line);
-
-/* check_line */
-int		check_line(char *line);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 09:31:31 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/05 23:06:58 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/07 14:40:24 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ void	builtin_echo(t_interpret *in)
 
 	arg = in->list[0]->next;
 	if (arg == NULL || arg->data == NULL)
+	{
+		ft_putstr_fd("\n", STDOUT_FILENO);
 		return ;
+	}
 	option_n = arg->data;
 	if (check_option_n(option_n) == TRUE)
 	{

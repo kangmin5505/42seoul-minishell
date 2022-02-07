@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 22:10:45 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/03 23:31:40 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/07 17:12:21 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,52 +29,64 @@ int	get_argc(t_interpret *in)
 
 void	print_exit_error_1(void)
 {
+	ft_putendl_fd("exit", STDOUT_FILENO);
+	g_envs->exit_status = 1;
 	ft_putendl_fd("minishell: exit: too many arguments", STDERR_FILENO);
 }
 
 void	print_exit_error_255(char *arg)
 {
+	g_envs->exit_status = 255;
+	ft_putendl_fd("exit", STDOUT_FILENO);
 	ft_putstr_fd("minishell: exit: ", STDERR_FILENO);
 	ft_putstr_fd(arg, STDERR_FILENO);
 	ft_putendl_fd(": numeric argument required", STDERR_FILENO);
 }
 
-int	is_numeric_arg(char *arg)
+t_clist	*get_not_numeric_arg(t_interpret *in)
 {
-	while (*arg != '\0')
+	t_clist	*curr;
+	int		idx;
+
+	curr = in->list[0]->next;
+	while (curr != NULL)
 	{
-		if (ft_isdigit(*arg) == 0)
-			return (FALSE);
-		arg++;
+		idx = 0;
+		while (curr->data[idx] != '\0')
+		{
+			if (ft_isdigit(curr->data[idx]) == 0)
+				return (curr);
+			idx++;
+		}
+		curr = curr->next;
 	}
-	return (TRUE);
+	return (NULL);
 }
 
 void	builtin_exit(t_interpret *in)
 {
 	int		argc;
-	char	*arg;
+	t_clist	*not_numeric_arg;
 
 	argc = get_argc(in);
 	if (argc > 1)
 	{
-		ft_putendl_fd("exit", STDOUT_FILENO);
-		g_envs->exit_status = 1;
-		print_exit_error_1();
+		not_numeric_arg = get_not_numeric_arg(in);
+		if (not_numeric_arg != NULL)
+			print_exit_error_255(not_numeric_arg->data);
+		else
+			print_exit_error_1();
 	}
 	else
 	{
 		if (argc == 1)
 		{
-			arg = in->list[0]->next->data;
-			if (is_numeric_arg(arg) == FALSE)
-			{
-				g_envs->exit_status = 255;
-				print_exit_error_255(arg);
-			}
+			not_numeric_arg = get_not_numeric_arg(in);
+			if (not_numeric_arg != NULL)
+				print_exit_error_255(in->list[0]->next->data);
+			else
+				g_envs->exit_status = ft_atoi(in->list[0]->next->data);
 		}
-		else
-			g_envs->exit_status = SUCCESS;
 		exit_shell(g_envs->exit_status);
 	}
 }

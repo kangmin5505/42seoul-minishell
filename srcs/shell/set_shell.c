@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 16:12:35 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/07 11:01:41 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/07 16:40:10 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	set_tcattr(void)
 void	exit_shell(int status)
 {
 	tcsetattr(STDIN_FILENO, TCSANOW, &(g_envs->origin_tcattr));
-	ft_putstr_fd("exit\n", STDOUT_FILENO);
+	destroy_envs();
+	ft_putstr_fd("good bye\n", STDOUT_FILENO);
 	exit(status);
 }

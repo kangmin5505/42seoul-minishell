@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 22:24:59 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/07 10:58:42 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/07 17:01:08 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	builtin_env(void);
 void	builtin_exit(t_interpret *in);
 void	print_exit_error_1(void);
 void	print_exit_error_255(char *arg);
-int		is_numeric_arg(char *arg);
+t_clist	*get_not_numeric_arg(t_interpret *in);
 int		get_argc(t_interpret *in);
 
 /* builtin_echo.c */

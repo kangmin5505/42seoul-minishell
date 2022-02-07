@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:47:59 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/07 06:25:54 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/07 12:54:57 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,12 @@ void	ft_processline(char *line)
 		ft_error(i, in);
 		return ;
 	}
+	//printf("begin ft_valpret_all\n");
 	ft_valpret_all(in);
+	//system("leaks minishell");
+	//printf("begin ft_valpret_all\n");
 	ft_merge(in);
+	//system("leaks minishell");
 	root.next = in;
 	ft_prepipeall(&root);
 	in = root.next;
