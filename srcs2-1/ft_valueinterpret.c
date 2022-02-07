@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 05:41:15 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/07 12:54:03 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/07 22:23:11 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@ char	*ft_substitute(char *str)
 	char	*rs;
 	int		code;
 	char	*tmp;
+	char	*tmp2;
 
 	rs = 0;
 	code = NOVAR;
 	while (*str || code == VAR)
 	{
 		tmp = ft_val(&str, code);
+		tmp2 = rs;
 		rs = ft_strjoin(rs, tmp);
+		free(tmp2);
 		free(tmp);
 		if (*str == '$')
 		{
@@ -59,6 +62,8 @@ char	*ft_var(char **t)
 	n = ft_strcpy(t[0], 0, s, 0);
 	tmp = get_env(n);
 	rs = ft_strcpy(tmp, 0, ft_strlen(tmp), 0);
+	if (tmp)
+		free(tmp);
 	t[0] += s;
 	return (rs);
 }
@@ -108,6 +113,7 @@ void	ft_valpret(t_clist *t, int flag)
 	char	*data;
 	char	*tmp;
 	int		type;
+	char	*tmp2;
 
 	tmp = 0;
 	while (t)
@@ -126,6 +132,7 @@ void	ft_valpret(t_clist *t, int flag)
 					tmp = ft_substitute(data);
 			}
 		}
+		tmp2 = t->data;
 		t->data = tmp;
 		t = t->next;
 	}

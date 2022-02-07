@@ -6,11 +6,18 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 00:23:14 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/07 05:01:36 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/07 22:19:58 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+t_clist	*ft_last(t_clist *t)
+{
+	while (t->next)
+		t = t->next;
+	return (t);
+}
 
 void	*ft_iterator(void *p)
 {

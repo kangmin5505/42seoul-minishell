@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:14:23 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/07 10:54:03 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/07 22:20:34 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,5 @@ char		*ft_val(char **t, int type);
 void		ft_valpret_all(t_interpret *in);
 void		ft_valpret(t_clist *t, int flag);
 int			ft_forkpipeline(void);
+t_clist		*ft_last(t_clist *t);
 #endif

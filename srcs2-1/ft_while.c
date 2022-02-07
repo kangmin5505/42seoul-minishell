@@ -6,93 +6,109 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 21:10:00 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/07 06:22:58 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/07 23:59:06 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+int		ft_getonsize(t_clist *c)
+{
+	int	i;
+
+	i = 0;
+	while (c->on)
+	{
+		c = c->next;
+		++i;
+	}
+	return (i);
+}
+
+t_clist	*ft_gettotal(t_clist *c)
+{
+	int		n;
+	char	*rs;
+	t_clist	*r;
+	int		len;
+
+	n = -1;
+	len = 0;
+	while (c->on)
+	{
+		len += ft_strlen(c->data);
+		c = c->next;
+	}
+	len += ft_strlen(c->data);
+	rs = (char *)malloc(sizeof(char) * (len + 1));
+	r = ft_initclist(rs, c->next, 0, 0);
+	rs[len] = 0;
+	return (r);
+}
+
+t_clist	*ft_mergestr(t_clist *c)
+{
+	int			n[4];
+	int			len;
+	t_clist		*r[3];
+
+	r[0] = c;
+	n[0] = -1;
+	n[2] = -1;
+	len = 0;
+	r[1] = ft_gettotal(c);
+	n[3] = ft_getonsize(c);
+	while (++n[0] <= n[3])
+	{
+		n[1] = -1;
+		len = ft_strlen(r[0]->data);
+		while (++n[1] < len)
+			r[1]->data[++n[2]] = r[0]->data[n[1]];
+		r[2] = r[0];
+		if (r[2]->data)
+			free(r[2]->data);
+		r[0] = r[0]->next;
+		free(r[2]);
+	}
+	return (r[1]);
+}
+
 t_clist	*ft_merge_list(t_clist *s)
 {
-	t_clist	*t[2];
-	char	*data[2];
-	int		order;
+	t_clist	*root;
+	t_clist	*prev;
 
-	data[0] = 0;
-	order = 0;
-	t[0] = s;
-	while (t[0])
+	prev = s;
+	root = s->next;
+	while (root)
 	{
-		t[1] = t[0];
-		if (t[0]->on)
-		{
-			data[1] = data[0];
-			if (!data[0])
-			{
-				data[0] = ft_strjoin(t[0]->data, t[0]->next->data);
-				order = t[0]->order;
-				if (t[0]->data)
-					free(t[0]->data);
-			}
-			else
-				data[0] = ft_strjoin(data[0], t[0]->next->data);
-			if (t[0]->next->data)
-				free(t[0]->next->data);
-			if (data[1])
-				free(data[1]);
-		}
-		else
-			break ;
-		t[0] = t[0]->next;
-		free(t[1]);
+		if (root->on)
+			root = ft_mergestr(root);
+		prev->next = root;
+		prev = root;
+		root = root->next;
 	}
-	t[1] = t[0];
-	if (t[0] == s)
-		return (s);
-	t[0] = ft_initclist(data[0], 0, 0, 0);
-	t[0]->order = order;
-	if (t[1])
-		t[0]->next = t[1]->next;
-	else
-		t[0]->next = 0;
-	if (t[1])
-		free(t[1]);
-	return (t[0]);
+	return (s->next);
 }
 
 void	ft_merge(t_interpret *in)
 {
-	t_interpret	*root;
-	t_clist		*a[3];
-	int			i;
+	t_clist	t;
+	int		i;
 
-	root = in;
-	while (root)
+	while (in)
 	{
+		if (in->son)
+			ft_merge(in->son);
 		i = -1;
 		while (++i < 5)
 		{
-			a[0] = 0;
-			a[1] = root->list[i];
-			while (a[1])
+			if (in->list[i])
 			{
-				if (a[0])
-				{
-					a[0]->next = ft_merge_list(a[1]);
-					a[0] = a[0]->next;
-				}
-				else
-				{
-					a[0] = ft_merge_list(a[1]);
-					a[2] = a[0];
-				}
-				if (a[0])
-					a[1] = a[0]->next;
-				else
-					a[1] = 0;
+				t.next = in->list[i];
+				in->list[i] = ft_merge_list(&t);
 			}
-			root->list[i] = a[2];
 		}
-		root = ft_iterator(root);
+		in = in->next;
 	}
 }

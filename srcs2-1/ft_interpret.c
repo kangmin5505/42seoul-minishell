@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:51:27 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/05 03:42:39 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/08 00:03:54 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	ft_savestr(t_interpret *in, char **line, int i, int type)
 		data[2] = ft_while(*line, data[0], OFF, END);
 	if (data[2] < 0)
 		return (PARSE_ERR_UNFIN_Q);
+	printf("%d, %d\n", data[0], data[2]);
 	rs = ft_strcpy(*line, 0, data[2], 0);
 	*line += data[2];
 	data[1] = (((data[0] == SPACE) && (**line == DQUOTE || **line == QUOTE)))
@@ -60,7 +61,7 @@ int	ft_savestr(t_interpret *in, char **line, int i, int type)
 	if (data[0] == DQUOTE || data[0] == QUOTE)
 		*line += 1;
 	ft_linklist(in->list[ft_fsel1(type)], rs, data[0], data[1]);
-	in->list[ft_fsel1(type)]->order = n++;
+	ft_last(in->list[ft_fsel1(type)])->order = n++;
 	if (data[1])
 		return (ft_execute(in, line, type, data[1]));
 	return (SUCCESS_A);
