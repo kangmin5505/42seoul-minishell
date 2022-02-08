@@ -6,11 +6,20 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 19:29:32 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/07 12:03:27 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/08 22:52:41 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	error_cmd(char *cmd)
+{
+	if (get_env("PATH"))
+		print_external_cmd_error(cmd);
+	else
+		print_perror(cmd, strerror(errno));
+	exit(127);
+}
 
 void	external_cmd(char *cmd, char **argv)
 {
@@ -23,14 +32,11 @@ void	external_cmd(char *cmd, char **argv)
 	{
 		path = find_path(cmd);
 		if (path == NULL)
-		{
-			print_external_cmd_error(cmd);
-			exit(127);
-		}
+			error_cmd(cmd);
 		else
 		{
 			execve(path, argv, g_envs->envp);
-			perror(strerror(errno));
+			print_perror(cmd, strerror(errno));
 		}
 	}
 	else

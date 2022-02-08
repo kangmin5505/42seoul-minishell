@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 21:09:06 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/07 18:12:53 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/08 21:49:53 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	trunc_file(char *file_name)
 
 	if (file_name != NULL)
 	{
-		fd = open(file_name, O_TRUNC);
+		fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC);
 		close(fd);
 	}
 }

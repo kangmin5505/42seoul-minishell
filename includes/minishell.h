@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:03:40 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/07 11:15:22 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/08 22:29:51 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ extern t_envs	*g_envs;
 # define SUCCESS 0
 # define FAILURE 1
 # define BUFFER_SIZE 1024
+# define SHELL_NAME "minishell"
 
 #endif
