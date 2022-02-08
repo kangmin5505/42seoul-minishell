@@ -31,6 +31,7 @@ execute_command "echo -nnnnnnn 456"
 execute_command "echo -nnnnnnnsdf 456"
 execute_command "echo -nnnnnnnsdf -nn 456"
 
+execute_command "cat << next"
 printf $YELLOW"############################ cd && pwd  ############################\n"$RESET
 echo
 
@@ -44,6 +45,7 @@ execute_command "cd 123 || pwd"
 execute_command "pwd 123"
 execute_command "pwd isdnf"
 
+execute_command "cat << next"
 printf $YELLOW"######################### export && unset && env #########################\n"$RESET
 echo
 
@@ -58,6 +60,7 @@ execute_command "export nksdf && env"
 execute_command "ls"
 execute_command "unset PATH && ls"
 
+execute_command "cat << next"
 printf $YELLOW"####################### exit && exit_status && \$? #######################\n"$RESET
 echo
 
@@ -67,10 +70,9 @@ execute_command "exit 123"
 execute_command "exit 12 123"
 execute_command "exit sdjklf 123"
 execute_command "exit 123"
-execute_command "cd 123 || echo \$?"
-execute_command "sdlkf || echo \$?"
 execute_command "pwd && echo \$?"
 
+execute_command "cat << next"
 printf $YELLOW"######################### double quotes #########################\n"$RESET
 echo
 
@@ -78,6 +80,7 @@ execute_command "echo 'text1.txt contents' && echo cat text1.txt | cat > result1
 execute_command "echo \"cat text1.txt | cat > result1.txt\""
 execute_command "echo \"\$PATH\""
 
+execute_command "cat << next"
 printf $YELLOW"######################### single quote #########################\n"$RESET
 echo
 
@@ -87,6 +90,7 @@ execute_command "echo '\$PATH'"
 execute_command "echo \"'\$PATH'\""
 execute_command "echo '\"\$PATH\"'"
 
+execute_command "cat << next"
 printf $YELLOW"######################### single redirections #########################\n"$RESET
 echo
 
@@ -106,19 +110,21 @@ execute_command "cat text1.txt > result1.txt > result2.txt && cat result2.txt"
 execute_command "cat text1.txt > result2.txt > result1.txt && cat result1.txt"
 execute_command "cat text1.txt > result2.txt > result1.txt && cat result1.txt"
 
+execute_command "cat << next"
 printf $YELLOW"######################### double redirections #########################\n"$RESET
 echo
 
-#execute_command "cat << end1"
-#execute_command "cat << end1 << end2"
-#execute_command "cat << end1 > result1.txt"
-#execute_command "cat result1.txt"
-#execute_command "cat << end1 >> result1.txt"
-#execute_command "cat result1.txt"
-#execute_command "cat << end1 > result1.txt >> result2.txt"
-#execute_command "cat result1.txt"
-#execute_command "cat result2.txt"
+execute_command "cat << end1"
+execute_command "cat << end1 << end2"
+execute_command "cat << end1 > result1.txt"
+execute_command "cat result1.txt"
+execute_command "cat << end1 >> result1.txt"
+execute_command "cat result1.txt"
+execute_command "cat << end1 > result1.txt >> result2.txt"
+execute_command "cat result1.txt"
+execute_command "cat result2.txt"
 
+execute_command "cat << next"
 printf $YELLOW"######################### pipes #########################\n"$RESET
 echo
 
@@ -129,6 +135,7 @@ execute_command "cat < tester.sh | grep printf > result4.txt"
 execute_command "cat result4.txt"
 execute_command "cat < text1.txt | wc"
 
+execute_command "cat << next"
 printf $YELLOW"######################### environment variables  #########################\n"$RESET
 echo
 
@@ -140,6 +147,7 @@ execute_command "echo \$OLDPWD"
 execute_command "echo \$PATH && unset PATH && echo \$PATH"
 execute_command "echo \$LOGNAME && unset LOGNAME && echo \$LOGNAME && export LOGNAME=kangmin && echo \$LOGNAME"
 
+execute_command "cat << next"
 printf $YELLOW"######################### ||, &&, parenthesis #########################\n"$RESET
 echo
 
@@ -150,7 +158,7 @@ execute_command "echo 123 && echo 456 && echo 789"
 execute_command "(echo 123 || echo 456) && echo 789"
 execute_command "(echo 123 && echo 456) && echo 789"
 execute_command "(cd 123 || echo 123) || echo 456"
-#execute_command "(cd 123 && echo 123) || echo 456"
+execute_command "(cd 123 && echo 123) || echo 456"
 
 printf $YELLOW"# Next Step : Explain why we use a global variable\n"$RESET
 printf $YELLOW"# Next Step : Show history\n"$RESET

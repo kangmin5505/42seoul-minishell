@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 05:38:38 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/07 08:10:42 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/08 14:48:23 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,19 @@ int	ft_pipeline(t_interpret *in)
 	exit(get_exit_status());
 }
 
-int	ft_flagandor(t_interpret *in, int ret)
+int	ft_flagandor(t_interpret *in, int *ret)
 {
 	int	cond1;
 
 	if (in->son == 0)
 	{
 		ft_run(in);
-		ret = get_exit_status();
+		*ret = get_exit_status();
 	}
 	else if (in->stype == SUBSHELL)
-		ret = ft_sub(in->son);
-	cond1 = ret && (in->flag == AND);
-	cond1 = cond1 || (!ret && (in->flag == OR));
+		*ret = ft_sub(in->son);
+	cond1 = *ret && (in->flag == AND);
+	cond1 = cond1 || (!*ret && (in->flag == OR));
 	if (cond1)
 		return (1);
 	return (0);
@@ -90,7 +90,7 @@ int	ft_processpipe(t_interpret *in)
 			ret = ft_forkpipe(root->son);
 		if (root->flag == AND || root->flag == OR)
 		{
-			if (ft_flagandor(root, ret))
+			if (ft_flagandor(root, &ret))
 				return (ret);
 		}
 		else
