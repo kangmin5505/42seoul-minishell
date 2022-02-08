@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:47:59 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/08 00:04:37 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/08 00:27:52 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,11 @@ void	ft_processline(char *line)
 		ft_error(i, in);
 		return ;
 	}
-	ft_printcmds(in, 0);
 	ft_valpret_all(in);
 	ft_merge(in);
 	root.next = in;
 	ft_prepipeall(&root);
 	in = root.next;
-	ft_printcmds(in, 0);
 	ft_processpipe(in);
 	ft_freeinlist(in);
 }

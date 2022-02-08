@@ -8,7 +8,7 @@ CYAN="\033[36m"
 RED="\033[31m"
 
 execute_command() {
-	printf $CYAN"command : $1\n"$RESET
+	printf $GREEN"command : $1\n"$RESET
 	./minishell "$1"
 	EXIT_STATUS=$?
 	if [[ "$1" == *exit* ]]
@@ -58,7 +58,7 @@ execute_command "export nksdf && env"
 execute_command "ls"
 execute_command "unset PATH && ls"
 
-printf $YELLOW"######################### exit && exit_status #########################\n"$RESET
+printf $YELLOW"####################### exit && exit_status && \$? #######################\n"$RESET
 echo
 
 execute_command "exit"
@@ -67,6 +67,9 @@ execute_command "exit 123"
 execute_command "exit 12 123"
 execute_command "exit sdjklf 123"
 execute_command "exit 123"
+execute_command "cd 123 || echo \$?"
+execute_command "sdlkf || echo \$?"
+execute_command "pwd && echo \$?"
 
 printf $YELLOW"######################### double quotes #########################\n"$RESET
 echo
@@ -84,16 +87,75 @@ execute_command "echo '\$PATH'"
 execute_command "echo \"'\$PATH'\""
 execute_command "echo '\"\$PATH\"'"
 
-printf $YELLOW"######################### redirections #########################\n"$RESET
+printf $YELLOW"######################### single redirections #########################\n"$RESET
 echo
 
 execute_command "echo 'text2.txt contents' > text2.txt && cat text2.txt"
 execute_command "cat < text2.txt"
 execute_command "cat text2.txt > result2.txt && cat result2.txt"
 execute_command "cat text1.txt"
-execute_command "cat text2.txt > result1.txt > result2.txt && cat result1.txt && cat result2.txt"
-execute_command "cat text1.txt > result1.txt > result2.txt && cat result1.txt && cat result2.txt"
-#execute_command "cat < text1.txt < text2.txt"
-#execute_command "cat < text2.txt < text1.txt"
+execute_command "cat text2.txt > result1.txt > result2.txt"
+execute_command "cat result1.txt"
+execute_command "cat result2.txt"
+execute_command "cat text1.txt > result2.txt > result1.txt"
+execute_command "cat result1.txt"
+execute_command "cat result2.txt"
+execute_command "cat < text1.txt < text2.txt"
+execute_command "cat < text2.txt < text1.txt"
+execute_command "cat text1.txt > result1.txt > result2.txt && cat result2.txt"
+execute_command "cat text1.txt > result2.txt > result1.txt && cat result1.txt"
+execute_command "cat text1.txt > result2.txt > result1.txt && cat result1.txt"
+
+printf $YELLOW"######################### double redirections #########################\n"$RESET
+echo
+
+#execute_command "cat << end1"
+#execute_command "cat << end1 << end2"
+#execute_command "cat << end1 > result1.txt"
+#execute_command "cat result1.txt"
+#execute_command "cat << end1 >> result1.txt"
+#execute_command "cat result1.txt"
+#execute_command "cat << end1 > result1.txt >> result2.txt"
+#execute_command "cat result1.txt"
+#execute_command "cat result2.txt"
+
+printf $YELLOW"######################### pipes #########################\n"$RESET
+echo
+
+execute_command "echo pipe test | cat"
+execute_command "ls | wc"
+execute_command "ls | wc | exit | echo 123"
+execute_command "cat < tester.sh | grep printf > result4.txt"
+execute_command "cat result4.txt"
+execute_command "cat < text1.txt | wc"
+
+printf $YELLOW"######################### environment variables  #########################\n"$RESET
+echo
+
+execute_command "env"
+execute_command "echo \$PATH"
+execute_command "echo \$LOGNAME"
+execute_command "echo \$PWD"
+execute_command "echo \$OLDPWD"
+execute_command "echo \$PATH && unset PATH && echo \$PATH"
+execute_command "echo \$LOGNAME && unset LOGNAME && echo \$LOGNAME && export LOGNAME=kangmin && echo \$LOGNAME"
+
+printf $YELLOW"######################### ||, &&, parenthesis #########################\n"$RESET
+echo
+
+execute_command "echo 123 || echo 456"
+execute_command "echo 123 && echo 456"
+execute_command "echo 123 || echo 456 || echo 789"
+execute_command "echo 123 && echo 456 && echo 789"
+execute_command "(echo 123 || echo 456) && echo 789"
+execute_command "(echo 123 && echo 456) && echo 789"
+execute_command "(cd 123 || echo 123) || echo 456"
+#execute_command "(cd 123 && echo 123) || echo 456"
+
+printf $YELLOW"# Next Step : Explain why we use a global variable\n"$RESET
+printf $YELLOW"# Next Step : Show history\n"$RESET
+printf $YELLOW"# Next Step : return value of a process\n"$RESET
+printf $YELLOW"# Next Step : Show signal controls (ctrl-C, ctrl-D ctrl-\\)\n"$RESET
+echo
 
 rm text*.txt result*.txt

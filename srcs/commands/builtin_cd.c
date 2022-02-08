@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 11:05:27 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/04 12:38:01 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/08 10:59:20 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	execute_cd(char *path)
 	oldpwd = getcwd(buf, PATH_MAX);
 	if (chdir(path) == -1)
 	{
-		g_envs->exit_status = errno;
+		g_envs->exit_status = 1;
 		perror(strerror(errno));
 	}
 	else

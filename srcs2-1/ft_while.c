@@ -6,13 +6,13 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 21:10:00 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/07 23:59:06 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/08 00:26:51 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		ft_getonsize(t_clist *c)
+int	ft_getonsize(t_clist *c)
 {
 	int	i;
 
@@ -40,9 +40,14 @@ t_clist	*ft_gettotal(t_clist *c)
 		c = c->next;
 	}
 	len += ft_strlen(c->data);
-	rs = (char *)malloc(sizeof(char) * (len + 1));
+	if (len)
+	{
+		rs = (char *)malloc(sizeof(char) * (len + 1));
+		rs[len] = 0;
+	}
+	else
+		rs = 0;
 	r = ft_initclist(rs, c->next, 0, 0);
-	rs[len] = 0;
 	return (r);
 }
 

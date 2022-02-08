@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:51:27 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/08 00:03:54 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/08 00:06:23 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	ft_savestr(t_interpret *in, char **line, int i, int type)
 		data[2] = ft_while(*line, data[0], OFF, END);
 	if (data[2] < 0)
 		return (PARSE_ERR_UNFIN_Q);
-	printf("%d, %d\n", data[0], data[2]);
 	rs = ft_strcpy(*line, 0, data[2], 0);
 	*line += data[2];
 	data[1] = (((data[0] == SPACE) && (**line == DQUOTE || **line == QUOTE)))

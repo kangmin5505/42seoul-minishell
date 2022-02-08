@@ -6,7 +6,7 @@
 /*   By: gimsang-won <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 05:41:15 by gimsang-w         #+#    #+#             */
-/*   Updated: 2022/02/07 22:23:11 by gimsang-w        ###   ########.fr       */
+/*   Updated: 2022/02/08 00:21:22 by gimsang-w        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ char	*ft_substitute(char *str)
 		tmp = ft_val(&str, code);
 		tmp2 = rs;
 		rs = ft_strjoin(rs, tmp);
-		free(tmp2);
+		if (rs != tmp2 && !tmp2)
+			free(tmp2);
 		free(tmp);
 		if (*str == '$')
 		{
@@ -90,7 +91,6 @@ void	ft_valpret_all(t_interpret *in)
 {
 	t_interpret	*root;
 	int			i;
-	t_clist		*t;
 
 	root = in;
 	while (root)
@@ -99,10 +99,8 @@ void	ft_valpret_all(t_interpret *in)
 		{
 			i = -1;
 			while (++i < 5)
-			{
-				t = root->list[i];
-				ft_valpret(t, i);
-			}
+				if (root->list[i])
+					ft_valpret(root->list[i], i);
 		}
 		root = ft_iterator(root);
 	}
@@ -113,26 +111,23 @@ void	ft_valpret(t_clist *t, int flag)
 	char	*data;
 	char	*tmp;
 	int		type;
-	char	*tmp2;
 
 	tmp = 0;
 	while (t)
 	{
 		data = t->data;
 		type = t->type;
-		if (t->data)
+		tmp = t->data;
+		if (data)
 		{
 			if (type == SPACE)
 				tmp = ft_substitute(data);
 			else if (type == DQUOTE || type == QUOTE)
-			{
-				if (flag == DIN || type == QUOTE)
-					tmp = t->data;
-				else
+				if (!(flag == DIN && type == QUOTE))
 					tmp = ft_substitute(data);
-			}
 		}
-		tmp2 = t->data;
+		if (tmp != t->data)
+			free(t->data);
 		t->data = tmp;
 		t = t->next;
 	}
