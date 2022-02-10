@@ -213,3 +213,30 @@ int   tputs(const char *str, int affcnt, int (*putc)(int));
   - cause normal process termination
   - Description
     - The exit() function causes normal process termination and the least significant byte of status is returned to the parent
+
+## What I Learned
+- bash
+- special characters
+- history
+- environment variables
+- builtin commands
+- single quotes, double quotes
+- redirections
+- pipe
+- exit status
+- signal
+- terminal control
+- &&, || with parenthesis
+
+### General Reviews
+minishell 과제는 bash의 몇 가지 기능을 구현하는 과제이다.
+이 과제에서 배운 것은 지금까지 학습했던 내용 보다 많은 것 같다.
+특히 프로세스와 파일 디스크립터에 대해 조금 더 알 수 있었다.
+이 과제에서는 이전까지 학습했던 과제의 내용들을 필요로 했다.
+파일 디스크립터, 시그널, 파이프를 기반으로 과제를 수행해야만 했는데, 파이프 과제를 진행하지 않아서 따로 학습해야만 했다.
+위 3가지의 개념을 기반으로 입력된 문자열의 어휘 분석과 구문 분석, 리다이렉션, 프로세스 등 여러 가지를 구현했다.
+bash와 완전히 동일하게 작동하지는 않지만, 큰 틀에서 따라 하려고 노력했다.
+이 과제에서 학습한 내용들을 전부 습득하진 못 했지만, 내가 맡은 부분이 아닌 어휘 분석과 구문 분석 부분은 따로 추가적인 학습을 진행해야겠다.
+과제가 끝난 뒤 Cjeon 님께서 시간을 내서 나의 과제를 확인해 주셨는데, 내가 생각하지 못한 부분을 말해주셨다.
+그 부분을 수정하면서 내가 몰랐던 부분을 알 수 있었고 이런 기회를 준 Cjeon 님에게 감사하다.
+다음 과제도 이번 과제와 같이 최선을 다해 효율적으로 학습할 수 있도록 해야겠다.
