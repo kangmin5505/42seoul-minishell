@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 19:29:32 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/08 22:52:41 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/10 13:04:46 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ void	external_cmd(char *cmd, char **argv)
 	else
 	{
 		waitpid(pid, &wstatus, 0);
-		g_envs->exit_status = WEXITSTATUS(wstatus);
+		if (WIFSIGNALED(wstatus) != 0)
+			g_envs->exit_status = 128 + WTERMSIG(wstatus);
+		else
+			g_envs->exit_status = WEXITSTATUS(wstatus);
 	}
 }
 

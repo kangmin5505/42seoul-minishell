@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:03:11 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/08 15:35:11 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/02/10 11:51:31 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char *argv[], char *envp[])
 	char	*line;
 
 	init_envs(envp);
-	set_shell();
+	register_signal();
 	while (1)
 	{
 		if (argc > 1)

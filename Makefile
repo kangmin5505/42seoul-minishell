@@ -6,7 +6,7 @@
 #    By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 20:38:43 by kangkim           #+#    #+#              #
-#    Updated: 2022/02/07 11:23:12 by kangkim          ###   ########.fr        #
+#    Updated: 2022/02/10 11:38:19 by kangkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ COMMANDS_DIR = $(SRCS_DIR)/commands
 REDIRECTIONS_DIR = $(SRCS_DIR)/redirections
 INCLUDE_DIR = includes
 
-SHELL_SRCS = set_shell.c read_shell.c
+SHELL_SRCS = set_shell.c read_shell.c set_shell_tcattr.c
 SHELL_SRCS := $(addprefix $(SHELL_DIR)/, $(SHELL_SRCS))
 
 EXECUTER_SRCS = executer.c executer_utils.c

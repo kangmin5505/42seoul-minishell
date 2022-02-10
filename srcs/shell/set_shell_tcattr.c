@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell.h                                            :+:      :+:    :+:   */
+/*   set_shell_tcattr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 16:09:26 by kangkim           #+#    #+#             */
-/*   Updated: 2022/02/10 11:48:10 by kangkim          ###   ########.fr       */
+/*   Created: 2022/02/10 11:35:04 by kangkim           #+#    #+#             */
+/*   Updated: 2022/02/10 11:35:31 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include <minishell.h>
 
-# include "structure.h"
+void	set_tcattr(void)
+{
+	struct termios	new_tcattr;
 
-/* set_shell.c */
-void	un_register_signal(void);
-void	register_signal(void);
-void	sig_handler(int signo);
-void	exit_shell(int status);
+	tcgetattr(STDIN_FILENO, &(g_envs->origin_tcattr));
+	tcgetattr(STDIN_FILENO, &new_tcattr);
+	new_tcattr.c_lflag &= ~ECHOCTL;
+	tcsetattr(STDIN_FILENO, TCSANOW, &new_tcattr);
+}
 
-/* set_shell_tcattr.c */
-void	set_tcattr(void);
-void	unset_tcattr(void);
+void	unset_tcattr(void)
+{
+	tcsetattr(STDIN_FILENO, TCSANOW, &(g_envs->origin_tcattr));
+}
 
-/* read_shell.c */
-void	get_shell_name(char *shell_name);
-char	*readline_shell(void);
-void	add_history_shell(const char *line);
-
-#endif
